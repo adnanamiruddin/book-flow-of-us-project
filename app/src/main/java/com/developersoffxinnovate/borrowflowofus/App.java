@@ -1,5 +1,7 @@
 package com.developersoffxinnovate.borrowflowofus;
 
+import com.developersoffxinnovate.borrowflowofus.config.DatabaseConfig;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -16,6 +18,7 @@ public class App extends Application {
         Scene scene = new Scene(new StackPane(l), 640, 480);
         stage.setScene(scene);
         stage.show();
+        DatabaseConfig.connection();
     }
 
     public static void main(String[] args) {
