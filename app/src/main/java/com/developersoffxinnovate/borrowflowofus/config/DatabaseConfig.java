@@ -20,10 +20,9 @@ public class DatabaseConfig {
     public static void connection() {
         try {
             connection = DriverManager.getConnection(DB_URL);
-            System.out.println("Connection Status: Success");
+            // System.out.println("Connection Status: Success");
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Connection Status: Failed");
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.developersoffxinnovate.borrowflowofus;
 
-import com.developersoffxinnovate.borrowflowofus.config.DatabaseConfig;
+import com.developersoffxinnovate.borrowflowofus.controllers.BooksController;
+import com.developersoffxinnovate.borrowflowofus.controllers.MahasiswaController;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -18,7 +19,8 @@ public class App extends Application {
         Scene scene = new Scene(new StackPane(l), 640, 480);
         stage.setScene(scene);
         stage.show();
-        DatabaseConfig.connection();
+        MahasiswaController.getDataMahasiswa();
+        BooksController.getDataBuku();
     }
 
     public static void main(String[] args) {
