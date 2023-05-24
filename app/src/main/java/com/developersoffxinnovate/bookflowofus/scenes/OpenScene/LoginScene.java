@@ -42,7 +42,7 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         inputPassword.setPadding(new Insets(10, 0, 0, 0));
         PasswordField input2 = new PasswordField();
         input2.setPromptText("Password...");
-        Label loginStatus = new Label("Belum Login");
+        Label loginStatus = new Label("Status: Belum Login");
         loginStatus.getStyleClass().add("loginStatus");
 
         VBox containerInputs = new VBox(inputNim, input1, inputPassword, input2, loginStatus);
