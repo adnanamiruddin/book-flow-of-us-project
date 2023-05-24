@@ -28,7 +28,7 @@
   -fx-font-size: 24px;
 }
 
-.containerInputs > TextField, PasswordField {
+.containerInputs > TextField, .containerInputs > PasswordField {
   -fx-background-color: #555555;
   -fx-padding: 10px 20px;
   -fx-text-fill: rgb(252, 252, 252);

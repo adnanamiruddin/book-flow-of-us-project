@@ -61,7 +61,7 @@ public class RegisterScene extends SceneAbstract implements SceneInterface {
 
         Label registerStatus = new Label("Status : Belum Register");
         Button registerButton = new Button("Register");
-        registerButton.getStyleClass().add("registerButton");
+        registerButton.getStyleClass().add("registerSubmitButton");
         Button backToHomeButton = new Button("Back To Home");
         VBox containerFooter = new VBox(registerStatus, registerButton, backToHomeButton);
         containerFooter.getStyleClass().add("containerFooter");
