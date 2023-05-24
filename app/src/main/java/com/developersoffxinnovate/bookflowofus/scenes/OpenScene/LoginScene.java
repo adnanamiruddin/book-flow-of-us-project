@@ -57,12 +57,12 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         HBox containerLowerButtons = new HBox(adminButton, registerButton);
         containerLowerButtons.getStyleClass().add("containerLowerButtons");
         containerLowerButtons.setAlignment(Pos.CENTER);
-        containerLowerButtons.setSpacing(15);
+        containerLowerButtons.setSpacing(10);
 
         VBox containerButtons = new VBox(loginButton, containerLowerButtons);
         containerButtons.getStyleClass().add("containerButtons");
         containerButtons.setAlignment(Pos.CENTER);
-        containerButtons.setSpacing(7);
+        containerButtons.setSpacing(10);
 
         VBox main = new VBox(containerHeader, containerInputs, containerButtons);
         main.getStyleClass().add("backgroundApp");
@@ -86,6 +86,11 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
             } catch (Exception err) {
                 err.printStackTrace();
             }
+        });
+
+        registerButton.setOnAction(e -> {
+            RegisterScene registerScene = new RegisterScene(stage);
+            registerScene.show();
         });
     }
     
