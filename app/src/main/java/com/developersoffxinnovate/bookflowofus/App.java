@@ -18,8 +18,8 @@ public class App extends Application {
 
         LoginScene loginScene = new LoginScene(stage);
         RegisterScene registerScene = new RegisterScene(stage);
-        registerScene.show();
-        // loginScene.show();
+        // registerScene.show();
+        loginScene.show();
     }
 
     public static void main(String[] args) {

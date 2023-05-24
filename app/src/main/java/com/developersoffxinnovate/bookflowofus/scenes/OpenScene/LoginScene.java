@@ -57,7 +57,7 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         HBox containerLowerButtons = new HBox(adminButton, registerButton);
         containerLowerButtons.getStyleClass().add("containerLowerButtons");
         containerLowerButtons.setAlignment(Pos.CENTER);
-        containerLowerButtons.setSpacing(5);
+        containerLowerButtons.setSpacing(15);
 
         VBox containerButtons = new VBox(loginButton, containerLowerButtons);
         containerButtons.getStyleClass().add("containerButtons");
@@ -74,19 +74,19 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         main.requestFocus();
 
         /* ===> LOGIC AREA <=== */
-        // loginButton.setOnAction(e -> {
-        //     try {
-        //         String nim = input1.getText();
-        //         String password = input2.getText();
-        //         if (MahasiswaController.validateLogin(nim, password)) {
-        //             loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
-        //         } else {
-        //             loginStatus.setText("Maaf, gagal login");
-        //         }
-        //     } catch (Exception err) {
-        //         err.printStackTrace();
-        //     }
-        // });
+        loginButton.setOnAction(e -> {
+            try {
+                String nim = input1.getText();
+                String password = input2.getText();
+                if (MahasiswaController.validateLogin(nim, password)) {
+                    loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
+                } else {
+                    loginStatus.setText("Maaf, gagal login");
+                }
+            } catch (Exception err) {
+                err.printStackTrace();
+            }
+        });
     }
     
 }

@@ -179,11 +179,11 @@
   -fx-text-fill: rgb(255, 255, 255) !important;
 }
 
-.containerFooter > .registerButton {
+.containerFooter > .registerSubmitButton {
   -fx-background-color: rgb(199, 136, 0);
 }
 
-.containerFooter > .registerButton:hover {
+.containerFooter > .registerSubmitButton:hover {
   -fx-cursor: hand;
   -fx-background-color: rgb(255, 174, 0);
   -fx-text-fill: rgb(255, 255, 255) !important;
