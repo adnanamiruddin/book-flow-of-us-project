@@ -1,8 +1,8 @@
-package com.developersoffxinnovate.borrowflowofus.controllers;
+package com.developersoffxinnovate.bookflowofus.controllers;
 
 import java.sql.SQLException;
 
-import com.developersoffxinnovate.borrowflowofus.config.DatabaseConfig;
+import com.developersoffxinnovate.bookflowofus.config.DatabaseConfig;
 
 public class BooksController extends DatabaseConfig {
 
@@ -13,7 +13,7 @@ public class BooksController extends DatabaseConfig {
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                System.out.println(resultSet.getString("judul") + " " + resultSet.getString("pengarang"));
+                System.out.println(resultSet.getString("judul") + "  " + resultSet.getString("pengarang"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

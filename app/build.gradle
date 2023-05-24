@@ -27,7 +27,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.developersoffxinnovate.borrowflowofus.App'
+    mainClass = 'com.developersoffxinnovate.bookflowofus.App'
 }
 
 javafx {

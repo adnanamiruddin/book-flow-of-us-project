@@ -1,4 +1,4 @@
-package com.developersoffxinnovate.borrowflowofus.config;
+package com.developersoffxinnovate.bookflowofus.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
