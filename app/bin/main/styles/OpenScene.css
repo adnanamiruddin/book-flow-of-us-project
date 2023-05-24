@@ -58,7 +58,8 @@
   -fx-background-color: green;
   -fx-text-fill: rgb(228, 228, 228);
   -fx-font-weight: bold;
-  -fx-font-size: 23px;  -fx-border-color: rgb(255, 238, 0);
+  -fx-font-size: 23px;
+  -fx-border-color: rgb(255, 238, 0);
   -fx-border-width: 2px;
   -fx-border-style: solid;
   -fx-border-radius: 10px;
@@ -77,7 +78,8 @@
   -fx-background-color: purple;
   -fx-text-fill: rgb(228, 228, 228);
   -fx-font-weight: bold;
-  -fx-font-size: 20px;  -fx-border-color: rgb(255, 153, 0);
+  -fx-font-size: 20px;
+  -fx-border-color: rgb(255, 153, 0);
   -fx-border-width: 1px;
   -fx-border-style: solid;
   -fx-border-radius: 10px;
@@ -167,7 +169,7 @@
   -fx-background-color: rgb(41, 41, 41);
   -fx-text-fill: rgb(228, 228, 228);
   -fx-font-weight: bold;
-  -fx-font-size: 17px;  
+  -fx-font-size: 17px;
   -fx-border-color: rgb(255, 238, 0);
   -fx-border-width: 1.5px;
   -fx-border-style: solid;
