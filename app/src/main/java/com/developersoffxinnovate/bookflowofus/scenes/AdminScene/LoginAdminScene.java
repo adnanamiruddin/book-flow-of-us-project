@@ -2,6 +2,7 @@ package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.SceneAbstract;
 import com.developersoffxinnovate.bookflowofus.interfaces.SceneInterface;
+import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -49,7 +50,7 @@ public class LoginAdminScene extends SceneAbstract implements SceneInterface {
         containerInputs.setAlignment(Pos.CENTER);
 
         Button loginButton = new Button("Login Admin");
-        Button backToLoginSceneButton = new Button("Back To Home");
+        Button backToLoginSceneButton = new Button("Back To Login User");
         backToLoginSceneButton.getStyleClass().add("backToLoginSceneButton");
         VBox containerButtons = new VBox(loginButton, backToLoginSceneButton);
         containerButtons.getStyleClass().add("containerButtons");
@@ -65,37 +66,11 @@ public class LoginAdminScene extends SceneAbstract implements SceneInterface {
         stage.show();
         main.requestFocus();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Label label = new Label("Login Admin Scene");
-
-        // TextField input1 = new TextField();
-        // PasswordField input2 = new PasswordField();
-
-        // Button loginButton = new Button("Login Admin");
-        // Label loginStatus = new Label("Belum Login");
-
-
         /* ===> LOGIC AREA <=== */
         loginButton.setOnAction(e -> {
             try {
                 String user = input1.getText();
                 String password = input2.getText();
-
                 // if (AdminController.validateLoginAdmin(user, password)) {
                 //     loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
                 //     showAdminHomePageScene(user);
@@ -105,6 +80,11 @@ public class LoginAdminScene extends SceneAbstract implements SceneInterface {
             } catch (Exception err) {
                 err.printStackTrace();
             }
+        });
+
+        backToLoginSceneButton.setOnAction(e -> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
         });
     }
     
