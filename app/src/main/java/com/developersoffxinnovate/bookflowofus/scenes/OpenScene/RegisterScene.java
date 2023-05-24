@@ -62,8 +62,8 @@ public class RegisterScene extends SceneAbstract implements SceneInterface {
         Label registerStatus = new Label("Status : Belum Register");
         Button registerButton = new Button("Register");
         registerButton.getStyleClass().add("registerSubmitButton");
-        Button backToHomeButton = new Button("Back To Home");
-        VBox containerFooter = new VBox(registerStatus, registerButton, backToHomeButton);
+        Button backToLoginSceneButton = new Button("Back To Home");
+        VBox containerFooter = new VBox(registerStatus, registerButton, backToLoginSceneButton);
         containerFooter.getStyleClass().add("containerFooter");
         containerFooter.setAlignment(Pos.CENTER);
         containerFooter.setSpacing(8);
@@ -76,12 +76,6 @@ public class RegisterScene extends SceneAbstract implements SceneInterface {
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
-
-
-
-
-
-
 
         /* ===> LOGIC AREA <=== */
         registerButton.setOnAction(e -> {
@@ -101,6 +95,10 @@ public class RegisterScene extends SceneAbstract implements SceneInterface {
             // }
         });
 
+        backToLoginSceneButton.setOnAction(e -> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
+        });
     }
     
 }
