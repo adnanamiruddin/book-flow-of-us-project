@@ -35,10 +35,10 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         containerHeader.getStyleClass().add("header");
         containerHeader.setAlignment(Pos.CENTER);
 
-        Label inputNim = new Label("Masukkan NIM");
+        Label inputNim = new Label("Input NIM");
         TextField input1 = new TextField();
         input1.setPromptText("Nomor Induk Mahasiswa...");
-        Label inputPassword = new Label("Masukkan Password");
+        Label inputPassword = new Label("Input Password");
         inputPassword.setPadding(new Insets(10, 0, 0, 0));
         PasswordField input2 = new PasswordField();
         input2.setPromptText("Password...");

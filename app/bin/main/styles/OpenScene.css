@@ -25,7 +25,7 @@
 .containerInputs > Label {
   -fx-font-weight: bold;
   -fx-text-fill: rgb(228, 228, 228);
-  -fx-font-size: 24px;
+  -fx-font-size: 22px;
 }
 
 .containerInputs > TextField, 
