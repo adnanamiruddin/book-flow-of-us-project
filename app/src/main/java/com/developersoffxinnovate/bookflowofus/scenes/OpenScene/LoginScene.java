@@ -3,6 +3,7 @@ package com.developersoffxinnovate.bookflowofus.scenes.OpenScene;
 import com.developersoffxinnovate.bookflowofus.abstracts.SceneAbstract;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.SceneInterface;
+import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.LoginAdminScene;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -30,7 +31,7 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         ImageView containerImageBook = new ImageView(imageBook);
         containerImageBook.setFitHeight(100);
         containerImageBook.setFitWidth(200);
-
+        
         VBox containerHeader = new VBox(headerText, containerImageBook);
         containerHeader.getStyleClass().add("header");
         containerHeader.setAlignment(Pos.CENTER);
@@ -91,6 +92,11 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         registerButton.setOnAction(e -> {
             RegisterScene registerScene = new RegisterScene(stage);
             registerScene.show();
+        });
+
+        adminButton.setOnAction(e -> {
+            LoginAdminScene loginAdminScene = new LoginAdminScene(stage);
+            loginAdminScene.show();
         });
     }
     
