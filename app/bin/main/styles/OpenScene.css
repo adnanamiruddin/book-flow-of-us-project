@@ -139,20 +139,6 @@
   -fx-background-radius: 10px;
 }
 
-/* .scroll-pane {
-  -fx-background-color: transparent;
-  -fx-padding: 0;
-}
-.scroll-pane > .viewport {
-  -fx-background-color: transparent;
-}
-.scroll-pane .scroll-bar:vertical {
-  -fx-background-color: rgb(73, 30, 0);
-}
-.scroll-pane .scroll-bar:vertical .thumb {
-  -fx-background-color: rgb(255, 153, 0);
-} */
-
 .containerFooter {
   -fx-padding: 7px 35px;
 }
@@ -192,6 +178,20 @@
   -fx-background-color: rgb(255, 174, 0);
   -fx-text-fill: rgb(255, 255, 255) !important;
 }
-
 /* REGISTER SCENE END */
+
+
+/* .scroll-pane {
+  -fx-background-color: transparent;
+  -fx-padding: 0;
+}
+.scroll-pane > .viewport {
+  -fx-background-color: transparent;
+}
+.scroll-pane .scroll-bar:vertical {
+  -fx-background-color: rgb(73, 30, 0);
+}
+.scroll-pane .scroll-bar:vertical .thumb {
+  -fx-background-color: rgb(255, 153, 0);
+} */
 
