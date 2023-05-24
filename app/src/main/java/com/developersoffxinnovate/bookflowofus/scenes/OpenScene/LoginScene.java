@@ -32,9 +32,8 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         containerImageBook.setFitWidth(200);
 
         VBox containerHeader = new VBox(headerText, containerImageBook);
-        containerHeader.setAlignment(Pos.CENTER);
         containerHeader.getStyleClass().add("header");
-        containerHeader.getStyleClass().add("headerLogin");
+        containerHeader.setAlignment(Pos.CENTER);
 
         Label inputNim = new Label("Masukkan NIM");
         TextField input1 = new TextField();
@@ -46,9 +45,9 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         Label loginStatus = new Label("Belum Login");
         loginStatus.getStyleClass().add("loginStatus");
 
-        VBox containerInput = new VBox(inputNim, input1, inputPassword, input2, loginStatus);
-        containerInput.getStyleClass().add("containerInput");
-        containerInput.setAlignment(Pos.CENTER);
+        VBox containerInputs = new VBox(inputNim, input1, inputPassword, input2, loginStatus);
+        containerInputs.getStyleClass().add("containerInputs");
+        containerInputs.setAlignment(Pos.CENTER);
 
         Button loginButton = new Button("Login");
 
@@ -65,30 +64,29 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         containerButtons.setAlignment(Pos.CENTER);
         containerButtons.setSpacing(7);
 
-        VBox main = new VBox(containerHeader, containerInput, containerButtons);
+        VBox main = new VBox(containerHeader, containerInputs, containerButtons);
         main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 400, 650);
-        scene.getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/OpenScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
 
         /* ===> LOGIC AREA <=== */
-        loginButton.setOnAction(e -> {
-            try {
-                String nim = input1.getText();
-                String password = input2.getText();
-
-                if (MahasiswaController.validateLogin(nim, password)) {
-                    loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
-                } else {
-                    loginStatus.setText("Maaf, gagal login");
-                }
-            } catch (Exception err) {
-                err.printStackTrace();
-            }
-        });
+        // loginButton.setOnAction(e -> {
+        //     try {
+        //         String nim = input1.getText();
+        //         String password = input2.getText();
+        //         if (MahasiswaController.validateLogin(nim, password)) {
+        //             loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
+        //         } else {
+        //             loginStatus.setText("Maaf, gagal login");
+        //         }
+        //     } catch (Exception err) {
+        //         err.printStackTrace();
+        //     }
+        // });
     }
     
 }
