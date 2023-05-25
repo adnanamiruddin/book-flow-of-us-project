@@ -53,7 +53,6 @@ public class MahasiswaController extends DatabaseConfig {
             preparedStatement.setString(4, alamat);
             preparedStatement.setString(5, noTelp);
             preparedStatement.setString(6, password);
-
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {

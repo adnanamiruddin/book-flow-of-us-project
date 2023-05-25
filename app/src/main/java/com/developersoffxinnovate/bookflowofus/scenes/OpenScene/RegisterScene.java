@@ -77,7 +77,6 @@ public class RegisterScene extends SceneAbstract implements SceneInterface {
 
         /* ===> LOGIC AREA <=== */
         registerButton.setOnAction(e -> {
-            registerStatus.setText("");
             String nama = input1.getText();
             String nim = input2.getText();
             String prodi = input3.getText();
