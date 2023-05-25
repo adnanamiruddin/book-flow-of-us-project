@@ -107,3 +107,10 @@
   -fx-border-style: none;
 }
 /* HOMEPAGE SCENE END */
+
+
+/* BORROW BOOK SCENE START */
+.backgroundBorrowBook {
+  -fx-background-color: rgb(58, 22, 141);
+}
+/* BORROW BOOK SCENE END */

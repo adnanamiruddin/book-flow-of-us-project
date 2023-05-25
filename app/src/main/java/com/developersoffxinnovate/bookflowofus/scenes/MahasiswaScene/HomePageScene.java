@@ -50,7 +50,7 @@ public class HomePageScene extends SceneAbstract implements SceneInterface {
         toBookListScene.getStyleClass().add("toBookListScene");
         Button toBorrowBookScene = new Button("Borrow\nBook");
         toBookListScene.getStyleClass().add("toBorrowBookScene");
-        Button toRateBookScene = new Button("Rate\nThe Book");
+        Button toRateBookScene = new Button("History\nBorrow Books");
         toBookListScene.getStyleClass().add("toContactAdminScene");
         HBox containerMenu = new HBox(toBookListScene, toBorrowBookScene, toRateBookScene);
         containerMenu.getStyleClass().add("containerMenu");

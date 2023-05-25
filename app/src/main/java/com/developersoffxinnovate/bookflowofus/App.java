@@ -1,5 +1,6 @@
 package com.developersoffxinnovate.bookflowofus;
 
+import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.BorrowBookScene;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.application.Application;
@@ -16,7 +17,9 @@ public class App extends Application {
         stage.getIcons().add(image);
 
         LoginScene loginScene = new LoginScene(stage);
-        loginScene.show();
+        // loginScene.show();
+        BorrowBookScene borrowBookScene = new BorrowBookScene(stage);
+        borrowBookScene.show();
     }
 
     public static void main(String[] args) {
