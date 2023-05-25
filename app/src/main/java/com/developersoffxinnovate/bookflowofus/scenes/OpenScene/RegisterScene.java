@@ -85,6 +85,7 @@ public class RegisterScene extends SceneAbstract implements SceneInterface {
             String password = input6.getText();
             if (MahasiswaController.validateRegister(nama, nim, prodi, alamat, noTelp, password)) {
                 registerStatus.setText("Berhasil Register");
+                System.out.println("Mohon lengkapi semua field registrasi");
             } else {
                 registerStatus.setText("Maaf, gagal register");
             }

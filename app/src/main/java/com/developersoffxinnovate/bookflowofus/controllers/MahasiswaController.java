@@ -41,10 +41,10 @@ public class MahasiswaController extends DatabaseConfig {
     public static boolean validateRegister(String nama, String nim, String prodi, String alamat, String noTelp, String password) {
         connection();
         query = "INSERT INTO mahasiswa (nama, nim, prodi, alamat, no_telp, password) VALUES (?, ?, ?, ?, ?, ?)";
-        // if (nama.isEmpty() || nim.isEmpty() || prodi.isEmpty() || alamat.isEmpty() || noTelp.isEmpty() || password.isEmpty()) {
-        //     System.out.println("Mohon lengkapi semua field registrasi");
-        //     return false;
-        // }
+        if (nama.isEmpty() || nim.isEmpty() || prodi.isEmpty() || alamat.isEmpty() || noTelp.isEmpty() || password.isEmpty()) {
+            System.out.println("Mohon lengkapi semua field registrasi");
+            return false;
+        }
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, nama);
