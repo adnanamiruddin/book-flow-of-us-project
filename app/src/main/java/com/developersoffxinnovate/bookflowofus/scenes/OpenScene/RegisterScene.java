@@ -1,6 +1,7 @@
 package com.developersoffxinnovate.bookflowofus.scenes.OpenScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.SceneAbstract;
+import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.SceneInterface;
 
 import javafx.geometry.Pos;
@@ -56,9 +57,6 @@ public class RegisterScene extends SceneAbstract implements SceneInterface {
         containerInputs.getStyleClass().add("containerInputsRegister");
         containerInputs.setAlignment(Pos.CENTER_LEFT);
 
-        // ScrollPane scrolPane = new ScrollPane(containerInputs);
-        // scrolPane.getStyleClass().add("scroll-pane");
-
         Label registerStatus = new Label("Status : Belum Register");
         Button registerButton = new Button("Register");
         registerButton.getStyleClass().add("registerSubmitButton");
@@ -86,11 +84,11 @@ public class RegisterScene extends SceneAbstract implements SceneInterface {
             String alamat = input4.getText();
             String noTelp = input5.getText();
             String password = input6.getText();
-            // if (MahasiswaController.validateRegister(nama, nim, prodi, alamat, noTelp, password)) {
-            //     registerStatus.setText("Berhasil Register");
-            // } else {
-            //     registerStatus.setText("Maaf, gagal register");
-            // }
+            if (MahasiswaController.validateRegister(nama, nim, prodi, alamat, noTelp, password)) {
+                registerStatus.setText("Berhasil Register");
+            } else {
+                registerStatus.setText("Maaf, gagal register");
+            }
         });
 
         backToLoginSceneButton.setOnAction(e -> {
