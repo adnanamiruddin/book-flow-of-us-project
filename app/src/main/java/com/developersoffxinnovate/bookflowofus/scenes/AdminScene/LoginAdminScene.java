@@ -13,7 +13,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -50,7 +49,7 @@ public class LoginAdminScene extends SceneAbstract implements SceneInterface {
         containerInputs.setAlignment(Pos.CENTER);
 
         Button loginButton = new Button("Login Admin");
-        Button backToLoginSceneButton = new Button("Back To Login User");
+        Button backToLoginSceneButton = new Button("Back To Login Mahasiswa");
         backToLoginSceneButton.getStyleClass().add("backToLoginSceneButton");
         VBox containerButtons = new VBox(loginButton, backToLoginSceneButton);
         containerButtons.getStyleClass().add("containerButtons");

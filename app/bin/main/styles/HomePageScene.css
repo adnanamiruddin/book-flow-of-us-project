@@ -1,0 +1,23 @@
+/* GLOBAL STYLE START */
+.backgroundApp {
+  -fx-background-color: #001f3f;
+}
+
+.header {
+  -fx-padding: 15px 0px 8px;
+  -fx-spacing: 5px;
+}
+
+.header > Label {
+  -fx-text-fill: white;
+  -fx-font-size: 38px;
+  -fx-font-weight: bold;
+}
+/* GLOBAL STYLE END */
+
+
+/* HOMEPAGE SCENE START */
+.backgroundHomePage {
+  -fx-background-color: rgb(0, 157, 219);
+}
+/* HOMEPAGE SCENE END */
