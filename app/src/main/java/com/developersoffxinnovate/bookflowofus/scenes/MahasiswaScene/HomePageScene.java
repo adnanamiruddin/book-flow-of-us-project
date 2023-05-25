@@ -50,17 +50,19 @@ public class HomePageScene extends SceneAbstract implements SceneInterface {
         toBookListScene.getStyleClass().add("toBookListScene");
         Button toBorrowBookScene = new Button("Borrow\nBook");
         toBookListScene.getStyleClass().add("toBorrowBookScene");
-        Button toContactAdminScene = new Button("Contact\nAdmin");
+        Button toRateBookScene = new Button("Rate\nThe Book");
         toBookListScene.getStyleClass().add("toContactAdminScene");
-        HBox containerMenu = new HBox(toBookListScene, toBorrowBookScene, toContactAdminScene);
+        HBox containerMenu = new HBox(toBookListScene, toBorrowBookScene, toRateBookScene);
         containerMenu.getStyleClass().add("containerMenu");
         containerMenu.setAlignment(Pos.CENTER);
 
         Button logOutButton = new Button("Log Out");
+        Button toContactAdminScene = new Button("Contact Admin");
+        toContactAdminScene.getStyleClass().add("toContactAdminScene");
 
-        VBox containerFooter = new VBox(logOutButton);
+        HBox containerFooter = new HBox(toContactAdminScene, logOutButton);
         containerFooter.getStyleClass().add("containerFooter");
-        containerFooter.setAlignment(Pos.CENTER_RIGHT);
+        containerFooter.setAlignment(Pos.CENTER);
 
         VBox main = new VBox(containerHeader, containerProfile, containerMenu, containerFooter);
         main.getStyleClass().add("backgroundHomePage");
