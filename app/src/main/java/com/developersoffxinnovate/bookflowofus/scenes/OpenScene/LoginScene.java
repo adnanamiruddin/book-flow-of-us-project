@@ -4,6 +4,7 @@ import com.developersoffxinnovate.bookflowofus.abstracts.SceneAbstract;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.SceneInterface;
 import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.LoginAdminScene;
+import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.HomePageScene;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -81,6 +82,8 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
                 String password = input2.getText();
                 if (MahasiswaController.validateLogin(nim, password)) {
                     loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
+                    HomePageScene homePageScene = new HomePageScene(stage);
+                    homePageScene.show();
                 } else {
                     loginStatus.setText("Maaf, gagal login");
                 }
