@@ -55,7 +55,7 @@ public class MahasiswaController extends DatabaseConfig {
             preparedStatement.setString(6, password);
 
             preparedStatement.executeUpdate();
-            // return true;
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
