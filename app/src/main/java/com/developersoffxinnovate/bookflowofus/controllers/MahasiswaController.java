@@ -28,7 +28,6 @@ public class MahasiswaController extends DatabaseConfig {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, nim);
             preparedStatement.setString(2, password);
-
             try (ResultSet loginUser = preparedStatement.executeQuery()) {
                 return loginUser.next(); // bernilai true
             }
@@ -42,7 +41,6 @@ public class MahasiswaController extends DatabaseConfig {
         connection();
         query = "INSERT INTO mahasiswa (nama, nim, prodi, alamat, no_telp, password) VALUES (?, ?, ?, ?, ?, ?)";
         if (nama.isEmpty() || nim.isEmpty() || prodi.isEmpty() || alamat.isEmpty() || noTelp.isEmpty() || password.isEmpty()) {
-            System.out.println("Mohon lengkapi semua field registrasi");
             return false;
         }
         try {
