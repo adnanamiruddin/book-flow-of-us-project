@@ -17,9 +17,9 @@ public class App extends Application {
         stage.getIcons().add(image);
 
         LoginScene loginScene = new LoginScene(stage);
-        // loginScene.show();
+        loginScene.show();
         HomePageScene homePageScene = new HomePageScene(stage);
-        homePageScene.show();
+        // homePageScene.show();
     }
 
     public static void main(String[] args) {

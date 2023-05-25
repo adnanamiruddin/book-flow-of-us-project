@@ -71,7 +71,7 @@ public class RegisterScene extends SceneAbstract implements SceneInterface {
         VBox main = new VBox(containerHeader, containerInputs, containerFooter);
         main.getStyleClass().add("backgroundRegister");
 
-        Scene scene = new Scene(main, 400, 650);
+        Scene scene = new Scene(main, 750, 700);
         scene.getStylesheets().add(getClass().getResource("/styles/OpenScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

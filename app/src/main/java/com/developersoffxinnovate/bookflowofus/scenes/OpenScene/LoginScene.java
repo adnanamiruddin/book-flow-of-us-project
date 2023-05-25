@@ -29,8 +29,8 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         Label headerText = new Label("Book Flow of Us");
         Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
         ImageView containerImageBook = new ImageView(imageBook);
-        containerImageBook.setFitHeight(100);
-        containerImageBook.setFitWidth(200);
+        containerImageBook.setFitHeight(170);
+        containerImageBook.setFitWidth(300);
         
         VBox containerHeader = new VBox(headerText, containerImageBook);
         containerHeader.getStyleClass().add("header");
@@ -68,7 +68,7 @@ public class LoginScene extends SceneAbstract implements SceneInterface {
         VBox main = new VBox(containerHeader, containerInputs, containerButtons);
         main.getStyleClass().add("backgroundApp");
 
-        Scene scene = new Scene(main, 400, 650);
+        Scene scene = new Scene(main, 750, 700);
         scene.getStylesheets().add(getClass().getResource("/styles/OpenScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
