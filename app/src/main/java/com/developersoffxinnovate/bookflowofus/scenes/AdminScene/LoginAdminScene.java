@@ -27,7 +27,7 @@ public class LoginAdminScene extends SceneAbstract implements SceneInterface {
         Label headerText = new Label("Login as Admin");
         Image imageAdmin = new Image(getClass().getClassLoader().getResourceAsStream("img/admin.png"));
         ImageView containerImageAdmin = new ImageView(imageAdmin);
-        containerImageAdmin.setFitHeight(150);
+        containerImageAdmin.setFitHeight(170);
         containerImageAdmin.setFitWidth(150);
 
         VBox containerHeader = new VBox(headerText, containerImageAdmin);
@@ -59,7 +59,7 @@ public class LoginAdminScene extends SceneAbstract implements SceneInterface {
         VBox main = new VBox(containerHeader, containerInputs, containerButtons);
         main.getStyleClass().add("backgroundLoginAdmin");
 
-        Scene scene = new Scene(main, 400, 650);
+        Scene scene = new Scene(main, 750, 700);
         scene.getStylesheets().add(getClass().getResource("/styles/AdminScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
