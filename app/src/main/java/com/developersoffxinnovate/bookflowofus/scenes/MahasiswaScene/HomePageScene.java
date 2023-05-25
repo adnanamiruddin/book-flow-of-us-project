@@ -1,7 +1,7 @@
 package com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.SceneAbstract;
-import com.developersoffxinnovate.bookflowofus.interfaces.SceneInterface;
+import com.developersoffxinnovate.bookflowofus.interfaces.ScenePropsInterface;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,14 +13,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class HomePageScene extends SceneAbstract implements SceneInterface {
+public class HomePageScene extends SceneAbstract implements ScenePropsInterface {
 
     public HomePageScene(Stage stage) {
         super(stage);
     }
 
     @Override
-    public void show() {
+    public void show(String nim) {
         Label headerText = new Label("Home Page Area");
         VBox containerHeader = new VBox(headerText);
         containerHeader.getStyleClass().add("header");
