@@ -1,10 +1,11 @@
 package com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.SceneAbstract;
-import com.developersoffxinnovate.bookflowofus.interfaces.ScenePropsInterface;
+import com.developersoffxinnovate.bookflowofus.interfaces.SceneInterface;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,14 +14,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class HomePageScene extends SceneAbstract implements ScenePropsInterface {
+public class HomePageScene extends SceneAbstract implements SceneInterface {
 
     public HomePageScene(Stage stage) {
         super(stage);
     }
 
     @Override
-    public void show(String nim) {
+    public void show() {
         Label headerText = new Label("Home Page Area");
         VBox containerHeader = new VBox(headerText);
         containerHeader.getStyleClass().add("header");
@@ -42,14 +43,26 @@ public class HomePageScene extends SceneAbstract implements ScenePropsInterface 
         VBox containerProfileText = new VBox(namaMahasiswa, prodiMahasiswa, bukuDipinjam);
         containerProfileText.getStyleClass().add("containerProfileText");
         containerProfileText.setAlignment(Pos.CENTER_LEFT);
-
         HBox containerProfile = new HBox(containerBookHomePage, containerProfileText);
         containerProfile.getStyleClass().add("containerProfile");
 
-        FlowPane containerApp = new FlowPane();
-        containerApp.getChildren().addAll();
+        Button toBookListScene = new Button("Book\nList");
+        toBookListScene.getStyleClass().add("toBookListScene");
+        Button toBorrowBookScene = new Button("Borrow\nBook");
+        toBookListScene.getStyleClass().add("toBorrowBookScene");
+        Button toContactAdminScene = new Button("Contact\nAdmin");
+        toBookListScene.getStyleClass().add("toContactAdminScene");
+        HBox containerMenu = new HBox(toBookListScene, toBorrowBookScene, toContactAdminScene);
+        containerMenu.getStyleClass().add("containerMenu");
+        containerMenu.setAlignment(Pos.CENTER);
 
-        VBox main = new VBox(containerHeader, containerApp, containerProfile);
+        Button logOutButton = new Button("Log Out");
+
+        VBox containerFooter = new VBox(logOutButton);
+        containerFooter.getStyleClass().add("containerFooter");
+        containerFooter.setAlignment(Pos.CENTER_RIGHT);
+
+        VBox main = new VBox(containerHeader, containerProfile, containerMenu, containerFooter);
         main.getStyleClass().add("backgroundHomePage");
 
         Scene scene = new Scene(main, 750, 700);
@@ -57,6 +70,10 @@ public class HomePageScene extends SceneAbstract implements ScenePropsInterface 
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
+
+
+
+
 
 
 

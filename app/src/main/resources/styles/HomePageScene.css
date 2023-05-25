@@ -22,7 +22,7 @@
 }
 
 .containerProfile {
-  -fx-padding: 10px 0px 20px 30px;
+  -fx-padding: 10px 0px 20px 65px;
   -fx-spacing: 20px;
 }
 
@@ -38,5 +38,58 @@
 
 .containerProfileText > .bukuDipinjam {
   -fx-font-size: 18px;
+}
+
+.containerMenu {
+  -fx-padding: 20px 100px;
+  -fx-spacing: 30px;
+  -fx-border-color: red;
+  -fx-border-width: 1px;
+}
+
+.containerMenu > Button {
+  -fx-pref-width: 150px;
+  -fx-pref-height: 150px;
+  -fx-background-color: purple;
+  -fx-border-color: lightgreen;
+  -fx-border-width: 3px;
+  -fx-border-radius: 10px;
+  -fx-background-radius: 10px;
+  -fx-font-weight: bold;
+  -fx-text-fill: rgb(228, 228, 228);
+  -fx-font-size: 22px;
+  -fx-text-alignment: center;
+}
+
+.containerMenu > Button:hover {
+  -fx-cursor: hand;
+  -fx-background-color: rgb(255, 0, 212);
+  -fx-text-fill: rgb(255, 255, 255) !important;
+  -fx-border-style: none;
+}
+
+.containerFooter {
+  -fx-padding: 70px 100px 10px;
+}
+
+.containerFooter > Button {
+  -fx-pref-width: 250px;
+  -fx-padding: 14px;
+  -fx-background-color: rgb(197, 14, 14);
+  -fx-text-fill: rgb(228, 228, 228);
+  -fx-font-weight: bold;
+  -fx-font-size: 22px;
+  -fx-border-color: rgb(136, 0, 63);
+  -fx-border-width: 3px;
+  -fx-border-radius: 15px;
+  -fx-background-radius: 18px;
+}
+
+.containerFooter > Button:hover {
+  -fx-cursor: hand;
+  -fx-background-color: rgb(255, 0, 0);
+  -fx-border-color: rgb(92, 0, 43);
+  -fx-text-fill: rgb(255, 255, 255) !important;
+  -fx-border-style: none;
 }
 /* HOMEPAGE SCENE END */
