@@ -80,14 +80,12 @@ public class RegisterScene extends SceneAbstract implements SceneInterface {
         /* ===> LOGIC AREA <=== */
         registerButton.setOnAction(e -> {
             registerStatus.setText("");
-
             String nama = input1.getText();
             String nim = input2.getText();
             String prodi = input3.getText();
             String alamat = input4.getText();
             String noTelp = input5.getText();
             String password = input6.getText();
-
             // if (MahasiswaController.validateRegister(nama, nim, prodi, alamat, noTelp, password)) {
             //     registerStatus.setText("Berhasil Register");
             // } else {
