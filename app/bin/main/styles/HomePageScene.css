@@ -10,7 +10,7 @@
 
 .header > Label {
   -fx-text-fill: white;
-  -fx-font-size: 38px;
+  -fx-font-size: 52px;
   -fx-font-weight: bold;
 }
 /* GLOBAL STYLE END */
@@ -18,6 +18,25 @@
 
 /* HOMEPAGE SCENE START */
 .backgroundHomePage {
-  -fx-background-color: rgb(0, 157, 219);
+  -fx-background-color: rgb(153, 127, 14);
+}
+
+.containerProfile {
+  -fx-padding: 10px 0px 20px 30px;
+  -fx-spacing: 20px;
+}
+
+.containerProfileText {
+  -fx-spacing: 20px;
+}
+
+.containerProfileText > Label {
+  -fx-font-weight: bold;
+  -fx-text-fill: rgb(228, 228, 228);
+  -fx-font-size: 24px;
+}
+
+.containerProfileText > .bukuDipinjam {
+  -fx-font-size: 18px;
 }
 /* HOMEPAGE SCENE END */

@@ -116,7 +116,7 @@
 
 .containerInputsRegister > .headerInput {
   /* Supaya ke tengah */
-  -fx-padding: 0px 0px 0px 175px;
+  -fx-padding: 0px 0px 0px 1px;
   -fx-font-size: 20px;
 }
 
