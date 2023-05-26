@@ -1,7 +1,10 @@
 package com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
-import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceScene;
+import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
+import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
+import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
+import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,14 +16,19 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class HomePageScene extends AbstractScene implements InterfaceScene {
+public class HomePageScene extends AbstractScene implements InterfaceSceneProps {
 
     public HomePageScene(Stage stage) {
         super(stage);
     }
 
     @Override
-    public void show() {
+    public void show(String nim) {
+        /* ===> INSTANCE AREA START <=== */
+        Mahasiswa mahasiswa = MahasiswaController.getMahasiswaByNim(nim);
+        
+        /* ===> INSTANCE AREA END <=== */
+
         Label headerText = new Label("Book Flow of Us");
         VBox containerHeader = new VBox(headerText);
         containerHeader.getStyleClass().add("header");
@@ -51,9 +59,9 @@ public class HomePageScene extends AbstractScene implements InterfaceScene {
         containerBookHomePage.setFitHeight(200);
         containerBookHomePage.setFitWidth(350);
 
-        Label namaMahasiswa = new Label("Welcome %nama");
-        Label prodiMahasiswa = new Label("-> %prodi");
-        Label bukuDipinjam = new Label("Kamu sedang meminjam %d buku");
+        Label namaMahasiswa = new Label(String.format("Welcome %s", mahasiswa.getNama()));
+        Label prodiMahasiswa = new Label(String.format("==>  %s  <===", mahasiswa.getProdi()));
+        Label bukuDipinjam = new Label(String.format("Kamu sedang meminjam %d buku", mahasiswa.getBukuDipinjam()));
         bukuDipinjam.getStyleClass().add("bukuDipinjam");
         VBox containerProfile = new VBox(namaMahasiswa, prodiMahasiswa, bukuDipinjam);
         containerProfile.getStyleClass().add("containerProfile");
@@ -69,44 +77,16 @@ public class HomePageScene extends AbstractScene implements InterfaceScene {
         main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 750, 700);
-        scene.getStylesheets().add(getClass().getResource("/styles/HomePageScene.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/MahasiswaScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
 
-        
-        
-
-        // Button toBookListScene = new Button("Book\nList");
-        // toBookListScene.getStyleClass().add("toBookListScene");
-        // Button toBorrowBookScene = new Button("Borrow\nBook");
-        // toBookListScene.getStyleClass().add("toBorrowBookScene");
-        // Button toRateBookScene = new Button("History\nBorrow");
-        // toBookListScene.getStyleClass().add("toContactAdminScene");
-        // HBox containerMenu = new HBox(toBookListScene, toBorrowBookScene, toRateBookScene);
-        // containerMenu.getStyleClass().add("containerMenu");
-        // containerMenu.setAlignment(Pos.CENTER);
-
-        
-
-        // HBox containerFooter = new HBox(toContactAdminScene, logOutButton);
-        // containerFooter.getStyleClass().add("containerFooter");
-        // containerFooter.setAlignment(Pos.CENTER);
-
-        // VBox main = new VBox(containerHeader, containerProfile, containerMenu, containerFooter);
-        // main.getStyleClass().add("backgroundHomePage");
-
-        // Scene scene = new Scene(main, 750, 700);
-        // scene.getStylesheets().add(getClass().getResource("/styles/HomePageScene.css").toExternalForm());
-        // stage.setScene(scene);
-        // stage.show();
-        // main.requestFocus();
-
-        // /* ===> LOGIC AREA <=== */
-        // logOutButton.setOnAction(e -> {
-        //     LoginScene loginScene = new LoginScene(stage);
-        //     loginScene.show();
-        // });
+        /* ===> LOGIC AREA <=== */
+        logOutButton.setOnAction(e -> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
+        });
 
 
 
