@@ -60,7 +60,7 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         containerBookHomePage.setFitWidth(350);
 
         Label namaMahasiswa = new Label(String.format("Welcome %s", mahasiswa.getNama()));
-        Label prodiMahasiswa = new Label(String.format("==>  %s  <===", mahasiswa.getProdi()));
+        Label prodiMahasiswa = new Label(String.format("===>  %s  <===", mahasiswa.getProdi()));
         Label bukuDipinjam = new Label(String.format("Kamu sedang meminjam %d buku", mahasiswa.getBukuDipinjam()));
         bukuDipinjam.getStyleClass().add("bukuDipinjam");
         VBox containerProfile = new VBox(namaMahasiswa, prodiMahasiswa, bukuDipinjam);

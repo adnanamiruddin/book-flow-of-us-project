@@ -3,7 +3,6 @@ package com.developersoffxinnovate.bookflowofus.scenes.OpenScene;
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceScene;
-import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.LoginAdminScene;
 import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.HomePageScene;
 
@@ -83,8 +82,8 @@ public class LoginScene extends AbstractScene implements InterfaceScene {
                 String password = input2.getText();
                 if (MahasiswaController.validateLogin(nim, password)) {
                     loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
-                    Mahasiswa mahasiswa = MahasiswaController.getMahasiswaByNim(nim);
-                    System.out.println(mahasiswa.getNama());
+                    HomePageScene homePageScene = new HomePageScene(stage);
+                    homePageScene.show(nim);
                 } else {
                     loginStatus.setText("Maaf, gagal login");
                 }
