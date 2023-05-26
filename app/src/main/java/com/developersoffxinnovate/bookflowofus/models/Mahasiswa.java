@@ -8,6 +8,13 @@ public class Mahasiswa extends Model {
     private String noTelp;
     private String password;
 
+    public Mahasiswa(int id, String nama, String nim, String prodi) {
+        super(id);
+        this.nama = nama;
+        this.nim = nim;
+        this.prodi = prodi;
+    }
+
     public Mahasiswa(int id, String nama, String nim, String prodi, String alamat, String noTelp, String password) {
         super(id);
         this.nama = nama;
