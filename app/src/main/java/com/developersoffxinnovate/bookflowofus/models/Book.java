@@ -7,6 +7,14 @@ public class Book extends Model {
     private int tahunterbit;
     private int stok;
 
+    public Book(String judul, String pengarang, String penerbit, int tahunterbit, int stok) {
+        this.judul = judul;
+        this.pengarang = pengarang;
+        this.penerbit = penerbit;
+        this.tahunterbit = tahunterbit;
+        this.stok = stok; 
+    }
+
     public String getJudul() {
         return judul;
     }
