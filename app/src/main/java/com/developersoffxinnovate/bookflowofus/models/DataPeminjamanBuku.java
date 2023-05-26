@@ -7,6 +7,15 @@ public class DataPeminjamanBuku extends Model {
     private String tanggalKembali;
     private String status;
 
+    public DataPeminjamanBuku(int idMahasiswa, int idBuku, String Tanggalpinjam, String tanggalKembali, String status){
+        this.idMahasiswa = idMahasiswa;
+        this.idBuku = idBuku;
+        this.tanggalPinjam = tanggalPinjam;
+        this.tanggalKembali = tanggalKembali;
+        this.status = status;
+
+    }
+
     public int getIdMahasiswa() {
         return idMahasiswa;
     }
