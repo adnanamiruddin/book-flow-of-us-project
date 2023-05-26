@@ -60,7 +60,7 @@ public class MahasiswaController extends DatabaseConfig {
         return false;
     }
 
-    public static Mahasiswa getMahasiswaById(int id){
+    public static Mahasiswa getMahasiswaById(int id) {
         Mahasiswa mahasiswa = null;
         connection();
         query = "SELECT id, nama, nim, prodi, buku_dipinjam FROM mahasiswa WHERE id=?";
