@@ -7,6 +7,7 @@ public class Mahasiswa extends Model {
     private String alamat;
     private String noTelp;
     private String password;
+    private int bukuDipinjam;
 
     public Mahasiswa(int id, String nama, String nim, String prodi) {
         super(id);
@@ -67,4 +68,10 @@ public class Mahasiswa extends Model {
         this.password = password;
     }
 
+    public int getBukuDipinjam() {
+        return bukuDipinjam;
+    }
+    public void setBukuDipinjam() {
+        this.bukuDipinjam = bukuDipinjam;
+    }
 }
