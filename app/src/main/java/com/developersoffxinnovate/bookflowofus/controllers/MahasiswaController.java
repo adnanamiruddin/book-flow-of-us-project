@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.developersoffxinnovate.bookflowofus.config.DatabaseConfig;
+import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 
 public class MahasiswaController extends DatabaseConfig {
 
@@ -57,5 +58,31 @@ public class MahasiswaController extends DatabaseConfig {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static Mahasiswa getMahasiswaById(int id){
+        Mahasiswa mahasiswa = null;
+        connection();
+        query = "SELECT id, nama, nim, prodi, buku_dipinjam FROM mahasiswa WHERE id=?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, id);
+
+            try (ResultSet mahasiswaResult = preparedStatement.executeQuery()) {
+                while (mahasiswaResult.next()) {
+                    int idMahasiswa = mahasiswaResult.getInt("id");
+                    String namaMahasiswa = mahasiswaResult.getString("nama");
+                    String nimMahasiswa = mahasiswaResult.getString("nim");
+                    String prodiMahasiswa = mahasiswaResult.getString("prodi");
+                    int bukuDipinjam = mahasiswaResult.getInt("buku_dipinjam");
+
+                    mahasiswa = new Mahasiswa(idMahasiswa, namaMahasiswa, nimMahasiswa, prodiMahasiswa, bukuDipinjam);
+                    return mahasiswa;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return mahasiswa;
     }
 }

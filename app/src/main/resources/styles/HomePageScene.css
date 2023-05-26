@@ -4,7 +4,7 @@
 }
 
 .header {
-  -fx-padding: 15px 0px 8px;
+  -fx-padding: 15px 0px;
   -fx-spacing: 5px;
 }
 
@@ -22,16 +22,16 @@
 }
 
 .containerNavbar {
-  -fx-background-color: rgb(88, 180, 1);
+  -fx-background-color: #001f3f;
   -fx-pref-height: 600px;
-  -fx-spacing: 5px;
+  -fx-spacing: 1px;
 }
 
 .containerNavbar > Button {
   -fx-pref-width: 200px;
-  -fx-padding: 15px 50px;
-  -fx-background-color: purple;
-  -fx-border-color: lightgreen;
+  -fx-padding: 15px 0px;
+  -fx-background-color: #001f3f;
+  -fx-border-color: rgb(156, 156, 156);
   -fx-border-width: 1px;
   -fx-font-weight: bold;
   -fx-text-fill: rgb(228, 228, 228);
@@ -43,9 +43,10 @@
 }
 
 .containerContent {
+  -fx-pref-width: 550px;
   -fx-padding: 20px 0px 0px 100px;
   -fx-spacing: 20px;
-  -fx-background-color: red;
+  -fx-background-color: rgb(228, 228, 228);
 }
 
 .containerContent > .containerProfile {
@@ -54,7 +55,7 @@
 
 .containerContent > .containerProfile > Label {
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(228, 228, 228);
+  -fx-text-fill: rgb(70, 70, 70);
   -fx-font-size: 24px;
 }
 /* HOMEPAGE SCENE END */
