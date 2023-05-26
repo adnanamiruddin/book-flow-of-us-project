@@ -85,4 +85,30 @@ public class MahasiswaController extends DatabaseConfig {
         }
         return mahasiswa;
     }
+
+    public static Mahasiswa getMahasiswaByNim(String nim) {
+        Mahasiswa mahasiswa = null;
+        connection();
+        query = "SELECT id, nama, nim, prodi, buku_dipinjam FROM mahasiswa WHERE nim=?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, nim);
+
+            try (ResultSet mahasiswaResult = preparedStatement.executeQuery()) {
+                while (mahasiswaResult.next()) {
+                    int idMahasiswa = mahasiswaResult.getInt("id");
+                    String namaMahasiswa = mahasiswaResult.getString("nama");
+                    String nimMahasiswa = mahasiswaResult.getString("nim");
+                    String prodiMahasiswa = mahasiswaResult.getString("prodi");
+                    int bukuDipinjam = mahasiswaResult.getInt("buku_dipinjam");
+
+                    mahasiswa = new Mahasiswa(idMahasiswa, namaMahasiswa, nimMahasiswa, prodiMahasiswa, bukuDipinjam);
+                    return mahasiswa;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return mahasiswa;
+    }
 }
