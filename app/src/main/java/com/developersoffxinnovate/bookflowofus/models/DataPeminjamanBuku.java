@@ -7,7 +7,7 @@ public class DataPeminjamanBuku extends Model {
     private String tanggalKembali;
     private String status;
 
-    public DataPeminjamanBuku(int id, int idMahasiswa, int idBuku, String Tanggalpinjam, String tanggalKembali, String status){
+    public DataPeminjamanBuku(int id, int idMahasiswa, int idBuku, String tanggalPinjam, String tanggalKembali, String status){
         super(id);
         this.idMahasiswa = idMahasiswa;
         this.idBuku = idBuku;
