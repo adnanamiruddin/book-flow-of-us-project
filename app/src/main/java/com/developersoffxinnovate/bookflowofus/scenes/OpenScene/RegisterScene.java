@@ -1,8 +1,8 @@
 package com.developersoffxinnovate.bookflowofus.scenes.OpenScene;
 
-import com.developersoffxinnovate.bookflowofus.abstracts.SceneAbstract;
+import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
-import com.developersoffxinnovate.bookflowofus.interfaces.SceneInterface;
+import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceScene;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class RegisterScene extends SceneAbstract implements SceneInterface {
+public class RegisterScene extends AbstractScene implements InterfaceScene {
 
     public RegisterScene(Stage stage) {
         super(stage);

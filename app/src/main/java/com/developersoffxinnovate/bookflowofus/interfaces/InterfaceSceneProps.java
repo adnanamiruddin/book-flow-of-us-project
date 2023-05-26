@@ -1,5 +1,5 @@
 package com.developersoffxinnovate.bookflowofus.interfaces;
 
-public interface ScenePropsInterface {
+public interface InterfaceSceneProps {
     void show(String userName);
 }

@@ -17,9 +17,9 @@ public class App extends Application {
         stage.getIcons().add(image);
 
         LoginScene loginScene = new LoginScene(stage);
-        // loginScene.show();
+        loginScene.show();
         BorrowBookScene borrowBookScene = new BorrowBookScene(stage);
-        borrowBookScene.show();
+        // borrowBookScene.show();
     }
 
     public static void main(String[] args) {

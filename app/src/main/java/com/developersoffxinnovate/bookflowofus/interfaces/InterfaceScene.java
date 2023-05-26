@@ -1,5 +1,5 @@
 package com.developersoffxinnovate.bookflowofus.interfaces;
 
-public interface SceneInterface {
+public interface InterfaceScene {
     void show();
 }
