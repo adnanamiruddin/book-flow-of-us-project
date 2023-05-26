@@ -18,6 +18,53 @@
 
 /* HOMEPAGE SCENE START */
 .backgroundHomePage {
+  -fx-background-color: rgb(228, 228, 228);
+}
+
+.containerNavbar {
+  -fx-background-color: rgb(88, 180, 1);
+  -fx-pref-height: 600px;
+  -fx-spacing: 5px;
+}
+
+.containerNavbar > Button {
+  -fx-pref-width: 200px;
+  -fx-padding: 15px 50px;
+  -fx-background-color: purple;
+  -fx-border-color: lightgreen;
+  -fx-border-width: 1px;
+  -fx-font-weight: bold;
+  -fx-text-fill: rgb(228, 228, 228);
+  -fx-font-size: 15px;
+}
+
+.containerNavbar > Button:hover {
+  
+}
+
+.containerContent {
+  -fx-padding: 20px 0px 0px 100px;
+  -fx-spacing: 20px;
+  -fx-background-color: red;
+}
+
+.containerContent > .containerProfile {
+  -fx-padding: 20px;
+}
+
+.containerContent > .containerProfile > Label {
+  -fx-font-weight: bold;
+  -fx-text-fill: rgb(228, 228, 228);
+  -fx-font-size: 24px;
+}
+/* HOMEPAGE SCENE END */
+
+
+
+
+
+/* HOMEPAGE SCENE START */
+/* .backgroundHomePage {
   -fx-background-color: rgb(153, 127, 14);
 }
 
@@ -105,7 +152,7 @@
   -fx-border-color: rgb(0, 68, 255);
   -fx-text-fill: rgb(255, 255, 255) !important;
   -fx-border-style: none;
-}
+} */
 /* HOMEPAGE SCENE END */
 
 

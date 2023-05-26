@@ -27,45 +27,37 @@ public class HomePageScene extends AbstractScene implements InterfaceScene {
         containerHeader.getStyleClass().add("header");
         containerHeader.setAlignment(Pos.CENTER);
 
+        Button toHomePageScene = new Button("Home");
+        toHomePageScene.getStyleClass().add("toHomePageScene");
+        Button toBookListScene = new Button("Book List");
+        toBookListScene.getStyleClass().add("toBookListScene");
+        Button toBorrowBookScene = new Button("Borrow Book");
+        toBorrowBookScene.getStyleClass().add("toBorrowBookScene");
+        Button toRateBookScene = new Button("History");
+        toRateBookScene.getStyleClass().add("toContactAdminScene");
+        VBox containerNavbar = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
+        containerNavbar.getStyleClass().add("containerNavbar");
+
         Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
         ImageView containerBookHomePage = new ImageView(bookHomePage);
-        containerBookHomePage.setFitHeight(170);
-        containerBookHomePage.setFitWidth(300);
+        containerBookHomePage.setFitHeight(200);
+        containerBookHomePage.setFitWidth(350);
 
         Label namaMahasiswa = new Label("Welcome %nama");
         Label prodiMahasiswa = new Label("%prodi");
         Label bukuDipinjam = new Label("Kamu sedang meminjam %d buku");
         bukuDipinjam.getStyleClass().add("bukuDipinjam");
-        // Mahasiswa mahasiswa = MahasiswaController.getMahasiswaByNim(nim);
-        // Label namaMahasiswa = new Label(String.format("Hai %s", mahasiswa.getNama()));
-        // Label prodiMahasiswa = new Label(String.format("Kamu dari prodi %s kann ><", mahasiswa.getProdi()));
-        // Label bukuDipinjam = new Label(String.format("Yahaha kamu sedang meminjam %d buku", mahasiswa.getBukuDipinjam()));
-        VBox containerProfileText = new VBox(namaMahasiswa, prodiMahasiswa, bukuDipinjam);
-        containerProfileText.getStyleClass().add("containerProfileText");
-        containerProfileText.setAlignment(Pos.CENTER_LEFT);
-        HBox containerProfile = new HBox(containerBookHomePage, containerProfileText);
+        VBox containerProfile = new VBox(namaMahasiswa, prodiMahasiswa, bukuDipinjam);
         containerProfile.getStyleClass().add("containerProfile");
+        containerProfile.setAlignment(Pos.CENTER);
 
-        Button toBookListScene = new Button("Book\nList");
-        toBookListScene.getStyleClass().add("toBookListScene");
-        Button toBorrowBookScene = new Button("Borrow\nBook");
-        toBookListScene.getStyleClass().add("toBorrowBookScene");
-        Button toRateBookScene = new Button("History\nBorrow");
-        toBookListScene.getStyleClass().add("toContactAdminScene");
-        HBox containerMenu = new HBox(toBookListScene, toBorrowBookScene, toRateBookScene);
-        containerMenu.getStyleClass().add("containerMenu");
-        containerMenu.setAlignment(Pos.CENTER);
+        VBox containerContent = new VBox(containerBookHomePage, containerProfile);
+        containerContent.getStyleClass().add("containerContent");
 
-        Button logOutButton = new Button("Log Out");
-        Button toContactAdminScene = new Button("Contact Admin");
-        toContactAdminScene.getStyleClass().add("toContactAdminScene");
+        HBox containerMain = new HBox(containerNavbar, containerContent);
 
-        HBox containerFooter = new HBox(toContactAdminScene, logOutButton);
-        containerFooter.getStyleClass().add("containerFooter");
-        containerFooter.setAlignment(Pos.CENTER);
-
-        VBox main = new VBox(containerHeader, containerProfile, containerMenu, containerFooter);
-        main.getStyleClass().add("backgroundHomePage");
+        VBox main = new VBox(containerHeader, containerMain);
+        main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 750, 700);
         scene.getStylesheets().add(getClass().getResource("/styles/HomePageScene.css").toExternalForm());
@@ -73,11 +65,41 @@ public class HomePageScene extends AbstractScene implements InterfaceScene {
         stage.show();
         main.requestFocus();
 
-        /* ===> LOGIC AREA <=== */
-        logOutButton.setOnAction(e -> {
-            LoginScene loginScene = new LoginScene(stage);
-            loginScene.show();
-        });
+        
+        
+
+        // Button toBookListScene = new Button("Book\nList");
+        // toBookListScene.getStyleClass().add("toBookListScene");
+        // Button toBorrowBookScene = new Button("Borrow\nBook");
+        // toBookListScene.getStyleClass().add("toBorrowBookScene");
+        // Button toRateBookScene = new Button("History\nBorrow");
+        // toBookListScene.getStyleClass().add("toContactAdminScene");
+        // HBox containerMenu = new HBox(toBookListScene, toBorrowBookScene, toRateBookScene);
+        // containerMenu.getStyleClass().add("containerMenu");
+        // containerMenu.setAlignment(Pos.CENTER);
+
+        // Button logOutButton = new Button("Log Out");
+        // Button toContactAdminScene = new Button("Contact Admin");
+        // toContactAdminScene.getStyleClass().add("toContactAdminScene");
+
+        // HBox containerFooter = new HBox(toContactAdminScene, logOutButton);
+        // containerFooter.getStyleClass().add("containerFooter");
+        // containerFooter.setAlignment(Pos.CENTER);
+
+        // VBox main = new VBox(containerHeader, containerProfile, containerMenu, containerFooter);
+        // main.getStyleClass().add("backgroundHomePage");
+
+        // Scene scene = new Scene(main, 750, 700);
+        // scene.getStylesheets().add(getClass().getResource("/styles/HomePageScene.css").toExternalForm());
+        // stage.setScene(scene);
+        // stage.show();
+        // main.requestFocus();
+
+        // /* ===> LOGIC AREA <=== */
+        // logOutButton.setOnAction(e -> {
+        //     LoginScene loginScene = new LoginScene(stage);
+        //     loginScene.show();
+        // });
 
 
 
