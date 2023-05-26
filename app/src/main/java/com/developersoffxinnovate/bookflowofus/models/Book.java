@@ -7,7 +7,8 @@ public class Book extends Model {
     private int tahunterbit;
     private int stok;
 
-    public Book(String judul, String pengarang, String penerbit, int tahunterbit, int stok) {
+    public Book(int id, String judul, String pengarang, String penerbit, int tahunterbit, int stok) {
+        super(id);
         this.judul = judul;
         this.pengarang = pengarang;
         this.penerbit = penerbit;
