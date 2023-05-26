@@ -17,46 +17,84 @@
 
 
 /* HOMEPAGE SCENE START */
-.backgroundHomePage {
-  -fx-background-color: rgb(228, 228, 228);
-}
-
 .containerNavbar {
   -fx-background-color: #001f3f;
   -fx-pref-height: 600px;
+  -fx-spacing: 200px;
+}
+
+.containerNavbar > .containerNavbarMenu {
   -fx-spacing: 1px;
 }
 
-.containerNavbar > Button {
-  -fx-pref-width: 200px;
-  -fx-padding: 15px 0px;
+.containerNavbar > .containerNavbarMenu > Button {
+  -fx-pref-width: 190px;
+  -fx-padding: 20px 0px;
   -fx-background-color: #001f3f;
   -fx-border-color: rgb(156, 156, 156);
   -fx-border-width: 1px;
   -fx-font-weight: bold;
   -fx-text-fill: rgb(228, 228, 228);
-  -fx-font-size: 15px;
+  -fx-font-size: 16px;
 }
 
-.containerNavbar > Button:hover {
-  
+.containerNavbar > .containerNavbarMenu > Button:hover {
+  -fx-cursor: hand;
+  -fx-background-color: #145595;
+  -fx-text-fill: rgb(255, 255, 255) !important;
+  -fx-border-width: 0px;
+}
+
+.containerNavbar > .containerNavbarFooter {
+}
+
+.containerNavbar > .containerNavbarFooter > Button {
+  -fx-pref-width: 190px;
+  -fx-padding: 12px 0px;
+  -fx-background-color: #001830;
+  -fx-border-color: rgb(104, 104, 104);
+  -fx-font-weight: bold;
+  -fx-text-fill: rgb(228, 228, 228);
+  -fx-font-size: 16px;
+}
+
+.containerNavbar > .containerNavbarFooter > Button:hover {
+  -fx-cursor: hand;
+  -fx-background-color: #145595;
+  -fx-text-fill: rgb(255, 255, 255) !important;
+  -fx-border-width: 0px;
+}
+
+.containerNavbar > .containerNavbarFooter > .toContactAdminScene {
+  -fx-background-color: #042647;
+}
+
+.containerNavbar > .containerNavbarFooter > .toContactAdminScene:hover {
+  -fx-cursor: hand;
+  -fx-background-color: #10467b;
+  -fx-text-fill: rgb(255, 255, 255) !important;
+  -fx-border-width: 0px;
 }
 
 .containerContent {
-  -fx-pref-width: 550px;
-  -fx-padding: 20px 0px 0px 100px;
-  -fx-spacing: 20px;
+  -fx-pref-width: 560px;
+  -fx-padding: 50px 0px;
+  -fx-spacing: 40px;
   -fx-background-color: rgb(228, 228, 228);
 }
 
 .containerContent > .containerProfile {
-  -fx-padding: 20px;
+  -fx-spacing: 20px;
 }
 
 .containerContent > .containerProfile > Label {
   -fx-font-weight: bold;
   -fx-text-fill: rgb(70, 70, 70);
   -fx-font-size: 24px;
+}
+
+.containerContent > .containerProfile > .bukuDipinjam {
+  -fx-font-size: 18px;
 }
 /* HOMEPAGE SCENE END */
 
@@ -74,18 +112,10 @@
   -fx-spacing: 40px;
 }
 
-.containerProfileText {
-  -fx-spacing: 20px;
-}
-
 .containerProfileText > Label {
   -fx-font-weight: bold;
   -fx-text-fill: rgb(228, 228, 228);
   -fx-font-size: 24px;
-}
-
-.containerProfileText > .bukuDipinjam {
-  -fx-font-size: 18px;
 }
 
 .containerMenu {
@@ -107,13 +137,6 @@
   -fx-text-fill: rgb(228, 228, 228);
   -fx-font-size: 22px;
   -fx-text-alignment: center;
-}
-
-.containerMenu > Button:hover {
-  -fx-cursor: hand;
-  -fx-background-color: rgb(255, 0, 212);
-  -fx-text-fill: rgb(255, 255, 255) !important;
-  -fx-border-style: none;
 }
 
 .containerFooter {

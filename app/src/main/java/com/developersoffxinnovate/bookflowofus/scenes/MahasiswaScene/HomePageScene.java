@@ -2,7 +2,6 @@ package com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceScene;
-import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -22,7 +21,7 @@ public class HomePageScene extends AbstractScene implements InterfaceScene {
 
     @Override
     public void show() {
-        Label headerText = new Label("Home Page Area");
+        Label headerText = new Label("Book Flow of Us");
         VBox containerHeader = new VBox(headerText);
         containerHeader.getStyleClass().add("header");
         containerHeader.setAlignment(Pos.CENTER);
@@ -35,7 +34,16 @@ public class HomePageScene extends AbstractScene implements InterfaceScene {
         toBorrowBookScene.getStyleClass().add("toBorrowBookScene");
         Button toRateBookScene = new Button("History");
         toRateBookScene.getStyleClass().add("toContactAdminScene");
-        VBox containerNavbar = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
+        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
+        containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
+
+        Button logOutButton = new Button("Log Out");
+        Button toContactAdminScene = new Button("Contact Admin");
+        toContactAdminScene.getStyleClass().add("toContactAdminScene");
+        VBox containerNavbarFooter = new VBox(toContactAdminScene, logOutButton);
+        containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
+
+        VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
         containerNavbar.getStyleClass().add("containerNavbar");
 
         Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
@@ -44,7 +52,7 @@ public class HomePageScene extends AbstractScene implements InterfaceScene {
         containerBookHomePage.setFitWidth(350);
 
         Label namaMahasiswa = new Label("Welcome %nama");
-        Label prodiMahasiswa = new Label("%prodi");
+        Label prodiMahasiswa = new Label("-> %prodi");
         Label bukuDipinjam = new Label("Kamu sedang meminjam %d buku");
         bukuDipinjam.getStyleClass().add("bukuDipinjam");
         VBox containerProfile = new VBox(namaMahasiswa, prodiMahasiswa, bukuDipinjam);
@@ -53,6 +61,7 @@ public class HomePageScene extends AbstractScene implements InterfaceScene {
 
         VBox containerContent = new VBox(containerBookHomePage, containerProfile);
         containerContent.getStyleClass().add("containerContent");
+        containerContent.setAlignment(Pos.TOP_CENTER);
 
         HBox containerMain = new HBox(containerNavbar, containerContent);
 
@@ -78,9 +87,7 @@ public class HomePageScene extends AbstractScene implements InterfaceScene {
         // containerMenu.getStyleClass().add("containerMenu");
         // containerMenu.setAlignment(Pos.CENTER);
 
-        // Button logOutButton = new Button("Log Out");
-        // Button toContactAdminScene = new Button("Contact Admin");
-        // toContactAdminScene.getStyleClass().add("toContactAdminScene");
+        
 
         // HBox containerFooter = new HBox(toContactAdminScene, logOutButton);
         // containerFooter.getStyleClass().add("containerFooter");
