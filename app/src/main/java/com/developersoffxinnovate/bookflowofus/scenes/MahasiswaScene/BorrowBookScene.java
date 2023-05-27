@@ -11,6 +11,7 @@ import com.developersoffxinnovate.bookflowofus.models.Book;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 import com.developersoffxinnovate.bookflowofus.scenes.Navbar;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -38,7 +39,8 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
 
         ObservableList<Book> books = FXCollections.observableArrayList();
         for (Book book : booksData) {
-            books.add(new Book(book.getId(), book.getJudul(), book.getPengarang(), book.getPenerbit(), book.getTahunTerbit(), book.getStok()));
+            books.add(new Book(book.getId(), book.getJudul(), book.getPengarang(), book.getPenerbit(),
+                    book.getTahunTerbit(), book.getStok()));
         }
 
         TableView<Book> tableBook = new TableView<>();
@@ -70,6 +72,8 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         Label borrowBookStatus = new Label("Status: Belum Pinjam Buku");
         Button confirmButton = new Button("Konfirmasi Pinjaman");
         HBox containerFooterContent = new HBox(bookChoice, borrowBookStatus, confirmButton);
+        containerFooterContent.getStyleClass().add("containerFooterContent");
+        containerFooterContent.setSpacing(10);
 
         VBox containerContent = new VBox(tableBook, containerFooterContent);
         containerContent.getStyleClass().add("containerContent");
@@ -85,21 +89,86 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
-        
-        
+
         /* ===> LOGIC AREA <=== */
-        int[] idBuku = {-1};
+        int[] idBuku = { -1 };
         tableBook.setOnMouseClicked(e -> {
             Book selectedBook = tableBook.getSelectionModel().getSelectedItem();
             int idSelectedBook = selectedBook.getId();
             idBuku[0] = idSelectedBook;
-            System.out.println(idBuku[0]);
             bookChoice.setText(selectedBook.getJudul());
         });
 
         confirmButton.setOnAction(e -> {
             if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
-                borrowBookStatus.setText("Berhasil Pinjam Buku");
+                borrowBookStatus.setText("Loading... :v");
+                Thread thread1 = new Thread(() -> {
+                    try {
+                        Thread.sleep(2000);
+                        Platform.runLater(() -> {
+                            books.clear();
+                            tableBook.setDisable(true);
+                        });
+                    } catch (InterruptedException err) {
+                        err.printStackTrace();
+                    }
+                });
+                Thread thread2 = new Thread(() -> {
+                    try {
+                        thread1.join();
+                        Thread.sleep(500);
+                        Platform.runLater(() -> {
+                            borrowBookStatus.setText("Berhasil Pinjam Buku");
+                        });
+                    } catch (InterruptedException err) {
+                        err.printStackTrace();
+                    }
+                });
+                Thread thread3 = new Thread(() -> {
+                    try {
+                        thread2.join();
+                        Thread.sleep(3000);
+                        Platform.runLater(() -> {
+                            books.setAll(BooksController.getAllBuku());
+                            // tableBook.setDisable(false); (MASIH BIMBANG)
+                            borrowBookStatus.setText("Returning to Home...");
+                        });
+                    } catch (InterruptedException err) {
+                        err.printStackTrace();
+                    }
+                });
+                Thread thread4 = new Thread(() -> {
+                    try {
+                        thread3.join();
+                        Thread.sleep(2000);
+                        Platform.runLater(() -> {
+                            HomePageScene homePageScene = new HomePageScene(stage);
+                            homePageScene.show(nim);
+                        });
+                    } catch (InterruptedException err) {
+                        err.printStackTrace();
+                    }
+                });
+                thread1.start();
+                thread2.start();
+                thread3.start();
+                thread4.start();
+
+                // Thread myThread = new Thread(() -> {
+                // try {
+                // Thread.sleep(2000);
+                // Platform.runLater(() -> {
+                // borrowBookStatus.setText("Returning to Home...");
+                // });
+                // Thread.sleep(3000);
+                // Platform.runLater(() -> {
+                // HomePageScene homePageScene = new HomePageScene(stage);
+                // homePageScene.show(nim);
+                // });
+                // } catch (InterruptedException err) {
+                // }
+                // });
+                // myThread.start();
             } else {
                 borrowBookStatus.setText("Gagal Pinjam Buku AOWKAOKWK");
             }
@@ -110,33 +179,34 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         // final int[] idBuku = {-1};
 
         // for (Book book : books) {
-        //     Button bookButton = new Button(String.format("%s - %s - %s - %d", book.getId(), book.getJudul(), book.getPengarang(), book.getStocks()));
-        //     containerBooks.getChildren().add(bookButton);
+        // Button bookButton = new Button(String.format("%s - %s - %s - %d",
+        // book.getId(), book.getJudul(), book.getPengarang(), book.getStocks()));
+        // containerBooks.getChildren().add(bookButton);
 
-        //     bookButton.setOnAction(e -> {
-        //         idBuku[0] = book.getId();
-        //         pilihan.setText(book.getJudul());
-        //     });
+        // bookButton.setOnAction(e -> {
+        // idBuku[0] = book.getId();
+        // pilihan.setText(book.getJudul());
+        // });
         // }
 
         // Button confirmButton = new Button("Konfirmasi Pinjaman");
         // confirmButton.setOnAction(e -> {
-        //     if (MahasiswaController.validatePinjamBuku(mahasiswa.getId())) {
-        //         if (BooksController.validateStock(idBuku[0])) {
-        //             statusPinjamBuku.setText("Validasi Berhasil");
-        //             if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
-        //                 statusPinjamBuku.setText("Berhasil Pinjam Buku");
-        //             } else {
-        //                 statusPinjamBuku.setText("Gagal Pinjam Buku AOWKAOKWK");
-        //             }
-        //         } else {
-        //             statusPinjamBuku.setText("Wahh Stock Buku Dah Habis Bang :v");
-        //         }
-        //     } else {
-        //         statusPinjamBuku.setText("Batas Peminjaman Buku Hanya Dua ya Bang");
-        //     }
-        //     // BorrowBookController.pinjamBuku(idMahasiswa[0], idBuku[0]);
+        // if (MahasiswaController.validatePinjamBuku(mahasiswa.getId())) {
+        // if (BooksController.validateStock(idBuku[0])) {
+        // statusPinjamBuku.setText("Validasi Berhasil");
+        // if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
+        // statusPinjamBuku.setText("Berhasil Pinjam Buku");
+        // } else {
+        // statusPinjamBuku.setText("Gagal Pinjam Buku AOWKAOKWK");
+        // }
+        // } else {
+        // statusPinjamBuku.setText("Wahh Stock Buku Dah Habis Bang :v");
+        // }
+        // } else {
+        // statusPinjamBuku.setText("Batas Peminjaman Buku Hanya Dua ya Bang");
+        // }
+        // // BorrowBookController.pinjamBuku(idMahasiswa[0], idBuku[0]);
         // });
     }
-    
+
 }
