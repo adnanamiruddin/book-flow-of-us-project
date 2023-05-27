@@ -75,4 +75,18 @@ public class BooksController extends DatabaseConfig {
         }
         return book;
     }
+
+    public static void updateJumlahBukuDipinjam(int idBuku, int howMany) {
+        connection();
+        query = "UPDATE buku SET stock=stok+? WHERE id=?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, howMany);
+            preparedStatement.setInt(2, idBuku);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
