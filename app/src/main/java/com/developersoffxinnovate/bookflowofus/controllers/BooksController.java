@@ -24,7 +24,7 @@ public class BooksController extends DatabaseConfig {
         }
     }
 
-    public static List<Book> getBuku() {
+    public static List<Book> getAllBuku() {
         List<Book> books = new ArrayList<>();
         connection();
         query = "SELECT * FROM buku";

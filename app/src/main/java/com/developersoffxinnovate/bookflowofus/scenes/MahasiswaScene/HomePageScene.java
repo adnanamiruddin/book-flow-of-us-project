@@ -5,11 +5,9 @@ import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 import com.developersoffxinnovate.bookflowofus.scenes.Navbar;
-import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,7 +25,6 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
     public void show(String nim) {
         /* ===> INSTANCE AREA START <=== */
         Mahasiswa mahasiswa = MahasiswaController.getMahasiswaByNim(nim);
-        
         /* ===> INSTANCE AREA END <=== */
 
         Label headerText = new Label("Book Flow of Us");
@@ -52,7 +49,7 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         containerContent.getStyleClass().add("containerContent");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
-        HBox containerMain = new HBox(Navbar.getNavbar(stage), containerContent);
+        HBox containerMain = new HBox(Navbar.getNavbar(stage, nim), containerContent);
 
         VBox main = new VBox(containerHeader, containerMain);
         main.getStyleClass().add("backgroundApp");
