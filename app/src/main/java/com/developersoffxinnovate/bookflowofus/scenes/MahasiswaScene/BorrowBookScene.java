@@ -113,111 +113,82 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
             confirmButton.setDisable(true);
             bookChoice.setText("Loading...");
             bookChoice.getStyleClass().add("bookChoiceLoading");
-            if (BooksController.validateStock(idBuku[0])) {
-                if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
-                    borrowBookStatus.setText("Loading...");
-                    borrowBookStatus.getStyleClass().add("borrowBookStatusLoading");
-                    Thread thread1 = new Thread(() -> {
-                        try {
-                            Thread.sleep(2000);
-                            Platform.runLater(() -> {
-                                books.clear();
-                                tableBorrowBook.setDisable(true);
-                            });
-                        } catch (InterruptedException err) {
-                            err.printStackTrace();
-                        }
-                    });
-                    Thread thread2 = new Thread(() -> {
-                        try {
-                            thread1.join();
-                            Thread.sleep(500);
-                            Platform.runLater(() -> {
-                                borrowBookStatus.setText("Success Borrow Book");
-                                borrowBookStatus.getStyleClass().add("borrowBookStatusSuccess");
-                                books.setAll(BooksController.getAllBuku());
-                                bookChoice.setText(judulBuku[0]);
-                                bookChoice.getStyleClass().remove("bookChoiceLoading");
-                                bookChoice.getStyleClass().add("bookChoiceSelected");
-                            });
-                        } catch (InterruptedException err) {
-                            err.printStackTrace();
-                        }
-                    });
-                    Thread thread3 = new Thread(() -> {
-                        try {
-                            thread2.join();
-                            Thread.sleep(3000);
-                            Platform.runLater(() -> {
-                                tableBorrowBook.setDisable(false);
-                                borrowBookStatus.setText("Returning to Home...");
-                                borrowBookStatus.getStyleClass().add("borrowBookStatusReturn");
-                                bookChoice.setText("Returning to Home...");
-                                bookChoice.getStyleClass().add("bookChoiceReturn");
-                            });
-                        } catch (InterruptedException err) {
-                            err.printStackTrace();
-                        }
-                    });
-                    Thread thread4 = new Thread(() -> {
-                        try {
-                            thread3.join();
-                            Thread.sleep(2000);
-                            Platform.runLater(() -> {
-                                HomePageScene homePageScene = new HomePageScene(stage);
-                                homePageScene.show(nim);
-                            });
-                        } catch (InterruptedException err) {
-                            err.printStackTrace();
-                        }
-                    });
-                    thread1.start();
-                    thread2.start();
-                    thread3.start();
-                    thread4.start();
+            if (MahasiswaController.validatePinjamBuku(mahasiswa.getId())) {
+                if (BooksController.validateStock(idBuku[0])) {
+                    if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
+                        borrowBookStatus.setText("Loading...");
+                        borrowBookStatus.getStyleClass().add("borrowBookStatusLoading");
+                        Thread thread1 = new Thread(() -> {
+                            try {
+                                Thread.sleep(2000);
+                                Platform.runLater(() -> {
+                                    books.clear();
+                                    tableBorrowBook.setDisable(true);
+                                });
+                            } catch (InterruptedException err) {
+                                err.printStackTrace();
+                            }
+                        });
+                        Thread thread2 = new Thread(() -> {
+                            try {
+                                thread1.join();
+                                Thread.sleep(500);
+                                Platform.runLater(() -> {
+                                    borrowBookStatus.setText("Success Borrow Book");
+                                    borrowBookStatus.getStyleClass().add("borrowBookStatusSuccess");
+                                    books.setAll(BooksController.getAllBuku());
+                                    bookChoice.setText(judulBuku[0]);
+                                    bookChoice.getStyleClass().remove("bookChoiceLoading");
+                                    bookChoice.getStyleClass().add("bookChoiceSelected");
+                                });
+                            } catch (InterruptedException err) {
+                                err.printStackTrace();
+                            }
+                        });
+                        Thread thread3 = new Thread(() -> {
+                            try {
+                                thread2.join();
+                                Thread.sleep(3000);
+                                Platform.runLater(() -> {
+                                    tableBorrowBook.setDisable(false);
+                                    borrowBookStatus.setText("Returning to Home...");
+                                    borrowBookStatus.getStyleClass().add("borrowBookStatusReturn");
+                                    bookChoice.setText("Returning to Home...");
+                                    bookChoice.getStyleClass().add("bookChoiceReturn");
+                                });
+                            } catch (InterruptedException err) {
+                                err.printStackTrace();
+                            }
+                        });
+                        Thread thread4 = new Thread(() -> {
+                            try {
+                                thread3.join();
+                                Thread.sleep(2000);
+                                Platform.runLater(() -> {
+                                    HomePageScene homePageScene = new HomePageScene(stage);
+                                    homePageScene.show(nim);
+                                });
+                            } catch (InterruptedException err) {
+                                err.printStackTrace();
+                            }
+                        });
+                        thread1.start();
+                        thread2.start();
+                        thread3.start();
+                        thread4.start();
+                    } else {
+                        borrowBookStatus.setText("Gagal Pinjam Buku AOWKAOKWK");
+                        borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
+                    }
                 } else {
-                    borrowBookStatus.setText("Gagal Pinjam Buku AOWKAOKWK");
+                    borrowBookStatus.setText("Wahh Stock Buku Dah Habis Bang :v");
                     borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                 }
             } else {
-                borrowBookStatus.setText("Wahh Stock Buku Dah Habis Bang :v");
+                borrowBookStatus.setText("Batas Peminjaman Buku Hanya Dua ya Bang");
                 borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
             }
+
         });
-
-        // Label pilihan = new Label("-");
-        // Label statusPinjamBuku = new Label("-");
-        // final int[] idBuku = {-1};
-
-        // for (Book book : books) {
-        // Button bookButton = new Button(String.format("%s - %s - %s - %d",
-        // book.getId(), book.getJudul(), book.getPengarang(), book.getStocks()));
-        // containerBooks.getChildren().add(bookButton);
-
-        // bookButton.setOnAction(e -> {
-        // idBuku[0] = book.getId();
-        // pilihan.setText(book.getJudul());
-        // });
-        // }
-
-        // Button confirmButton = new Button("Konfirmasi Pinjaman");
-        // confirmButton.setOnAction(e -> {
-        // if (MahasiswaController.validatePinjamBuku(mahasiswa.getId())) {
-        // if (BooksController.validateStock(idBuku[0])) {
-        // statusPinjamBuku.setText("Validasi Berhasil");
-        // if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
-        // statusPinjamBuku.setText("Berhasil Pinjam Buku");
-        // } else {
-        // statusPinjamBuku.setText("Gagal Pinjam Buku AOWKAOKWK");
-        // }
-        // } else {
-        // statusPinjamBuku.setText("Wahh Stock Buku Dah Habis Bang :v");
-        // }
-        // } else {
-        // statusPinjamBuku.setText("Batas Peminjaman Buku Hanya Dua ya Bang");
-        // }
-        // // BorrowBookController.pinjamBuku(idMahasiswa[0], idBuku[0]);
-        // });
     }
-
 }

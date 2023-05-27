@@ -126,4 +126,23 @@ public class MahasiswaController extends DatabaseConfig {
         }
     }
 
+    public static boolean validatePinjamBuku(int idMahasiswa) {
+        connection();
+        query = "SELECT buku_dipinjam FROM mahasiswa WHERE id=?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, idMahasiswa);
+
+            try (ResultSet validateResult = preparedStatement.executeQuery()) {
+                if (validateResult.next()) {
+                    if (validateResult.getInt("buku_dipinjam") < 2) {
+                        return true;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
