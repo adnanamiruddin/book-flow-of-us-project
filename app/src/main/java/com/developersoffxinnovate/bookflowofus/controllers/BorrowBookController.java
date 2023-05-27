@@ -22,7 +22,7 @@ public class BorrowBookController extends DatabaseConfig {
 
             int updatedRowsAffected = preparedStatement.executeUpdate();
             if (updatedRowsAffected > 0) {
-                // MahasiswaController.updateJumlahBukuDipinjamMahasiswa(idMahasiswa, 1);
+                MahasiswaController.updateJumlahBukuDipinjamMahasiswa(idMahasiswa, 1);
                 // BooksController.updateJumlahBukuDipinjam(idBuku, -1);
                 return true;
             }

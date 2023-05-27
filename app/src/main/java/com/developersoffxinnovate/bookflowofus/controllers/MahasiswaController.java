@@ -111,4 +111,19 @@ public class MahasiswaController extends DatabaseConfig {
         }
         return mahasiswa;
     }
+
+    public static void updateJumlahBukuDipinjamMahasiswa(int idMahasiswa, int howMany) {
+        connection();
+        query = "UPDATE mahasiswa SET buku_dipinjam=buku_dipinjam+? WHERE id=?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, howMany);
+            preparedStatement.setInt(2, idMahasiswa);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
