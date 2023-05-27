@@ -67,8 +67,9 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         containerHeader.getStyleClass().add("header");
         containerHeader.setAlignment(Pos.CENTER);
 
-        VBox containerContent = new VBox(tableBook);
-        containerContent.getStyleClass().add("containerContent");
+        Label headerContent = new Label("Find Your Favourite Book");
+        VBox containerContent = new VBox(headerContent, tableBook);
+        containerContent.getStyleClass().add("containerContentBook");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
         HBox containerMain = new HBox(Navbar.getNavbar(stage, mahasiswa.getNim()), containerContent);

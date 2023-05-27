@@ -81,7 +81,6 @@
 }
 /* NAVBAR END */
 
-
 /* HOMEPAGE SCENE START */
 .containerContent {
   -fx-pref-width: 580px;
@@ -105,11 +104,18 @@
 }
 /* HOMEPAGE SCENE END */
 
+/* BOOK CONTAINER VIEW START */
+.containerContentBook {
+  -fx-pref-width: 580px;
+  -fx-padding: 10px 0px;
+  -fx-spacing: 10px;
+  -fx-background-color: rgb(228, 228, 228);
+}
 
-/* BOOK LIST SCENE START */
-.tableBook {
-  -fx-background-color: white;
-  -fx-font-size: 14px;
+.containerContentBook > Label {
+  -fx-text-fill: rgb(0, 51, 117);
+  -fx-font-size: 32px;
+  -fx-font-weight: bold;
 }
 
 .table-view .column-header {
@@ -143,33 +149,49 @@
   -fx-table-cell-border-color: transparent;
   -fx-alignment: CENTER;
 }
+/* BOOK CONTAINER VIEW END */
+
+/* BOOK LIST SCENE START */
+.tableBook {
+  -fx-background-color: white;
+  -fx-font-size: 14px;
+}
 
 .columnNo {
   -fx-pref-width: 50px;
   -fx-font-size: 11px;
 }
-
 .columnJudul {
   -fx-pref-width: 192px;
 }
-
 .columnPengarang {
   -fx-pref-width: 140px;
 }
-
 .columnPenerbit {
   -fx-pref-width: 100px;
 }
-
 .columnTahun {
   -fx-pref-width: 90px;
   -fx-font-size: 11px;
 }
 /* BOOK LIST SCENE END */
 
-
 /* BORROW BOOK SCENE START */
-.backgroundBorrowBook {
-  -fx-background-color: rgb(58, 22, 141);
+.tableBorrowBook {
+  -fx-background-color: white;
+  -fx-font-size: 16px;
+}
+
+.columnBorrowNo {
+  -fx-pref-width: 50px;
+}
+.columnBorrowJudul {
+  -fx-pref-width: 252px;
+}
+.columnBorrowPengarang {
+  -fx-pref-width: 170px;
+}
+.columnBorrowStok {
+  -fx-pref-width: 100px;
 }
 /* BORROW BOOK SCENE END */

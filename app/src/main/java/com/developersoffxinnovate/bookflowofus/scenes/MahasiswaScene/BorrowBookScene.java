@@ -43,24 +43,28 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                     book.getTahunTerbit(), book.getStok()));
         }
 
-        TableView<Book> tableBook = new TableView<>();
-        tableBook.getStyleClass().add("tableBook");
+        TableView<Book> tableBorrowBook = new TableView<>();
+        tableBorrowBook.getStyleClass().add("tableBorrowBook");
         TableColumn<Book, Integer> column1 = new TableColumn<>("No.");
-        column1.getStyleClass().add("columnNo");
+        column1.getStyleClass().add("columnBorrowNo");
+        column1.setResizable(false);
         TableColumn<Book, String> column2 = new TableColumn<>("Judul");
-        column2.getStyleClass().add("columnJudul");
+        column2.getStyleClass().add("columnBorrowJudul");
+        column2.setResizable(false);
         TableColumn<Book, String> column3 = new TableColumn<>("Pengarang");
-        column3.getStyleClass().add("columnPengarang");
+        column3.getStyleClass().add("columnBorrowPengarang");
+        column3.setResizable(false);
         TableColumn<Book, Integer> column4 = new TableColumn<>("Stok");
-        column4.getStyleClass().add("columnTahun");
+        column4.getStyleClass().add("columnBorrowStok");
+        column4.setResizable(false);
 
         column1.setCellValueFactory(new PropertyValueFactory<>("id"));
         column2.setCellValueFactory(new PropertyValueFactory<>("judul"));
         column3.setCellValueFactory(new PropertyValueFactory<>("pengarang"));
         column4.setCellValueFactory(new PropertyValueFactory<>("stok"));
 
-        tableBook.getColumns().addAll(column1, column2, column3, column4);
-        tableBook.setItems(books);
+        tableBorrowBook.getColumns().addAll(column1, column2, column3, column4);
+        tableBorrowBook.setItems(books);
         /* ===> INSTANCE AREA END <=== */
 
         Label headerText = new Label("Book Flow of Us");
@@ -75,8 +79,9 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         containerFooterContent.getStyleClass().add("containerFooterContent");
         containerFooterContent.setSpacing(10);
 
-        VBox containerContent = new VBox(tableBook, containerFooterContent);
-        containerContent.getStyleClass().add("containerContent");
+        Label headerContent = new Label("Skuy Borrow Book");
+        VBox containerContent = new VBox(headerContent, tableBorrowBook, containerFooterContent);
+        containerContent.getStyleClass().add("containerContentBook");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
         HBox containerMain = new HBox(Navbar.getNavbar(stage, mahasiswa.getNim()), containerContent);
@@ -92,8 +97,8 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
 
         /* ===> LOGIC AREA <=== */
         int[] idBuku = { -1 };
-        tableBook.setOnMouseClicked(e -> {
-            Book selectedBook = tableBook.getSelectionModel().getSelectedItem();
+        tableBorrowBook.setOnMouseClicked(e -> {
+            Book selectedBook = tableBorrowBook.getSelectionModel().getSelectedItem();
             int idSelectedBook = selectedBook.getId();
             idBuku[0] = idSelectedBook;
             bookChoice.setText(selectedBook.getJudul());
@@ -101,13 +106,13 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
 
         confirmButton.setOnAction(e -> {
             if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
-                borrowBookStatus.setText("Loading... :v");
+                borrowBookStatus.setText("Loading...");
                 Thread thread1 = new Thread(() -> {
                     try {
                         Thread.sleep(2000);
                         Platform.runLater(() -> {
                             books.clear();
-                            tableBook.setDisable(true);
+                            tableBorrowBook.setDisable(true);
                         });
                     } catch (InterruptedException err) {
                         err.printStackTrace();
@@ -119,6 +124,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                         Thread.sleep(500);
                         Platform.runLater(() -> {
                             borrowBookStatus.setText("Berhasil Pinjam Buku");
+                            books.setAll(BooksController.getAllBuku());
                         });
                     } catch (InterruptedException err) {
                         err.printStackTrace();
@@ -129,8 +135,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                         thread2.join();
                         Thread.sleep(3000);
                         Platform.runLater(() -> {
-                            books.setAll(BooksController.getAllBuku());
-                            // tableBook.setDisable(false); (MASIH BIMBANG)
+                            tableBorrowBook.setDisable(false);
                             borrowBookStatus.setText("Returning to Home...");
                         });
                     } catch (InterruptedException err) {

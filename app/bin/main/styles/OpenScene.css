@@ -53,7 +53,7 @@
 }
 
 .containerButtons > Button {
-  -fx-pref-width: 400px;
+  -fx-pref-width: 410px;
   -fx-padding: 10px;
   -fx-background-color: green;
   -fx-text-fill: rgb(228, 228, 228);
