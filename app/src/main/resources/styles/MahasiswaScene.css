@@ -194,4 +194,82 @@
 .columnBorrowStok {
   -fx-pref-width: 100px;
 }
+
+.containerFooterContent {
+  -fx-padding: 10px 0px;
+  -fx-spacing: 20px;
+}
+
+.containerFooterContent > Label {
+  -fx-pref-width: 180px;
+  -fx-pref-height: 60px;
+  -fx-font-weight: bold;
+  -fx-text-fill: rgb(61, 61, 61);
+  -fx-font-size: 11px;
+  -fx-background-color: rgb(219, 188, 10);
+  -fx-padding: 0px 20px;
+  -fx-background-radius: 10px;
+  -fx-alignment: CENTER;
+}
+
+.containerFooterContent > .bookChoice {
+  -fx-font-size: 14px;
+}
+
+.containerFooterContent > .bookChoiceSelected {
+  -fx-background-color: rgb(32, 151, 2);
+  -fx-text-fill: rgb(255, 255, 255);
+  -fx-font-size: 14px;
+}
+
+.containerFooterContent > .bookChoiceLoading {
+  -fx-background-color: rgb(36, 36, 36);
+  -fx-text-fill: rgb(255, 255, 255);
+  -fx-font-size: 14px;
+}
+
+.containerFooterContent > .bookChoiceReturn {
+  -fx-background-color: rgb(219, 188, 10);
+  -fx-text-fill: rgb(255, 255, 255);
+  -fx-font-size: 14px;
+}
+
+.containerFooterContent > Button {
+  -fx-padding: 12px 10px;
+  -fx-background-color: rgb(50, 194, 14);
+  -fx-font-weight: bold;
+  -fx-text-fill: rgb(228, 228, 228);
+  -fx-font-size: 14px;
+  -fx-border-color: gold;
+  -fx-border-width: 3px;
+  -fx-border-radius: 12px;
+  -fx-background-radius: 10px;
+  -fx-text-alignment: CENTER;
+}
+
+.containerFooterContent > Button:hover {
+  -fx-cursor: hand;
+  -fx-background-color: rgb(51, 255, 0);
+  -fx-text-fill: rgb(255, 255, 255) !important;
+  -fx-border-width: 3px;
+  -fx-border-color: rgb(255, 251, 0);
+}
+
+.containerFooterContent > .buttonBorrowLoading {
+  -fx-background-color: rgb(49, 49, 49);
+  -fx-text-fill: rgb(255, 255, 255);
+  -fx-font-size: 14px;
+}
+
+.containerFooterContent > .buttonBorrowSuccess {
+  -fx-background-color: rgb(32, 151, 2);
+  -fx-text-fill: rgb(255, 255, 255);
+  -fx-font-size: 14px;
+}
+
+.containerFooterContent > .buttonBorrowReturn {
+  -fx-background-color: rgb(219, 188, 10);
+  -fx-text-fill: rgb(255, 255, 255);
+  -fx-font-size: 14px;
+}
 /* BORROW BOOK SCENE END */
