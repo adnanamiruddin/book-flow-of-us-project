@@ -4,15 +4,15 @@ public class Book extends Model {
     private String judul;
     private String pengarang;
     private String penerbit;
-    private int tahunterbit;
+    private int tahunTerbit;
     private int stok;
 
-    public Book(int id, String judul, String pengarang, String penerbit, int tahunterbit, int stok) {
+    public Book(int id, String judul, String pengarang, String penerbit, int tahunTerbit, int stok) {
         super(id);
         this.judul = judul;
         this.pengarang = pengarang;
         this.penerbit = penerbit;
-        this.tahunterbit = tahunterbit;
+        this.tahunTerbit = tahunTerbit;
         this.stok = stok; 
     }
 
@@ -37,18 +37,17 @@ public class Book extends Model {
         this.penerbit = penerbit;
     }
 
-    public int getTahunterbit() {
-        return tahunterbit;
+    public int getTahunTerbit() {
+        return tahunTerbit;
     }
-    public void setTahunterbit(int tahunterbit) {
-        this.tahunterbit = tahunterbit;
+    public void setTahunTerbit(int tahunTerbit) {
+        this.tahunTerbit = tahunTerbit;
     }
-    
+
     public int getStok() {
         return stok;
     }
     public void setStok(int stok) {
         this.stok = stok;
     }
-
 }

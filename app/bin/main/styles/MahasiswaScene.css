@@ -13,10 +13,13 @@
   -fx-font-size: 52px;
   -fx-font-weight: bold;
 }
+
+.active > Button {
+  -fx-background-color: #176ec5;
+}
 /* GLOBAL STYLE END */
 
-
-/* HOMEPAGE SCENE START */
+/* NAVBAR START */
 .containerNavbar {
   -fx-background-color: #001f3f;
   -fx-pref-height: 600px;
@@ -76,7 +79,10 @@
   -fx-border-width: 1px;
   -fx-border-color: rgb(0, 255, 229);
 }
+/* NAVBAR END */
 
+
+/* HOMEPAGE SCENE START */
 .containerContent {
   -fx-pref-width: 580px;
   -fx-padding: 50px 0px;
@@ -100,85 +106,66 @@
 /* HOMEPAGE SCENE END */
 
 
-
-
-
-/* HOMEPAGE SCENE START */
-/* .backgroundHomePage {
-  -fx-background-color: rgb(153, 127, 14);
+/* BOOK LIST SCENE START */
+.tableBook {
+  -fx-background-color: white;
+  -fx-font-size: 14px;
 }
 
-.containerProfile {
-  -fx-padding: 10px 0px 20px 65px;
-  -fx-spacing: 40px;
-}
-
-.containerProfileText > Label {
-  -fx-font-weight: bold;
-  -fx-text-fill: rgb(228, 228, 228);
-  -fx-font-size: 24px;
-}
-
-.containerMenu {
-  -fx-padding: 40px 50px;
-  -fx-spacing: 50px;
-  -fx-border-color: red;
+.table-view .column-header {
+  -fx-background-color: #2c3e50;
+  -fx-border-color: rgb(228, 228, 228);
   -fx-border-width: 1px;
 }
 
-.containerMenu > Button {
-  -fx-pref-width: 150px;
-  -fx-pref-height: 150px;
-  -fx-background-color: purple;
-  -fx-border-color: lightgreen;
-  -fx-border-width: 3px;
-  -fx-border-radius: 10px;
-  -fx-background-radius: 10px;
+.table-view .column-header .label {
+  -fx-text-fill: white;
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(228, 228, 228);
-  -fx-font-size: 22px;
-  -fx-text-alignment: center;
 }
 
-.containerFooter {
-  -fx-padding: 70px 100px 10px;
-  -fx-spacing: 70px;
+.table-view .table-row:odd {
+  -fx-background-color: #ecf0f1;
 }
 
-.containerFooter > Button {
-  -fx-pref-width: 250px;
-  -fx-padding: 12px;
-  -fx-background-color: rgb(197, 14, 14);
-  -fx-text-fill: rgb(228, 228, 228);
-  -fx-font-weight: bold;
-  -fx-font-size: 18px;
-  -fx-border-color: rgb(114, 5, 56);
-  -fx-border-width: 3px;
-  -fx-border-radius: 15px;
-  -fx-background-radius: 18px;
+.table-view .table-row:even {
+  -fx-background-color: #dcdde1;
 }
 
-.containerFooter > Button:hover {
-  -fx-cursor: hand;
-  -fx-background-color: rgb(255, 0, 0);
-  -fx-border-color: rgb(100, 9, 52);
-  -fx-text-fill: rgb(255, 255, 255) !important;
-  -fx-border-style: none;
+.table-view .table-row-cell:hover {
+  -fx-background-color: #bdc3c7;
 }
 
-.containerFooter > .toContactAdminScene {
-  -fx-background-color: darkblue;
-  -fx-border-color: rgb(6, 61, 212);
+.table-view .table-row-cell {
+  -fx-font-size: 12px;
 }
 
-.containerFooter > .toContactAdminScene:hover {
-  -fx-cursor: hand;
-  -fx-background-color: rgb(16, 16, 182);
-  -fx-border-color: rgb(0, 68, 255);
-  -fx-text-fill: rgb(255, 255, 255) !important;
-  -fx-border-style: none;
-} */
-/* HOMEPAGE SCENE END */
+.table-view .table-cell {
+  -fx-table-cell-border-color: transparent;
+  -fx-alignment: CENTER;
+}
+
+.columnNo {
+  -fx-pref-width: 50px;
+  -fx-font-size: 11px;
+}
+
+.columnJudul {
+  -fx-pref-width: 192px;
+}
+
+.columnPengarang {
+  -fx-pref-width: 140px;
+}
+
+.columnPenerbit {
+  -fx-pref-width: 100px;
+}
+
+.columnTahun {
+  -fx-pref-width: 90px;
+  -fx-font-size: 11px;
+}
+/* BOOK LIST SCENE END */
 
 
 /* BORROW BOOK SCENE START */

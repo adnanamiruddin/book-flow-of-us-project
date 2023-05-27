@@ -1,6 +1,7 @@
 package com.developersoffxinnovate.bookflowofus.scenes;
 
 import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.BooksListScene;
+import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.BorrowBookScene;
 import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.HomePageScene;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
@@ -43,6 +44,11 @@ public class Navbar {
         toBookListScene.setOnAction(e -> {
             BooksListScene booksListScene = new BooksListScene(stage);
             booksListScene.show(nim);
+        });
+
+        toBorrowBookScene.setOnAction(e -> {
+            BorrowBookScene borrowBookScene = new BorrowBookScene(stage);
+            borrowBookScene.show(nim);
         });
 
         return containerNavbar;
