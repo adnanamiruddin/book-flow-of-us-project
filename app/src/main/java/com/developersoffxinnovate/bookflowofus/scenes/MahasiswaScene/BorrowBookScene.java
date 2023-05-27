@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.BooksController;
+import com.developersoffxinnovate.bookflowofus.controllers.BorrowBookController;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Book;
@@ -14,6 +15,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -64,7 +66,12 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         containerHeader.getStyleClass().add("header");
         containerHeader.setAlignment(Pos.CENTER);
 
-        VBox containerContent = new VBox(tableBook);
+        Label bookChoice = new Label("Pilihan: ");
+        Label borrowBookStatus = new Label("Status: Belum Pinjam Buku");
+        Button confirmButton = new Button("Konfirmasi Pinjaman");
+        HBox containerFooterContent = new HBox(bookChoice, borrowBookStatus, confirmButton);
+
+        VBox containerContent = new VBox(tableBook, containerFooterContent);
         containerContent.getStyleClass().add("containerContent");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
@@ -78,10 +85,24 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
-
+        
+        
         /* ===> LOGIC AREA <=== */
+        int[] idBuku = {-1};
         tableBook.setOnMouseClicked(e -> {
             Book selectedBook = tableBook.getSelectionModel().getSelectedItem();
+            int idSelectedBook = selectedBook.getId();
+            idBuku[0] = idSelectedBook;
+            System.out.println(idBuku[0]);
+            bookChoice.setText(selectedBook.getJudul());
+        });
+
+        confirmButton.setOnAction(e -> {
+            if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
+                borrowBookStatus.setText("Berhasil Pinjam Buku");
+            } else {
+                borrowBookStatus.setText("Gagal Pinjam Buku AOWKAOKWK");
+            }
         });
 
         // Label pilihan = new Label("-");
