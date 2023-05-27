@@ -234,6 +234,12 @@
   -fx-font-size: 14px;
 }
 
+.containerFooterContent > .bookChoiceFailed {
+  -fx-background-color: rgb(185, 10, 10);
+  -fx-text-fill: rgb(255, 255, 255);
+  -fx-font-size: 14px;
+}
+
 .containerFooterContent > Button {
   -fx-padding: 12px 10px;
   -fx-background-color: rgb(50, 194, 14);
@@ -276,6 +282,6 @@
 .containerFooterContent > .borrowBookStatusFailed {
   -fx-background-color: rgb(185, 10, 10);
   -fx-text-fill: rgb(255, 255, 255);
-  -fx-font-size: 14px;
+  -fx-font-size: 11px;
 }
 /* BORROW BOOK SCENE END */

@@ -179,16 +179,23 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                     } else {
                         borrowBookStatus.setText("Gagal Pinjam Buku AOWKAOKWK");
                         borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
+                        bookChoice.setText(judulBuku[0]);
+                        bookChoice.getStyleClass().add("bookChoiceFailed");
                     }
                 } else {
-                    borrowBookStatus.setText("Wahh Stock Buku Dah Habis Bang :v");
+                    borrowBookStatus.setText("Out of Stock");
                     borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
+                    bookChoice.setText(judulBuku[0]);
+                    bookChoice.getStyleClass().add("bookChoiceFailed");
+                    confirmButton.setDisable(false);
                 }
             } else {
-                borrowBookStatus.setText("Batas Peminjaman Buku Hanya Dua ya Bang");
+                borrowBookStatus.setText("Exceeding The Loan Limit");
                 borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
+                bookChoice.setText(judulBuku[0]);
+                bookChoice.getStyleClass().add("bookChoiceFailed");
+                confirmButton.setDisable(false);
             }
-
         });
     }
 }
