@@ -82,12 +82,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         /* ===> LOGIC AREA <=== */
         tableBook.setOnMouseClicked(e -> {
             Book selectedBook = tableBook.getSelectionModel().getSelectedItem();
-
-            System.out.println(selectedBook.getJudul());
         });
-
-        // VBox containerBooks = new VBox();
-        // containerBooks.setSpacing(20);
 
         // Label pilihan = new Label("-");
         // Label statusPinjamBuku = new Label("-");
@@ -101,6 +96,26 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         //         idBuku[0] = book.getId();
         //         pilihan.setText(book.getJudul());
         //     });
+        // }
+
+        // Button confirmButton = new Button("Konfirmasi Pinjaman");
+        // confirmButton.setOnAction(e -> {
+        //     if (MahasiswaController.validatePinjamBuku(mahasiswa.getId())) {
+        //         if (BooksController.validateStock(idBuku[0])) {
+        //             statusPinjamBuku.setText("Validasi Berhasil");
+        //             if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
+        //                 statusPinjamBuku.setText("Berhasil Pinjam Buku");
+        //             } else {
+        //                 statusPinjamBuku.setText("Gagal Pinjam Buku AOWKAOKWK");
+        //             }
+        //         } else {
+        //             statusPinjamBuku.setText("Wahh Stock Buku Dah Habis Bang :v");
+        //         }
+        //     } else {
+        //         statusPinjamBuku.setText("Batas Peminjaman Buku Hanya Dua ya Bang");
+        //     }
+        //     // BorrowBookController.pinjamBuku(idMahasiswa[0], idBuku[0]);
+        // });
     }
     
 }
