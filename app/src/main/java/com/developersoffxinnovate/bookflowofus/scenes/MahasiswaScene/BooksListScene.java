@@ -43,14 +43,19 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         tableBook.getStyleClass().add("tableBook");
         TableColumn<Book, Integer> column1 = new TableColumn<>("No.");
         column1.getStyleClass().add("columnNo");
+        column1.setResizable(false);
         TableColumn<Book, String> column2 = new TableColumn<>("Judul");
         column2.getStyleClass().add("columnJudul");
+        column2.setResizable(false);
         TableColumn<Book, String> column3 = new TableColumn<>("Pengarang");
         column3.getStyleClass().add("columnPengarang");
+        column3.setResizable(false);
         TableColumn<Book, String> column4 = new TableColumn<>("Penerbit");
         column4.getStyleClass().add("columnPenerbit");
+        column4.setResizable(false);
         TableColumn<Book, Integer> column5 = new TableColumn<>("Tahun Terbit");
         column5.getStyleClass().add("columnTahun");
+        column5.setResizable(false);
 
         column1.setCellValueFactory(new PropertyValueFactory<>("id"));
         column2.setCellValueFactory(new PropertyValueFactory<>("judul"));

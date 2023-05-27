@@ -151,9 +151,9 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                                 Thread.sleep(3000);
                                 Platform.runLater(() -> {
                                     tableBorrowBook.setDisable(false);
-                                    borrowBookStatus.setText("Returning to Home...");
+                                    borrowBookStatus.setText("Redirecting to Home...");
                                     borrowBookStatus.getStyleClass().add("borrowBookStatusReturn");
-                                    bookChoice.setText("Returning to Home...");
+                                    bookChoice.setText("Redirecting to Home...");
                                     bookChoice.getStyleClass().add("bookChoiceReturn");
                                 });
                             } catch (InterruptedException err) {
