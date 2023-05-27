@@ -78,7 +78,7 @@ public class BooksController extends DatabaseConfig {
 
     public static void updateJumlahBukuDipinjam(int idBuku, int howMany) {
         connection();
-        query = "UPDATE buku SET stock=stok+? WHERE id=?";
+        query = "UPDATE buku SET stok=stok+? WHERE id=?";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, howMany);
