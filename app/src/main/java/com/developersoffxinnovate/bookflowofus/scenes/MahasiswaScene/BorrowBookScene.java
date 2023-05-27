@@ -110,11 +110,12 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         });
 
         confirmButton.setOnAction(e -> {
+            confirmButton.setDisable(true);
             bookChoice.setText("Loading...");
             bookChoice.getStyleClass().add("bookChoiceLoading");
             if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
                 borrowBookStatus.setText("Loading...");
-                borrowBookStatus.getStyleClass().add("buttonBorrowLoading");
+                borrowBookStatus.getStyleClass().add("borrowBookStatusLoading");
                 Thread thread1 = new Thread(() -> {
                     try {
                         Thread.sleep(2000);
@@ -132,7 +133,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                         Thread.sleep(500);
                         Platform.runLater(() -> {
                             borrowBookStatus.setText("Success Borrow Book");
-                            borrowBookStatus.getStyleClass().add("buttonBorrowSuccess");
+                            borrowBookStatus.getStyleClass().add("borrowBookStatusSuccess");
                             books.setAll(BooksController.getAllBuku());
                             bookChoice.setText(judulBuku[0]);
                             bookChoice.getStyleClass().remove("bookChoiceLoading");
@@ -149,7 +150,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                         Platform.runLater(() -> {
                             tableBorrowBook.setDisable(false);
                             borrowBookStatus.setText("Returning to Home...");
-                            borrowBookStatus.getStyleClass().add("buttonBorrowReturn");
+                            borrowBookStatus.getStyleClass().add("borrowBookStatusReturn");
                             bookChoice.setText("Returning to Home...");
                             bookChoice.getStyleClass().add("bookChoiceReturn");
                         });
@@ -173,24 +174,9 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                 thread2.start();
                 thread3.start();
                 thread4.start();
-
-                // Thread myThread = new Thread(() -> {
-                // try {
-                // Thread.sleep(2000);
-                // Platform.runLater(() -> {
-                // borrowBookStatus.setText("Returning to Home...");
-                // });
-                // Thread.sleep(3000);
-                // Platform.runLater(() -> {
-                // HomePageScene homePageScene = new HomePageScene(stage);
-                // homePageScene.show(nim);
-                // });
-                // } catch (InterruptedException err) {
-                // }
-                // });
-                // myThread.start();
             } else {
                 borrowBookStatus.setText("Gagal Pinjam Buku AOWKAOKWK");
+                borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
             }
         });
 

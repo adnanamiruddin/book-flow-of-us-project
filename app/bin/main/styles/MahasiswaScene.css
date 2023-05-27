@@ -255,20 +255,26 @@
   -fx-border-color: rgb(255, 251, 0);
 }
 
-.containerFooterContent > .buttonBorrowLoading {
+.containerFooterContent > .borrowBookStatusLoading {
   -fx-background-color: rgb(49, 49, 49);
   -fx-text-fill: rgb(255, 255, 255);
   -fx-font-size: 14px;
 }
 
-.containerFooterContent > .buttonBorrowSuccess {
+.containerFooterContent > .borrowBookStatusSuccess {
   -fx-background-color: rgb(32, 151, 2);
   -fx-text-fill: rgb(255, 255, 255);
   -fx-font-size: 14px;
 }
 
-.containerFooterContent > .buttonBorrowReturn {
+.containerFooterContent > .borrowBookStatusReturn {
   -fx-background-color: rgb(219, 188, 10);
+  -fx-text-fill: rgb(255, 255, 255);
+  -fx-font-size: 14px;
+}
+
+.containerFooterContent > .borrowBookStatusFailed {
+  -fx-background-color: rgb(185, 10, 10);
   -fx-text-fill: rgb(255, 255, 255);
   -fx-font-size: 14px;
 }
