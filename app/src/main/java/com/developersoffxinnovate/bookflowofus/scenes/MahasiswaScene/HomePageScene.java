@@ -4,6 +4,7 @@ import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
+import com.developersoffxinnovate.bookflowofus.scenes.Navbar;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.geometry.Pos;
@@ -34,26 +35,6 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         containerHeader.getStyleClass().add("header");
         containerHeader.setAlignment(Pos.CENTER);
 
-        Button toHomePageScene = new Button("Home");
-        toHomePageScene.getStyleClass().add("toHomePageScene");
-        Button toBookListScene = new Button("Book List");
-        toBookListScene.getStyleClass().add("toBookListScene");
-        Button toBorrowBookScene = new Button("Borrow Book");
-        toBorrowBookScene.getStyleClass().add("toBorrowBookScene");
-        Button toRateBookScene = new Button("History");
-        toRateBookScene.getStyleClass().add("toContactAdminScene");
-        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
-        containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
-
-        Button logOutButton = new Button("Log Out");
-        Button toContactAdminScene = new Button("Contact Admin");
-        toContactAdminScene.getStyleClass().add("toContactAdminScene");
-        VBox containerNavbarFooter = new VBox(toContactAdminScene, logOutButton);
-        containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
-
-        VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
-        containerNavbar.getStyleClass().add("containerNavbar");
-
         Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
         ImageView containerBookHomePage = new ImageView(bookHomePage);
         containerBookHomePage.setFitHeight(200);
@@ -71,7 +52,7 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         containerContent.getStyleClass().add("containerContent");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
-        HBox containerMain = new HBox(containerNavbar, containerContent);
+        HBox containerMain = new HBox(Navbar.getNavbar(stage), containerContent);
 
         VBox main = new VBox(containerHeader, containerMain);
         main.getStyleClass().add("backgroundApp");
@@ -83,10 +64,10 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         main.requestFocus();
 
         /* ===> LOGIC AREA <=== */
-        logOutButton.setOnAction(e -> {
-            LoginScene loginScene = new LoginScene(stage);
-            loginScene.show();
-        });
+        // logOutButton.setOnAction(e -> {
+        //     LoginScene loginScene = new LoginScene(stage);
+        //     loginScene.show();
+        // });
 
 
 

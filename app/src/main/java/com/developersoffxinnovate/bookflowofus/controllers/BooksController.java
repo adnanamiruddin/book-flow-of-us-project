@@ -2,6 +2,8 @@ package com.developersoffxinnovate.bookflowofus.controllers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.developersoffxinnovate.bookflowofus.config.DatabaseConfig;
 import com.developersoffxinnovate.bookflowofus.models.Book;
@@ -20,6 +22,31 @@ public class BooksController extends DatabaseConfig {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static List<Book> getBuku() {
+        List<Book> books = new ArrayList<>();
+        connection();
+        query = "SELECT * FROM buku";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String judul = resultSet.getString("judul");
+                String pengarang = resultSet.getString("pengarang");
+                String penerbit = resultSet.getString("penerbit");
+                int tahunTerbit = resultSet.getInt("tahun_terbit");
+                int stocks = resultSet.getInt("stok");
+
+                Book book = new Book(id, judul, pengarang, penerbit, tahunTerbit, stocks);
+                books.add(book);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
     }
 
     public static Book getBookById(int id) {
