@@ -1,33 +1,26 @@
 package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
-import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
-import com.developersoffxinnovate.bookflowofus.models.Admin;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
+import com.developersoffxinnovate.bookflowofus.scenes.helpers.BookList;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class HomePageAdminScene extends AbstractScene implements InterfaceSceneProps {
+public class ReturnBook extends AbstractScene implements InterfaceSceneProps {
 
-    public HomePageAdminScene(Stage stage) {
+    public ReturnBook(Stage stage) {
         super(stage);
     }
 
     @Override
     public void show(String user) {
-        /* ===> INSTANCE AREA START <=== */
-        Admin admin = AdminController.getAdminByUser(user);
-        /* ===> INSTANCE AREA END <=== */
-
         /* NAVBAR SECTION START */
         Button toHomePageAdminScene = new Button("Home");
         toHomePageAdminScene.getStyleClass().add("toHomePageAdminScene");
@@ -51,20 +44,9 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         containerHeader.getStyleClass().add("headerContent");
         containerHeader.setAlignment(Pos.CENTER);
 
-        Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
-        ImageView containerBookHomePage = new ImageView(bookHomePage);
-        containerBookHomePage.setFitHeight(200);
-        containerBookHomePage.setFitWidth(350);
-
-        Label userNameAdmin = new Label(String.format("Welcome %s", admin.getUser()));
-        userNameAdmin.getStyleClass().add("userNameAdmin");
-        Label greetingText = new Label("How are you? :D");
-        VBox containerProfile = new VBox(userNameAdmin, greetingText);
-        containerProfile.getStyleClass().add("containerProfile");
-        containerProfile.setAlignment(Pos.CENTER);
-
-        VBox containerContent = new VBox(containerBookHomePage, containerProfile);
-        containerContent.getStyleClass().add("containerContent");
+        Label headerContent = new Label("Library");
+        VBox containerContent = new VBox(headerContent, BookList.getBookList());
+        containerContent.getStyleClass().add("containerContentBook");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
         HBox containerMain = new HBox(containerNavbar, containerContent);

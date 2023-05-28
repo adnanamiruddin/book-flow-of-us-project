@@ -2,8 +2,8 @@ package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
-import com.developersoffxinnovate.bookflowofus.scenes.BookList;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
+import com.developersoffxinnovate.bookflowofus.scenes.helpers.BookList;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,9 +26,9 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
         toHomePageAdminScene.getStyleClass().add("toHomePageAdminScene");
         Button toBookListAdminScene = new Button("Book List");
         toBookListAdminScene.getStyleClass().add("toBookListAdminScene");
-        Button toBorrowBookAdminScene = new Button("Borrow Book");
-        toBorrowBookAdminScene.getStyleClass().add("toBorrowBookAdminScene");
-        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toBorrowBookAdminScene);
+        Button toReturnBookAdminScene = new Button("Return Book");
+        toReturnBookAdminScene.getStyleClass().add("toReturnBookAdminScene");
+        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toReturnBookAdminScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
 
         Button logOutButton = new Button("Log Out");
@@ -69,6 +69,11 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
         toBookListAdminScene.setOnAction(e -> {
             BookListAdminScene bookListAdminScene = new BookListAdminScene(stage);
             bookListAdminScene.show(user);
+        });
+
+        toReturnBookAdminScene.setOnAction(e -> {
+            ReturnBook returnBook = new ReturnBook(stage);
+            returnBook.show(user);
         });
 
         logOutButton.setOnAction(e -> {
