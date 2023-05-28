@@ -231,7 +231,7 @@
 .containerFooterContent > .bookChoiceReturn {
   -fx-background-color: rgb(219, 188, 10);
   -fx-text-fill: rgb(255, 255, 255);
-  -fx-font-size: 14px;
+  -fx-font-size: 13px;
 }
 
 .containerFooterContent > .bookChoiceFailed {
@@ -270,13 +270,13 @@
 .containerFooterContent > .borrowBookStatusSuccess {
   -fx-background-color: rgb(32, 151, 2);
   -fx-text-fill: rgb(255, 255, 255);
-  -fx-font-size: 14px;
+  -fx-font-size: 13px;
 }
 
 .containerFooterContent > .borrowBookStatusReturn {
   -fx-background-color: rgb(219, 188, 10);
   -fx-text-fill: rgb(255, 255, 255);
-  -fx-font-size: 14px;
+  -fx-font-size: 13px;
 }
 
 .containerFooterContent > .borrowBookStatusFailed {

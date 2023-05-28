@@ -87,56 +87,5 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Label label = new Label("Book List Scene");
-
-        // ArrayList<Label> booksId = new ArrayList<>();
-        // ArrayList<Label> booksJudul = new ArrayList<>();
-        // ArrayList<Label> booksPengarang = new ArrayList<>();
-        // ArrayList<Label> booksPenerbit = new ArrayList<>();
-        // ArrayList<Label> booksTahunTerbit = new ArrayList<>();
-        // ArrayList<Label> booksStocks = new ArrayList<>();
-        // ArrayList<Label> booksBarrier = new ArrayList<>();
-
-        // for (Book book : books) {
-        //     booksId.add(new Label(String.format("%s", book.getId())));
-        //     booksJudul.add(new Label(book.getJudul()));
-        //     booksPengarang.add(new Label(book.getPengarang()));
-        //     booksPenerbit.add(new Label(book.getPenerbit()));
-        //     booksTahunTerbit.add(new Label(String.format("%s", book.getTahunTerbit())));
-        //     booksStocks.add(new Label(String.format("%s", book.getStocks())));
-        //     booksBarrier.add(new Label("-----------------"));
-        // }
-
-        // VBox containerBooksId = new VBox();
-        // containerBooksId.getChildren().addAll(booksId);
-        // VBox containerBooksJudul = new VBox();
-        // containerBooksJudul.getChildren().addAll(booksJudul);
-        // VBox containerBooksPengarang = new VBox();
-        // containerBooksPengarang.getChildren().addAll(booksPengarang);
-
-        // HBox containerBooks = new HBox(containerBooksId, containerBooksJudul, containerBooksPengarang);
-        // containerBooks.setSpacing(20);
-
-        // VBox containerScene = new VBox(label, containerBooks);
-
-        // HBox main = new HBox(containerScene);
-
-        // Scene scene = new Scene(main, 400, 600);
-        // stage.setScene(scene);
-        // stage.show();
     }
-    
 }

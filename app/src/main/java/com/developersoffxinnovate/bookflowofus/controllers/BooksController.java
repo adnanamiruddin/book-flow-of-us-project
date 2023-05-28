@@ -90,7 +90,7 @@ public class BooksController extends DatabaseConfig {
         }
     }
 
-    public static boolean validateStock(int idBuku) {
+    public static boolean validateStok(int idBuku) {
         connection();
         query = "SELECT stok FROM buku WHERE id=?";
         try {
@@ -99,13 +99,14 @@ public class BooksController extends DatabaseConfig {
 
             try (ResultSet validateResult = preparedStatement.executeQuery()) {
                 if (validateResult.next()) {
-                    if (validateResult.getInt("stok") <= 0) {
-                        return false;
+                    if (validateResult.getInt("stok") > 0) {
+                        return true;
                     }
                 }
             }
         } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return true;
+        return false;
     }
 }
