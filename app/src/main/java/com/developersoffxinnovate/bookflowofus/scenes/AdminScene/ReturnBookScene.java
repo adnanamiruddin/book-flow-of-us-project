@@ -13,9 +13,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ReturnBook extends AbstractScene implements InterfaceSceneProps {
+public class ReturnBookScene extends AbstractScene implements InterfaceSceneProps {
 
-    public ReturnBook(Stage stage) {
+    public ReturnBookScene(Stage stage) {
         super(stage);
     }
 
@@ -72,7 +72,7 @@ public class ReturnBook extends AbstractScene implements InterfaceSceneProps {
         });
 
         toReturnBookAdminScene.setOnAction(e -> {
-            ReturnBook returnBook = new ReturnBook(stage);
+            ReturnBookScene returnBook = new ReturnBookScene(stage);
             returnBook.show(user);
         });
 

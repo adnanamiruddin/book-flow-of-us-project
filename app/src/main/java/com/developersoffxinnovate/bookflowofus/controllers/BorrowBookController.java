@@ -31,4 +31,27 @@ public class BorrowBookController extends DatabaseConfig {
         }
         return false; // default ygy
     }
+
+    public static boolean kembalikanBuku(int idPeminjaman, int idMahasiswa, int idBuku) {
+        LocalDate tanggalKembali = LocalDate.now();
+
+        connection();
+        query = "UPDATE peminjaman_buku SET tanggal_kembali=?, status=? WHERE id=?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, tanggalKembali.toString());
+            preparedStatement.setString(2, "kembali");
+            preparedStatement.setInt(3, idPeminjaman);
+
+            int updatedRowsAffected = preparedStatement.executeUpdate();
+            if (updatedRowsAffected > 0) {
+                MahasiswaController.updateJumlahBukuDipinjamMahasiswa(idMahasiswa, -1);
+                BooksController.updateJumlahBukuDipinjam(idBuku, 1);
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

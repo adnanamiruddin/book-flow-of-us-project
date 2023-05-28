@@ -72,7 +72,7 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
         });
 
         toReturnBookAdminScene.setOnAction(e -> {
-            ReturnBook returnBook = new ReturnBook(stage);
+            ReturnBookScene returnBook = new ReturnBookScene(stage);
             returnBook.show(user);
         });
 
