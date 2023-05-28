@@ -4,8 +4,9 @@ import java.util.List;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.BooksController;
-import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceScene;
+import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Book;
+import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,14 +21,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class BooksListScene extends AbstractScene implements InterfaceScene {
+public class BooksListScene extends AbstractScene implements InterfaceSceneProps {
 
     public BooksListScene(Stage stage) {
         super(stage);
     }
 
     @Override
-    public void show() {
+    public void show(String nim) {
         /* ===> INSTANCE AREA START <=== */
         List<Book> booksData = BooksController.getAllBuku();
 
@@ -106,5 +107,26 @@ public class BooksListScene extends AbstractScene implements InterfaceScene {
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
+
+        /* ===> LOGIC AREA <=== */
+        toHomePageScene.setOnAction(e -> {
+            HomePageScene homePageScene = new HomePageScene(stage);
+            homePageScene.show(nim);
+        });
+
+        toBookListScene.setOnAction(e -> {
+            BooksListScene booksListScene = new BooksListScene(stage);
+            booksListScene.show(nim);
+        });
+
+        toBorrowBookScene.setOnAction(e -> {
+            BorrowBookScene borrowBookScene = new BorrowBookScene(stage);
+            borrowBookScene.show(nim);
+        });
+
+        logOutButton.setOnAction(e -> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
+        });
     }
 }

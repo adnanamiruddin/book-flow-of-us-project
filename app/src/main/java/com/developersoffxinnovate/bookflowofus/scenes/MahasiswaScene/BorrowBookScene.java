@@ -237,7 +237,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
 
         toBookListScene.setOnAction(e -> {
             BooksListScene booksListScene = new BooksListScene(stage);
-            booksListScene.show();
+            booksListScene.show(nim);
         });
 
         toBorrowBookScene.setOnAction(e -> {
