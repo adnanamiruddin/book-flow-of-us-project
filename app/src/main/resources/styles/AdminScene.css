@@ -13,6 +13,17 @@
   -fx-font-size: 52px;
   -fx-font-weight: bold;
 }
+
+.headerContent {
+  -fx-padding: 15px 0px;
+  -fx-spacing: 5px;
+}
+
+.headerContent > Label {
+  -fx-text-fill: white;
+  -fx-font-size: 52px;
+  -fx-font-weight: bold;
+}
 /* GLOBAL STYLE END */
 
 
@@ -91,7 +102,7 @@
 .containerNavbar {
   -fx-background-color: rgb(71, 0, 71);
   -fx-pref-height: 600px;
-  -fx-spacing: 244px;
+  -fx-spacing: 360px;
 }
 
 .containerNavbar > .containerNavbarMenu {
@@ -115,10 +126,6 @@
   -fx-border-width: 1px;
 }
 
-.containerNavbar > .containerNavbarFooter {
-  -fx-spacing: 2px;
-}
-
 .containerNavbar > .containerNavbarFooter > Button {
   -fx-pref-width: 180px;
   -fx-padding: 12px 0px;
@@ -133,19 +140,7 @@
   -fx-background-color: rgb(255, 0, 0);
   -fx-text-fill: rgb(255, 255, 255) !important;
   -fx-border-width: 1px;
-  -fx-border-color: rgb(114, 5, 56);
-}
-
-.containerNavbar > .containerNavbarFooter > .toContactAdminScene {
-  -fx-background-color: rgb(71, 0, 71);
-}
-
-.containerNavbar > .containerNavbarFooter > .toContactAdminScene:hover {
-  -fx-cursor: hand;
-  -fx-background-color: rgb(255, 0, 255);
-  -fx-text-fill: rgb(255, 255, 255) !important;
-  -fx-border-width: 1px;
-  -fx-border-color: rgb(0, 255, 229);
+  -fx-border-color: rgb(209, 171, 0);
 }
 /* NAVBAR END */
 
@@ -154,21 +149,21 @@
 .containerContent {
   -fx-pref-width: 580px;
   -fx-padding: 50px 0px;
-  -fx-spacing: 40px;
-  -fx-background-color: rgb(228, 228, 228);
+  -fx-spacing: 54px;
+  -fx-background-color: rgb(87, 87, 87);
 }
 
 .containerContent > .containerProfile {
-  -fx-spacing: 20px;
+  -fx-spacing: 24px;
 }
 
 .containerContent > .containerProfile > Label {
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(70, 70, 70);
-  -fx-font-size: 24px;
+  -fx-text-fill: rgb(211, 211, 211);
+  -fx-font-size: 26px;
 }
 
-.containerContent > .containerProfile > .bukuDipinjam {
-  -fx-font-size: 18px;
+.containerContent > .containerProfile > .userNameAdmin {
+  -fx-font-size: 36px;
 }
 /* HOMEPAGE SCENE END */

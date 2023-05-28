@@ -4,10 +4,10 @@ import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Admin;
-import com.developersoffxinnovate.bookflowofus.scenes.Navbar;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,10 +26,28 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         /* ===> INSTANCE AREA START <=== */
         Admin admin = AdminController.getAdminByUser(user);
         /* ===> INSTANCE AREA END <=== */
+        
+        /* NAVBAR SECTION START */
+        Button toHomePageScene = new Button("Home");
+        toHomePageScene.getStyleClass().add("toHomePageScene");
+        Button toBookListScene = new Button("Book List");
+        toBookListScene.getStyleClass().add("toBookListScene");
+        Button toBorrowBookScene = new Button("Borrow Book");
+        toBorrowBookScene.getStyleClass().add("toBorrowBookScene");
+        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene);
+        containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
+
+        Button logOutButton = new Button("Log Out");
+        VBox containerNavbarFooter = new VBox(logOutButton);
+        containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
+
+        VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
+        containerNavbar.getStyleClass().add("containerNavbar");
+        /* NAVBAR SECTION END */
 
         Label headerText = new Label("Book Flow of Us");
         VBox containerHeader = new VBox(headerText);
-        containerHeader.getStyleClass().add("header");
+        containerHeader.getStyleClass().add("headerContent");
         containerHeader.setAlignment(Pos.CENTER);
 
         Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
@@ -38,21 +56,17 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         containerBookHomePage.setFitWidth(350);
 
         Label userNameAdmin = new Label(String.format("Welcome %s", admin.getUser()));
+        userNameAdmin.getStyleClass().add("userNameAdmin");
         Label greetingText = new Label("How are you? :D");
-        VBox containerProfile = new VBox(userNameAdmin);
+        VBox containerProfile = new VBox(userNameAdmin, greetingText);
         containerProfile.getStyleClass().add("containerProfile");
         containerProfile.setAlignment(Pos.CENTER);
 
-        // Label namaMahasiswa = new Label(String.format("Welcome %s", mahasiswa.getNama()));
-        // Label prodiMahasiswa = new Label(String.format("===>  %s  <===", mahasiswa.getProdi()));
-        // Label bukuDipinjam = new Label(String.format("Kamu sedang meminjam %d buku", mahasiswa.getBukuDipinjam()));
-        // bukuDipinjam.getStyleClass().add("bukuDipinjam");
-
-        VBox containerContent = new VBox(containerBookHomePage);
+        VBox containerContent = new VBox(containerBookHomePage, containerProfile);
         containerContent.getStyleClass().add("containerContent");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
-        HBox containerMain = new HBox(Navbar.getNavbar(stage, user), containerContent);
+        HBox containerMain = new HBox(containerNavbar, containerContent);
 
         VBox main = new VBox(containerHeader, containerMain);
         main.getStyleClass().add("backgroundApp");
@@ -62,6 +76,8 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
+
+
     }
     
 }
