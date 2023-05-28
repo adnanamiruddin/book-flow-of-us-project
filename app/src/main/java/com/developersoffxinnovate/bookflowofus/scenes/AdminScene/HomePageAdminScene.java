@@ -1,4 +1,4 @@
-package com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene;
+package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
@@ -15,18 +15,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class HomePageScene extends AbstractScene implements InterfaceSceneProps {
+public class HomePageAdminScene extends AbstractScene implements InterfaceSceneProps {
 
-    public HomePageScene(Stage stage) {
+    public HomePageAdminScene(Stage stage) {
         super(stage);
     }
 
     @Override
-    public void show(String nim) {
-        /* ===> INSTANCE AREA START <=== */
-        Mahasiswa mahasiswa = MahasiswaController.getMahasiswaByNim(nim);
-        /* ===> INSTANCE AREA END <=== */
-
+    public void show(String userName) {
         Label headerText = new Label("Book Flow of Us");
         VBox containerHeader = new VBox(headerText);
         containerHeader.getStyleClass().add("header");
@@ -37,19 +33,19 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         containerBookHomePage.setFitHeight(200);
         containerBookHomePage.setFitWidth(350);
 
-        Label namaMahasiswa = new Label(String.format("Welcome %s", mahasiswa.getNama()));
-        Label prodiMahasiswa = new Label(String.format("===>  %s  <===", mahasiswa.getProdi()));
-        Label bukuDipinjam = new Label(String.format("Kamu sedang meminjam %d buku", mahasiswa.getBukuDipinjam()));
-        bukuDipinjam.getStyleClass().add("bukuDipinjam");
-        VBox containerProfile = new VBox(namaMahasiswa, prodiMahasiswa, bukuDipinjam);
-        containerProfile.getStyleClass().add("containerProfile");
-        containerProfile.setAlignment(Pos.CENTER);
+        // Label namaMahasiswa = new Label(String.format("Welcome %s", mahasiswa.getNama()));
+        // Label prodiMahasiswa = new Label(String.format("===>  %s  <===", mahasiswa.getProdi()));
+        // Label bukuDipinjam = new Label(String.format("Kamu sedang meminjam %d buku", mahasiswa.getBukuDipinjam()));
+        // bukuDipinjam.getStyleClass().add("bukuDipinjam");
+        // VBox containerProfile = new VBox(namaMahasiswa, prodiMahasiswa, bukuDipinjam);
+        // containerProfile.getStyleClass().add("containerProfile");
+        // containerProfile.setAlignment(Pos.CENTER);
 
-        VBox containerContent = new VBox(containerBookHomePage, containerProfile);
+        VBox containerContent = new VBox(containerBookHomePage);
         containerContent.getStyleClass().add("containerContent");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
-        HBox containerMain = new HBox(Navbar.getNavbar(stage, nim), containerContent);
+        HBox containerMain = new HBox(Navbar.getNavbar(stage, userName), containerContent);
 
         VBox main = new VBox(containerHeader, containerMain);
         main.getStyleClass().add("backgroundApp");

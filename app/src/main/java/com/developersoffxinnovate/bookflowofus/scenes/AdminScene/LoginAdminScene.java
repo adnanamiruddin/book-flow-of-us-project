@@ -1,6 +1,7 @@
 package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
+import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceScene;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
@@ -70,12 +71,13 @@ public class LoginAdminScene extends AbstractScene implements InterfaceScene {
             try {
                 String user = input1.getText();
                 String password = input2.getText();
-                // if (AdminController.validateLoginAdmin(user, password)) {
-                //     loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
-                //     showAdminHomePageScene(user);
-                // } else {
-                //     loginStatus.setText("Maaf, gagal login");
-                // }
+                if (AdminController.validateLoginAdmin(user, password)) {
+                    loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
+                    HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
+                    homePageAdminScene.show(user);
+                } else {
+                    loginStatus.setText("Maaf, gagal login");
+                }
             } catch (Exception err) {
                 err.printStackTrace();
             }
