@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import com.developersoffxinnovate.bookflowofus.config.DatabaseConfig;
 
 public class BorrowBookController extends DatabaseConfig {
-    public static boolean pinjamBuku(int idMahasiswa, int idBuku) {
+    public static boolean borrowBook(int idMahasiswa, int idBuku) {
         LocalDate tanggalPinjam = LocalDate.now();
         LocalDate tanggalKembali = tanggalPinjam.plusDays(7);
 
@@ -32,7 +32,7 @@ public class BorrowBookController extends DatabaseConfig {
         return false; // default ygy
     }
 
-    public static boolean kembalikanBuku(int idPeminjaman, int idMahasiswa, int idBuku) {
+    public static boolean returnBook(int idPeminjaman, int idMahasiswa, int idBuku) {
         LocalDate tanggalKembali = LocalDate.now();
 
         connection();

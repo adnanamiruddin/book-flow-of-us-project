@@ -142,7 +142,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                 borrowBookStatus.getStyleClass().add("borrowBookStatusLoading");
                 if (MahasiswaController.validatePinjamBuku(mahasiswa.getId())) {
                     if (BooksController.validateStok(idBuku[0])) {
-                        if (BorrowBookController.pinjamBuku(mahasiswa.getId(), idBuku[0])) {
+                        if (BorrowBookController.borrowBook(mahasiswa.getId(), idBuku[0])) {
                             Thread thread1 = new Thread(() -> {
                                 try {
                                     Thread.sleep(2000);
