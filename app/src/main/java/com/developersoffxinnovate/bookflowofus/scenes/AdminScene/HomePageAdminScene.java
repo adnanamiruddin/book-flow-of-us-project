@@ -29,13 +29,13 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         /* ===> INSTANCE AREA END <=== */
 
         /* NAVBAR SECTION START */
-        Button toHomePageScene = new Button("Home");
-        toHomePageScene.getStyleClass().add("toHomePageScene");
-        Button toBookListScene = new Button("Book List");
-        toBookListScene.getStyleClass().add("toBookListScene");
-        Button toBorrowBookScene = new Button("Borrow Book");
-        toBorrowBookScene.getStyleClass().add("toBorrowBookScene");
-        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene);
+        Button toHomePageAdminScene = new Button("Home");
+        toHomePageAdminScene.getStyleClass().add("toHomePageAdminScene");
+        Button toBookListAdminScene = new Button("Book List");
+        toBookListAdminScene.getStyleClass().add("toBookListAdminScene");
+        Button toBorrowBookAdminScene = new Button("Borrow Book");
+        toBorrowBookAdminScene.getStyleClass().add("toBorrowBookAdminScene");
+        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toBorrowBookAdminScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
 
         Button logOutButton = new Button("Log Out");
@@ -79,7 +79,12 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         main.requestFocus();
 
         /* ===> LOGIC AREA <=== */
-        toBookListScene.setOnAction(e -> {
+        toHomePageAdminScene.setOnAction(e -> {
+            HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
+            homePageAdminScene.show(user);
+        });
+
+        toBookListAdminScene.setOnAction(e -> {
             BookListAdminScene bookListAdminScene = new BookListAdminScene(stage);
             bookListAdminScene.show(user);
         });

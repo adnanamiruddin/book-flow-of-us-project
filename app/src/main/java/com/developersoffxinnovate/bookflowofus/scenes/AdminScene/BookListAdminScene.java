@@ -3,6 +3,7 @@ package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.scenes.BookList;
+import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,13 +22,13 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
     @Override
     public void show(String user) {
         /* NAVBAR SECTION START */
-        Button toHomePageScene = new Button("Home");
-        toHomePageScene.getStyleClass().add("toHomePageScene");
-        Button toBookListScene = new Button("Book List");
-        toBookListScene.getStyleClass().add("toBookListScene");
-        Button toBorrowBookScene = new Button("Borrow Book");
-        toBorrowBookScene.getStyleClass().add("toBorrowBookScene");
-        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene);
+        Button toHomePageAdminScene = new Button("Home");
+        toHomePageAdminScene.getStyleClass().add("toHomePageAdminScene");
+        Button toBookListAdminScene = new Button("Book List");
+        toBookListAdminScene.getStyleClass().add("toBookListAdminScene");
+        Button toBorrowBookAdminScene = new Button("Borrow Book");
+        toBorrowBookAdminScene.getStyleClass().add("toBorrowBookAdminScene");
+        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toBorrowBookAdminScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
 
         Button logOutButton = new Button("Log Out");
@@ -43,7 +44,7 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
         containerHeader.getStyleClass().add("headerContent");
         containerHeader.setAlignment(Pos.CENTER);
 
-        Label headerContent = new Label("Library");;
+        Label headerContent = new Label("Library");
         VBox containerContent = new VBox(headerContent, BookList.getBookList());
         containerContent.getStyleClass().add("containerContentBook");
         containerContent.setAlignment(Pos.TOP_CENTER);
@@ -58,6 +59,22 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
+
+        /* ===> LOGIC AREA <=== */
+        toHomePageAdminScene.setOnAction(e -> {
+            HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
+            homePageAdminScene.show(user);
+        });
+
+        toBookListAdminScene.setOnAction(e -> {
+            BookListAdminScene bookListAdminScene = new BookListAdminScene(stage);
+            bookListAdminScene.show(user);
+        });
+
+        logOutButton.setOnAction(e -> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
+        });
     }
     
 }
