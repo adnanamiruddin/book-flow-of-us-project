@@ -16,7 +16,6 @@
 
 .headerContent {
   -fx-padding: 15px 0px;
-  -fx-spacing: 5px;
 }
 
 .headerContent > Label {
