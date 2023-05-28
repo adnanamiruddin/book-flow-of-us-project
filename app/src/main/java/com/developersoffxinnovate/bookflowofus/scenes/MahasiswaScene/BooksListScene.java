@@ -4,16 +4,14 @@ import java.util.List;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.BooksController;
-import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
-import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
+import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceScene;
 import com.developersoffxinnovate.bookflowofus.models.Book;
-import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
-import com.developersoffxinnovate.bookflowofus.scenes.Navbar;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,16 +20,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class BooksListScene extends AbstractScene implements InterfaceSceneProps {
+public class BooksListScene extends AbstractScene implements InterfaceScene {
 
     public BooksListScene(Stage stage) {
         super(stage);
     }
 
     @Override
-    public void show(String nim) {
+    public void show() {
         /* ===> INSTANCE AREA START <=== */
-        Mahasiswa mahasiswa = MahasiswaController.getMahasiswaByNim(nim);
         List<Book> booksData = BooksController.getAllBuku();
 
         ObservableList<Book> books = FXCollections.observableArrayList();
@@ -67,6 +64,28 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         tableBook.setItems(books);
         /* ===> INSTANCE AREA END <=== */
 
+        /* NAVBAR SECTION START */
+        Button toHomePageScene = new Button("Home");
+        toHomePageScene.getStyleClass().add("toHomePageScene");
+        Button toBookListScene = new Button("Book List");
+        toBookListScene.getStyleClass().add("toBookListScene");
+        Button toBorrowBookScene = new Button("Borrow Book");
+        toBorrowBookScene.getStyleClass().add("toBorrowBookScene");
+        Button toRateBookScene = new Button("History");
+        toRateBookScene.getStyleClass().add("toContactAdminScene");
+        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
+        containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
+
+        Button logOutButton = new Button("Log Out");
+        Button toContactAdminScene = new Button("Contact Admin");
+        toContactAdminScene.getStyleClass().add("toContactAdminScene");
+        VBox containerNavbarFooter = new VBox(toContactAdminScene, logOutButton);
+        containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
+
+        VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
+        containerNavbar.getStyleClass().add("containerNavbar");
+        /* NAVBAR SECTION END */
+
         Label headerText = new Label("Book Flow of Us");
         VBox containerHeader = new VBox(headerText);
         containerHeader.getStyleClass().add("header");
@@ -77,7 +96,7 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         containerContent.getStyleClass().add("containerContentBook");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
-        HBox containerMain = new HBox(Navbar.getNavbar(stage, mahasiswa.getNim()), containerContent);
+        HBox containerMain = new HBox(containerNavbar, containerContent);
 
         VBox main = new VBox(containerHeader, containerMain);
         main.getStyleClass().add("backgroundApp");

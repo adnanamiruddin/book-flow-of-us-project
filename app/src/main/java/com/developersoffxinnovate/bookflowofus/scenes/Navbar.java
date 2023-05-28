@@ -43,7 +43,7 @@ public class Navbar {
 
         toBookListScene.setOnAction(e -> {
             BooksListScene booksListScene = new BooksListScene(stage);
-            booksListScene.show(nim);
+            booksListScene.show();
         });
 
         toBorrowBookScene.setOnAction(e -> {

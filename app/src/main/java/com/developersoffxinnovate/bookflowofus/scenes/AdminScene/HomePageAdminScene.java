@@ -82,7 +82,7 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         /* ===> LOGIC AREA <=== */
         toBookListScene.setOnAction(e -> {
             BooksListScene booksListScene = new BooksListScene(stage);
-            booksListScene.show(user);
+            booksListScene.show();
         });
 
         logOutButton.setOnAction(e -> {
