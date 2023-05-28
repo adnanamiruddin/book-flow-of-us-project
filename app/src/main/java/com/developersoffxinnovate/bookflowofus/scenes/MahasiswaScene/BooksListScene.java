@@ -20,7 +20,7 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
     }
 
     @Override
-    public void show(String user) {
+    public void show(String nim) {
         /* NAVBAR SECTION START */
         Button toHomePageScene = new Button("Home");
         toHomePageScene.getStyleClass().add("toHomePageScene");
@@ -67,17 +67,17 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         /* ===> LOGIC AREA <=== */
         toHomePageScene.setOnAction(e -> {
             HomePageScene homePageScene = new HomePageScene(stage);
-            homePageScene.show(user);
+            homePageScene.show(nim);
         });
 
         toBookListScene.setOnAction(e -> {
             BooksListScene booksListScene = new BooksListScene(stage);
-            booksListScene.show(user);
+            booksListScene.show(nim);
         });
 
         toBorrowBookScene.setOnAction(e -> {
             BorrowBookScene borrowBookScene = new BorrowBookScene(stage);
-            borrowBookScene.show(user);
+            borrowBookScene.show(nim);
         });
 
         logOutButton.setOnAction(e -> {

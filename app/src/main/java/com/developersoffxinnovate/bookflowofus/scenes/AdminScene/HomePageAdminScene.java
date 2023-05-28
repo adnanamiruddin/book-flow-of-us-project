@@ -4,7 +4,6 @@ import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Admin;
-import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.BooksListScene;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.geometry.Pos;
@@ -28,7 +27,7 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         /* ===> INSTANCE AREA START <=== */
         Admin admin = AdminController.getAdminByUser(user);
         /* ===> INSTANCE AREA END <=== */
-        
+
         /* NAVBAR SECTION START */
         Button toHomePageScene = new Button("Home");
         toHomePageScene.getStyleClass().add("toHomePageScene");
@@ -81,8 +80,8 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
 
         /* ===> LOGIC AREA <=== */
         toBookListScene.setOnAction(e -> {
-            // BooksListScene booksListScene = new BooksListScene(stage);
-            // booksListScene.show(user);
+            BookListAdminScene bookListAdminScene = new BookListAdminScene(stage);
+            bookListAdminScene.show(user);
         });
 
         logOutButton.setOnAction(e -> {
