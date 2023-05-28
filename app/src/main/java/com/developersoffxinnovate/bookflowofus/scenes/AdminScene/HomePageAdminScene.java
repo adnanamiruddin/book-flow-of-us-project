@@ -51,7 +51,7 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 750, 700);
-        scene.getStylesheets().add(getClass().getResource("/styles/MahasiswaScene.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/AdminScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
         main.requestFocus();

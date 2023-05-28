@@ -58,7 +58,7 @@ public class LoginAdminScene extends AbstractScene implements InterfaceScene {
         containerButtons.setSpacing(10);
 
         VBox main = new VBox(containerHeader, containerInputs, containerButtons);
-        main.getStyleClass().add("backgroundLoginAdmin");
+        main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 750, 700);
         scene.getStylesheets().add(getClass().getResource("/styles/AdminScene.css").toExternalForm());
