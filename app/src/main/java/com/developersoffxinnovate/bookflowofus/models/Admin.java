@@ -1,7 +1,6 @@
 package com.developersoffxinnovate.bookflowofus.models;
 
 public class Admin extends Model {
-    private int id;
     private String user;
     private String password;
 
@@ -9,13 +8,6 @@ public class Admin extends Model {
         super(id);
         this.user = user;
         this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getUser() {
