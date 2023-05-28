@@ -4,7 +4,7 @@ import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
-import com.developersoffxinnovate.bookflowofus.scenes.Navbar;
+import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -63,7 +63,9 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         Label namaMahasiswa = new Label(String.format("Hi %s", mahasiswa.getNama()));
         Label prodiMahasiswa = new Label(String.format("===>  %s  <===", mahasiswa.getProdi()));
         // Singular dan plural dalam aturan Bahasa Inggris
-        Label bukuDipinjam = new Label(mahasiswa.getBukuDipinjam() > 1 ? String.format("You are borrowing %d books", mahasiswa.getBukuDipinjam()) : String.format("You are borrowing %d book", mahasiswa.getBukuDipinjam()));
+        Label bukuDipinjam = new Label(mahasiswa.getBukuDipinjam() > 1
+                ? String.format("You are borrowing %d books", mahasiswa.getBukuDipinjam())
+                : String.format("You are borrowing %d book", mahasiswa.getBukuDipinjam()));
         bukuDipinjam.getStyleClass().add("bukuDipinjam");
         VBox containerProfile = new VBox(namaMahasiswa, prodiMahasiswa, bukuDipinjam);
         containerProfile.getStyleClass().add("containerProfile");
@@ -83,6 +85,27 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
+
+        /* ===> LOGIC AREA <=== */
+        toHomePageScene.setOnAction(e -> {
+            HomePageScene homePageScene = new HomePageScene(stage);
+            homePageScene.show(nim);
+        });
+
+        toBookListScene.setOnAction(e -> {
+            BooksListScene booksListScene = new BooksListScene(stage);
+            booksListScene.show();
+        });
+
+        toBorrowBookScene.setOnAction(e -> {
+            BorrowBookScene borrowBookScene = new BorrowBookScene(stage);
+            borrowBookScene.show(nim);
+        });
+
+        logOutButton.setOnAction(e -> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
+        });
     }
-    
+
 }

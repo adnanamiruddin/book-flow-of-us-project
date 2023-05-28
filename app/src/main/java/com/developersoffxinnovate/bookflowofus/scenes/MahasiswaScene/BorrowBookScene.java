@@ -9,7 +9,7 @@ import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Book;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
-import com.developersoffxinnovate.bookflowofus.scenes.Navbar;
+import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -227,14 +227,27 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                 borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                 bookChoice.setText("null");
                 bookChoice.getStyleClass().add("bookChoiceFailed");
-                // try {
-                //     Thread.sleep(1000);
-                //     HomePageScene homePageScene = new HomePageScene(stage);
-                //     homePageScene.show(nim);
-                // } catch (InterruptedException err) {
-                //     err.printStackTrace();
-                // }
             }
+        });
+
+        toHomePageScene.setOnAction(e -> {
+            HomePageScene homePageScene = new HomePageScene(stage);
+            homePageScene.show(nim);
+        });
+
+        toBookListScene.setOnAction(e -> {
+            BooksListScene booksListScene = new BooksListScene(stage);
+            booksListScene.show();
+        });
+
+        toBorrowBookScene.setOnAction(e -> {
+            BorrowBookScene borrowBookScene = new BorrowBookScene(stage);
+            borrowBookScene.show(nim);
+        });
+
+        logOutButton.setOnAction(e -> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
         });
     }
 }
