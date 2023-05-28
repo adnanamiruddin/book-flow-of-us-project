@@ -4,6 +4,7 @@ import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Admin;
+import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.BooksListScene;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.geometry.Pos;
@@ -79,6 +80,11 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         main.requestFocus();
 
         /* ===> LOGIC AREA <=== */
+        toBookListScene.setOnAction(e -> {
+            BooksListScene booksListScene = new BooksListScene(stage);
+            booksListScene.show(user);
+        });
+
         logOutButton.setOnAction(e -> {
             LoginScene loginScene = new LoginScene(stage);
             loginScene.show();
