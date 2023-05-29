@@ -38,9 +38,9 @@ public class BooksController extends DatabaseConfig {
                 String pengarang = resultSet.getString("pengarang");
                 String penerbit = resultSet.getString("penerbit");
                 int tahunTerbit = resultSet.getInt("tahun_terbit");
-                int stocks = resultSet.getInt("stok");
+                int stok = resultSet.getInt("stok");
 
-                Book book = new Book(id, judul, pengarang, penerbit, tahunTerbit, stocks);
+                Book book = new Book(id, judul, pengarang, penerbit, tahunTerbit, stok);
                 books.add(book);
             }
         } catch (SQLException e) {
@@ -64,9 +64,9 @@ public class BooksController extends DatabaseConfig {
                     String pengarang = bookResult.getString("pengarang");
                     String penerbit = bookResult.getString("penerbit");
                     int tahunTerbit = bookResult.getInt("tahun_terbit");
-                    int stocks = bookResult.getInt("stocks");
+                    int stok = bookResult.getInt("stok");
 
-                    book = new Book(idBuku, judul, pengarang, penerbit, tahunTerbit, stocks);
+                    book = new Book(idBuku, judul, pengarang, penerbit, tahunTerbit, stok);
                     return book;
                 }
             }

@@ -14,7 +14,6 @@ public class DataPeminjamanBuku extends Model {
         this.tanggalPinjam = tanggalPinjam;
         this.tanggalKembali = tanggalKembali;
         this.status = status;
-
     }
 
     public int getIdMahasiswa() {

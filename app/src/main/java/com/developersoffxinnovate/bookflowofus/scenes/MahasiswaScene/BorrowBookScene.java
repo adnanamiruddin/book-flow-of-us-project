@@ -120,8 +120,8 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         main.requestFocus();
 
         /* ===> LOGIC AREA <=== */
-        final String[] judulBuku = { "" };
-        final int[] idBuku = { -1 };
+        String[] judulBuku = { "" };
+        int[] idBuku = { -1 };
         tableBorrowBook.setOnMouseClicked(e -> {
             Book selectedBook = tableBorrowBook.getSelectionModel().getSelectedItem();
             int idSelectedBook = selectedBook.getId();
