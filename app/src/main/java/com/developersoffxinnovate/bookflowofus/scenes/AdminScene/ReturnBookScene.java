@@ -7,9 +7,10 @@ import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.controllers.BooksController;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
+import com.developersoffxinnovate.bookflowofus.models.Book;
 import com.developersoffxinnovate.bookflowofus.models.DataPeminjamanBuku;
+import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
-import com.developersoffxinnovate.bookflowofus.scenes.helpers.BookList;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -38,7 +39,9 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
 
         ObservableList<DataPeminjamanBuku> listPeminjamanBuku = FXCollections.observableArrayList();
         for (DataPeminjamanBuku peminjamanBuku : dataPeminjamanBuku) {
-            listPeminjamanBuku.add(new DataPeminjamanBuku(peminjamanBuku.getId(), peminjamanBuku.getIdMahasiswa(), peminjamanBuku.getIdBuku(), peminjamanBuku.getTanggalPinjam(), peminjamanBuku.getTanggalKembali(), peminjamanBuku.getStatus()));
+            listPeminjamanBuku.add(new DataPeminjamanBuku(peminjamanBuku.getId(), peminjamanBuku.getIdMahasiswa(),
+                    peminjamanBuku.getIdBuku(), peminjamanBuku.getTanggalPinjam(), peminjamanBuku.getTanggalKembali(),
+                    peminjamanBuku.getStatus()));
         }
 
         TableView<DataPeminjamanBuku> tableDataPeminjamanBuku = new TableView<>();
@@ -98,8 +101,20 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         containerHeader.getStyleClass().add("headerContent");
         containerHeader.setAlignment(Pos.CENTER);
 
-        Label headerContent = new Label("Library");
-        VBox containerContent = new VBox(headerContent, tableDataPeminjamanBuku);
+        Label headerContent = new Label("Book Loan Data");
+
+        Label dataNameChoice = new Label("(Nama)");
+        dataNameChoice.getStyleClass().add("dataNameChoice");
+        Label dataTitleChoice = new Label("(Judul)");
+        dataTitleChoice.getStyleClass().add("dataTitleChoice");
+        Label returnBookStatus = new Label("Status:\nBelum Mengonfirmasi");
+        Button confirmButton = new Button("Konfirmasi\nPengembalian");
+        HBox containerFooterContent = new HBox(dataNameChoice, dataTitleChoice, returnBookStatus, confirmButton);
+        containerFooterContent.getStyleClass().add("containerFooterContent");
+        containerFooterContent.setAlignment(Pos.CENTER);
+        containerFooterContent.setSpacing(10);
+
+        VBox containerContent = new VBox(headerContent, tableDataPeminjamanBuku, containerFooterContent);
         containerContent.getStyleClass().add("containerContentBook");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
@@ -115,9 +130,28 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         main.requestFocus();
 
         /* ===> LOGIC AREA <=== */
-        // Mahasiswa[] mahasiswa = {null};
-        // Book[] book = {null};
-        // int[] idPeminjaman = {-1};
+        Mahasiswa[] mahasiswa = { null };
+        Book[] book = { null };
+        int[] idPeminjaman = { -1 };
+
+        tableDataPeminjamanBuku.setOnMouseClicked(e -> {
+            DataPeminjamanBuku selectedData = tableDataPeminjamanBuku.getSelectionModel().getSelectedItem();
+            mahasiswa[0] = MahasiswaController.getMahasiswaById(selectedData.getIdMahasiswa());
+            book[0] = BooksController.getBookById(selectedData.getIdBuku());
+            idPeminjaman[0] = selectedData.getId();
+            dataNameChoice.setText(mahasiswa[0].getNama());
+            dataTitleChoice.setText(book[0].getJudul());
+        });
+
+        confirmButton.setOnAction(e -> {
+            if (idPeminjaman[0] != -1) {
+                
+            } else {
+                returnBookStatus.setText("Please Choose One Data :)");
+                dataNameChoice.setText("null");
+                dataTitleChoice.setText("null");
+            }
+        });
 
         toHomePageAdminScene.setOnAction(e -> {
             HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
@@ -139,33 +173,32 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
             loginScene.show();
         });
 
-
-
-
-
-
-
         // for (DataPeminjamanBuku peminjamanBuku : dataPeminjamanBuku) {
-        //     Button peminjamanBukuButton = new Button(String.format("%d %s %s", peminjamanBuku.getId(), peminjamanBuku.getTanggalPinjam(), peminjamanBuku.getTanggalKembali()));
-        //     containerDataPeminjamanBuku.getChildren().add(peminjamanBukuButton);
+        // Button peminjamanBukuButton = new Button(String.format("%d %s %s",
+        // peminjamanBuku.getId(), peminjamanBuku.getTanggalPinjam(),
+        // peminjamanBuku.getTanggalKembali()));
+        // containerDataPeminjamanBuku.getChildren().add(peminjamanBukuButton);
 
-        //     peminjamanBukuButton.setOnAction(e -> {
-        //         idPeminjaman[0] = peminjamanBuku.getId();
-        //         pilihan.setText(String.format("%d", peminjamanBuku.getId()));
-        //         mahasiswa[0] = MahasiswaController.getMahasiswaById(peminjamanBuku.getIdMahasiswa());
-        //         book[0] = BooksController.getBukuById(peminjamanBuku.getIdBuku());
-        //         // System.out.println(BooksController.getBukuById(peminjamanBuku.getIdBuku()).getId());
-        //     });
+        // peminjamanBukuButton.setOnAction(e -> {
+        // idPeminjaman[0] = peminjamanBuku.getId();
+        // pilihan.setText(String.format("%d", peminjamanBuku.getId()));
+        // mahasiswa[0] =
+        // MahasiswaController.getMahasiswaById(peminjamanBuku.getIdMahasiswa());
+        // book[0] = BooksController.getBukuById(peminjamanBuku.getIdBuku());
+        // //
+        // System.out.println(BooksController.getBukuById(peminjamanBuku.getIdBuku()).getId());
+        // });
         // }
 
         // Button confirmButton = new Button("Konfirmasi Kembali?");
         // confirmButton.setOnAction(e -> {
-        //     if (BorrowBookController.kembalikanBuku(idPeminjaman[0], mahasiswa[0].getId(), book[0].getId())) {
-        //         statusKembalikanBuku.setText("Berhasil Kembalikan Buku");
-        //     } else {
-        //         statusKembalikanBuku.setText("Gagal Mengajukan Kembali Buku AAOKWAOKWOWK");
-        //     }
+        // if (BorrowBookController.kembalikanBuku(idPeminjaman[0],
+        // mahasiswa[0].getId(), book[0].getId())) {
+        // statusKembalikanBuku.setText("Berhasil Kembalikan Buku");
+        // } else {
+        // statusKembalikanBuku.setText("Gagal Mengajukan Kembali Buku AAOKWAOKWOWK");
+        // }
         // });
     }
-    
+
 }

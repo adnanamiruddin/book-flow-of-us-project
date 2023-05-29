@@ -124,9 +124,8 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         int[] idBuku = { -1 };
         tableBorrowBook.setOnMouseClicked(e -> {
             Book selectedBook = tableBorrowBook.getSelectionModel().getSelectedItem();
-            int idSelectedBook = selectedBook.getId();
             judulBuku[0] = selectedBook.getJudul();
-            idBuku[0] = idSelectedBook;
+            idBuku[0] = selectedBook.getId();
             bookChoice.setText(selectedBook.getJudul());
             bookChoice.getStyleClass().add("bookChoiceSelected");
         });
