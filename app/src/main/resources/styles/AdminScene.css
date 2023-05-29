@@ -294,7 +294,7 @@
 }
 
 .containerFooterContent > .containerDataSelection > Label {
-  -fx-pref-width: 140px;
+  -fx-pref-width: 180px;
   -fx-pref-height: 60px;
   -fx-font-weight: bold;
   -fx-text-fill: rgb(61, 61, 61);
@@ -303,6 +303,10 @@
   -fx-padding: 0px 20px;
   -fx-background-radius: 10px;
   -fx-alignment: CENTER;
+}
+
+.containerFooterContent > .containerDataSelection > .dataTitleSelection {
+  -fx-font-size: 13px;
 }
 
 .containerFooterContent > .containerDataSelection > .dataSelectionLoading {
