@@ -45,7 +45,7 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         tableDataPeminjamanBuku.getStyleClass().add("tableDataPeminjamanBuku");
         TableColumn<DataPeminjamanBuku, Integer> column1 = new TableColumn<>("No.");
         column1.getStyleClass().add("columnReturnNo");
-        TableColumn<DataPeminjamanBuku, String> column2 = new TableColumn<>("Peminjam");
+        TableColumn<DataPeminjamanBuku, String> column2 = new TableColumn<>("NIM Peminjam");
         column2.getStyleClass().add("columnReturnPeminjam");
         TableColumn<DataPeminjamanBuku, String> column3 = new TableColumn<>("Judul Buku");
         column3.getStyleClass().add("columnReturnJudul");
@@ -59,8 +59,8 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         column1.setCellValueFactory(new PropertyValueFactory<>("id"));
         column2.setCellValueFactory(cellData -> {
             int idMahasiswa = cellData.getValue().getIdMahasiswa();
-            String namaMahasiswa = MahasiswaController.getMahasiswaById(idMahasiswa).getNama();
-            return new SimpleStringProperty(namaMahasiswa);
+            String nimMahasiswa = MahasiswaController.getMahasiswaById(idMahasiswa).getNim();
+            return new SimpleStringProperty(nimMahasiswa);
         });
         column3.setCellValueFactory(cellData -> {
             int idBuku = cellData.getValue().getIdBuku();

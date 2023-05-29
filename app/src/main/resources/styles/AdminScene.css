@@ -236,3 +236,25 @@
   -fx-font-size: 11px;
 }
 /* BOOK LIST ADMIN SCENE END */
+
+/* RETURN BOOK SCENE START */
+.tableDataPeminjamanBuku {
+  -fx-background-color: white;
+  -fx-font-size: 12px;
+}
+
+.columnReturnNo {
+  -fx-pref-width: 37px;
+}
+.columnReturnPeminjam {
+  -fx-pref-width: 110px;
+}
+.columnReturnJudul {
+  -fx-pref-width: 200px;
+}
+.columnReturnTP,
+.columnReturnTK,
+.columnReturnStatus {
+  -fx-pref-width: 75px;
+}
+/* RETURN BOOK SCENE END */

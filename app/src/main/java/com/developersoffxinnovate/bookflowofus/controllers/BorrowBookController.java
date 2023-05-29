@@ -18,7 +18,7 @@ public class BorrowBookController extends DatabaseConfig {
             preparedStatement.setInt(2, idBuku);
             preparedStatement.setString(3, tanggalPinjam.toString());
             preparedStatement.setString(4, tanggalKembali.toString());
-            preparedStatement.setString(5, "pinjam");
+            preparedStatement.setString(5, "Pinjam");
 
             int updatedRowsAffected = preparedStatement.executeUpdate();
             if (updatedRowsAffected > 0) {
@@ -40,7 +40,7 @@ public class BorrowBookController extends DatabaseConfig {
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, tanggalKembali.toString());
-            preparedStatement.setString(2, "kembali");
+            preparedStatement.setString(2, "Kembali");
             preparedStatement.setInt(3, idPeminjaman);
 
             int updatedRowsAffected = preparedStatement.executeUpdate();
