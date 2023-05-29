@@ -2,9 +2,12 @@ package com.developersoffxinnovate.bookflowofus.controllers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.developersoffxinnovate.bookflowofus.config.DatabaseConfig;
 import com.developersoffxinnovate.bookflowofus.models.Admin;
+import com.developersoffxinnovate.bookflowofus.models.DataPeminjamanBuku;
 
 public class AdminController extends DatabaseConfig {
 
@@ -47,5 +50,30 @@ public class AdminController extends DatabaseConfig {
             e.printStackTrace();
         }
         return admin;
+    }
+
+    public static List<DataPeminjamanBuku> getDataPeminjamanBuku() {
+        List<DataPeminjamanBuku> dataPeminjamanBuku = new ArrayList<>();
+        connection();
+        query = "SELECT * FROM peminjaman_buku";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int idMahasiswa = resultSet.getInt("id_mahasiswa");
+                int idBuku = resultSet.getInt("id_buku");
+                String tanggalPinjam = resultSet.getString("tanggal_pinjam");
+                String tanggalKembali = resultSet.getString("tanggal_kembali");
+                String status = resultSet.getString("status");
+
+                DataPeminjamanBuku peminjamanBuku = new DataPeminjamanBuku(id, idMahasiswa, idBuku, tanggalPinjam, tanggalKembali, status);
+                dataPeminjamanBuku.add(peminjamanBuku);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dataPeminjamanBuku;
     }
 }
