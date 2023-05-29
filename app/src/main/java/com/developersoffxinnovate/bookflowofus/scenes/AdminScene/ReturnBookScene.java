@@ -5,6 +5,7 @@ import java.util.List;
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.controllers.BooksController;
+import com.developersoffxinnovate.bookflowofus.controllers.BorrowBookController;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Book;
@@ -12,6 +13,7 @@ import com.developersoffxinnovate.bookflowofus.models.DataPeminjamanBuku;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -103,16 +105,19 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
 
         Label headerContent = new Label("Book Loan Data");
 
-        Label dataNameChoice = new Label("(Nama)");
-        dataNameChoice.getStyleClass().add("dataNameChoice");
-        Label dataTitleChoice = new Label("(Judul)");
-        dataTitleChoice.getStyleClass().add("dataTitleChoice");
-        Label returnBookStatus = new Label("Status:\nBelum Mengonfirmasi");
+        Label dataNameSelection = new Label("(Nama)");
+        dataNameSelection.getStyleClass().add("dataNameSelection");
+        Label dataTitleSelection = new Label("(Judul)");
+        dataTitleSelection.getStyleClass().add("dataTitleSelection");
+        VBox containerDataSelection = new VBox(dataNameSelection, dataTitleSelection);
+        containerDataSelection.getStyleClass().add("containerDataSelection");
+
+        Label returnBookStatus = new Label("Status:\n\nBelum Mengonfirmasi");
+        // returnBookStatus.setWrapText(true);
         Button confirmButton = new Button("Konfirmasi\nPengembalian");
-        HBox containerFooterContent = new HBox(dataNameChoice, dataTitleChoice, returnBookStatus, confirmButton);
+        HBox containerFooterContent = new HBox(containerDataSelection, returnBookStatus, confirmButton);
         containerFooterContent.getStyleClass().add("containerFooterContent");
         containerFooterContent.setAlignment(Pos.CENTER);
-        containerFooterContent.setSpacing(10);
 
         VBox containerContent = new VBox(headerContent, tableDataPeminjamanBuku, containerFooterContent);
         containerContent.getStyleClass().add("containerContentBook");
@@ -139,17 +144,80 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
             mahasiswa[0] = MahasiswaController.getMahasiswaById(selectedData.getIdMahasiswa());
             book[0] = BooksController.getBookById(selectedData.getIdBuku());
             idPeminjaman[0] = selectedData.getId();
-            dataNameChoice.setText(mahasiswa[0].getNama());
-            dataTitleChoice.setText(book[0].getJudul());
+            dataNameSelection.setText(mahasiswa[0].getNama());
+            dataTitleSelection.setText(book[0].getJudul());
         });
 
         confirmButton.setOnAction(e -> {
             if (idPeminjaman[0] != -1) {
-                
+                confirmButton.setDisable(true);
+                dataNameSelection.setText("Loading...");
+                dataNameSelection.getStyleClass().add("dataSelectionLoading");
+                dataTitleSelection.setText("Loading...");
+                dataTitleSelection.getStyleClass().add("dataSelectionLoading");
+                returnBookStatus.setText("Loading...");
+                returnBookStatus.getStyleClass().add("returnBookStatusLoading");
+                if (BorrowBookController.returnBook(idPeminjaman[0], mahasiswa[0].getId(), book[0].getId())) {
+                    Thread thread1 = new Thread(() -> {
+                        try {
+                            Thread.sleep(2000);
+                            Platform.runLater(() -> {
+                                listPeminjamanBuku.clear();
+                                tableDataPeminjamanBuku.setDisable(true);
+                            });
+                        } catch (InterruptedException err) {
+                            err.printStackTrace();
+                        }
+                    });
+                    Thread thread2 = new Thread(() -> {
+                        try {
+                            thread1.join();
+                            Thread.sleep(500);
+                            Platform.runLater(() -> {
+                                dataNameSelection.setText(mahasiswa[0].getNama());
+                                dataTitleSelection.setText(book[0].getJudul());
+                                returnBookStatus.setText("Successful Confirm!");
+                                listPeminjamanBuku.setAll(AdminController.getDataPeminjamanBuku());
+                            });
+                        } catch (InterruptedException err) {
+                            err.printStackTrace();
+                        }
+                    });
+                    Thread thread3 = new Thread(() -> {
+                        try {
+                            thread2.join();
+                            Thread.sleep(3000);
+                            Platform.runLater(() -> {
+                                tableDataPeminjamanBuku.setDisable(false);
+                                dataNameSelection.setText("Thank You");
+                                dataTitleSelection.setText("For Confirming");
+                                returnBookStatus.setText("Redirecting to Home...");
+                            });
+                        } catch (InterruptedException err) {
+                            err.printStackTrace();
+                        }
+                    });
+                    Thread thread4 = new Thread(() -> {
+                        try {
+                            thread3.join();
+                            Thread.sleep(3000);
+                            Platform.runLater(() -> {
+                                HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
+                                homePageAdminScene.show(user);
+                            });
+                        } catch (InterruptedException err) {
+                            err.printStackTrace();
+                        }
+                    });
+                    thread1.start();
+                    thread2.start();
+                    thread3.start();
+                    thread4.start();
+                }
             } else {
                 returnBookStatus.setText("Please Choose One Data :)");
-                dataNameChoice.setText("null");
-                dataTitleChoice.setText("null");
+                dataNameSelection.setText("null");
+                dataTitleSelection.setText("null");
             }
         });
 
