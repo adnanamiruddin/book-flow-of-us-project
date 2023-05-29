@@ -137,12 +137,14 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         /* ===> LOGIC AREA <=== */
         Mahasiswa[] mahasiswa = { null };
         Book[] book = { null };
+        DataPeminjamanBuku[] dataPeminjaman = { null };
         int[] idPeminjaman = { -1 };
 
         tableDataPeminjamanBuku.setOnMouseClicked(e -> {
             DataPeminjamanBuku selectedData = tableDataPeminjamanBuku.getSelectionModel().getSelectedItem();
             mahasiswa[0] = MahasiswaController.getMahasiswaById(selectedData.getIdMahasiswa());
             book[0] = BooksController.getBookById(selectedData.getIdBuku());
+            dataPeminjaman[0] = AdminController.getDataPeminjamanBukuById(selectedData.getId());
             idPeminjaman[0] = selectedData.getId();
             dataNameSelection.setText(mahasiswa[0].getNama());
             dataTitleSelection.setText(book[0].getJudul());
@@ -150,69 +152,79 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
 
         confirmButton.setOnAction(e -> {
             if (idPeminjaman[0] != -1) {
-                confirmButton.setDisable(true);
-                dataNameSelection.setText("Loading...");
-                dataNameSelection.getStyleClass().add("dataSelectionLoading");
-                dataTitleSelection.setText("Loading...");
-                dataTitleSelection.getStyleClass().add("dataSelectionLoading");
-                returnBookStatus.setText("Loading...");
-                returnBookStatus.getStyleClass().add("returnBookStatusLoading");
-                if (BorrowBookController.returnBook(idPeminjaman[0], mahasiswa[0].getId(), book[0].getId())) {
-                    Thread thread1 = new Thread(() -> {
-                        try {
-                            Thread.sleep(2000);
-                            Platform.runLater(() -> {
-                                listPeminjamanBuku.clear();
-                                tableDataPeminjamanBuku.setDisable(true);
-                            });
-                        } catch (InterruptedException err) {
-                            err.printStackTrace();
-                        }
-                    });
-                    Thread thread2 = new Thread(() -> {
-                        try {
-                            thread1.join();
-                            Thread.sleep(500);
-                            Platform.runLater(() -> {
-                                dataNameSelection.setText(mahasiswa[0].getNama());
-                                dataTitleSelection.setText(book[0].getJudul());
-                                returnBookStatus.setText("Successful Confirm!");
-                                listPeminjamanBuku.setAll(AdminController.getAllDataPeminjamanBuku());
-                            });
-                        } catch (InterruptedException err) {
-                            err.printStackTrace();
-                        }
-                    });
-                    Thread thread3 = new Thread(() -> {
-                        try {
-                            thread2.join();
-                            Thread.sleep(3000);
-                            Platform.runLater(() -> {
-                                tableDataPeminjamanBuku.setDisable(false);
-                                dataNameSelection.setText("Thank You");
-                                dataTitleSelection.setText("For Confirming");
-                                returnBookStatus.setText("Redirecting to Home...");
-                            });
-                        } catch (InterruptedException err) {
-                            err.printStackTrace();
-                        }
-                    });
-                    Thread thread4 = new Thread(() -> {
-                        try {
-                            thread3.join();
-                            Thread.sleep(3000);
-                            Platform.runLater(() -> {
-                                HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
-                                homePageAdminScene.show(user);
-                            });
-                        } catch (InterruptedException err) {
-                            err.printStackTrace();
-                        }
-                    });
-                    thread1.start();
-                    thread2.start();
-                    thread3.start();
-                    thread4.start();
+                if (dataPeminjaman[0].getStatus().equals("Kembali")) {
+                    dataNameSelection.setText("null");
+                    dataNameSelection.getStyleClass().add("dataSelectionFailed");
+                    dataTitleSelection.setText("null");
+                    dataTitleSelection.getStyleClass().add("dataSelectionFailed");
+                    returnBookStatus.setText("Book Has Been Returned");
+                    returnBookStatus.getStyleClass().add("returnBookStatusFailed");
+                } else {
+                    confirmButton.setDisable(true);
+                    dataNameSelection.setText("Loading...");
+                    dataNameSelection.getStyleClass().add("dataSelectionLoading");
+                    dataTitleSelection.setText("Loading...");
+                    dataTitleSelection.getStyleClass().add("dataSelectionLoading");
+                    returnBookStatus.setText("Loading...");
+                    returnBookStatus.getStyleClass().add("returnBookStatusLoading");
+                    if (BorrowBookController.returnBook(dataPeminjaman[0].getId(), mahasiswa[0].getId(),
+                            book[0].getId())) {
+                        Thread thread1 = new Thread(() -> {
+                            try {
+                                Thread.sleep(2000);
+                                Platform.runLater(() -> {
+                                    listPeminjamanBuku.clear();
+                                    tableDataPeminjamanBuku.setDisable(true);
+                                });
+                            } catch (InterruptedException err) {
+                                err.printStackTrace();
+                            }
+                        });
+                        Thread thread2 = new Thread(() -> {
+                            try {
+                                thread1.join();
+                                Thread.sleep(500);
+                                Platform.runLater(() -> {
+                                    dataNameSelection.setText(mahasiswa[0].getNama());
+                                    dataTitleSelection.setText(book[0].getJudul());
+                                    returnBookStatus.setText("Successful Confirm!");
+                                    listPeminjamanBuku.setAll(AdminController.getAllDataPeminjamanBuku());
+                                });
+                            } catch (InterruptedException err) {
+                                err.printStackTrace();
+                            }
+                        });
+                        Thread thread3 = new Thread(() -> {
+                            try {
+                                thread2.join();
+                                Thread.sleep(3000);
+                                Platform.runLater(() -> {
+                                    tableDataPeminjamanBuku.setDisable(false);
+                                    dataNameSelection.setText("Thank You");
+                                    dataTitleSelection.setText("For Confirming");
+                                    returnBookStatus.setText("Redirecting to Home...");
+                                });
+                            } catch (InterruptedException err) {
+                                err.printStackTrace();
+                            }
+                        });
+                        Thread thread4 = new Thread(() -> {
+                            try {
+                                thread3.join();
+                                Thread.sleep(3000);
+                                Platform.runLater(() -> {
+                                    HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
+                                    homePageAdminScene.show(user);
+                                });
+                            } catch (InterruptedException err) {
+                                err.printStackTrace();
+                            }
+                        });
+                        thread1.start();
+                        thread2.start();
+                        thread3.start();
+                        thread4.start();
+                    }
                 }
             } else {
                 dataNameSelection.setText("null");
