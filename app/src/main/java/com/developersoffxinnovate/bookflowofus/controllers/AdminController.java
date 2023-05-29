@@ -52,7 +52,7 @@ public class AdminController extends DatabaseConfig {
         return admin;
     }
 
-    public static List<DataPeminjamanBuku> getDataPeminjamanBuku() {
+    public static List<DataPeminjamanBuku> getAllDataPeminjamanBuku() {
         List<DataPeminjamanBuku> dataPeminjamanBuku = new ArrayList<>();
         connection();
         query = "SELECT * FROM peminjaman_buku";
@@ -70,6 +70,32 @@ public class AdminController extends DatabaseConfig {
 
                 DataPeminjamanBuku peminjamanBuku = new DataPeminjamanBuku(id, idMahasiswa, idBuku, tanggalPinjam, tanggalKembali, status);
                 dataPeminjamanBuku.add(peminjamanBuku);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dataPeminjamanBuku;
+    }
+
+    public static DataPeminjamanBuku getDataPeminjamanBukuById(int id) {
+        DataPeminjamanBuku dataPeminjamanBuku = null;
+        connection();
+        query = "SELECT * FROM peminjaman_buku WHERE id=?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, id);
+
+            try (ResultSet dataResult = preparedStatement.executeQuery()) {
+                while (dataResult.next()) {
+                    int idData = dataResult.getInt("id");
+                    int idMahasiswa = dataResult.getInt("id_mahasiswa");
+                    int idBuku = dataResult.getInt("id_buku");
+                    String tanggalPinjam = dataResult.getString("tanggal_pinjam");
+                    String tanggalKembali = dataResult.getString("tanggal_kembali");
+                    String status = dataResult.getString("status");
+
+                    dataPeminjamanBuku = new DataPeminjamanBuku(idData, idMahasiswa, idBuku, tanggalPinjam, tanggalKembali, status);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

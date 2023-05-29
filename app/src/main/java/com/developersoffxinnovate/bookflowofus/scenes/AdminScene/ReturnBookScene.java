@@ -37,7 +37,7 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
     @Override
     public void show(String user) {
         /* ===> INSTANCE AREA START <=== */
-        List<DataPeminjamanBuku> dataPeminjamanBuku = AdminController.getDataPeminjamanBuku();
+        List<DataPeminjamanBuku> dataPeminjamanBuku = AdminController.getAllDataPeminjamanBuku();
 
         ObservableList<DataPeminjamanBuku> listPeminjamanBuku = FXCollections.observableArrayList();
         for (DataPeminjamanBuku peminjamanBuku : dataPeminjamanBuku) {
@@ -177,7 +177,7 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
                                 dataNameSelection.setText(mahasiswa[0].getNama());
                                 dataTitleSelection.setText(book[0].getJudul());
                                 returnBookStatus.setText("Successful Confirm!");
-                                listPeminjamanBuku.setAll(AdminController.getDataPeminjamanBuku());
+                                listPeminjamanBuku.setAll(AdminController.getAllDataPeminjamanBuku());
                             });
                         } catch (InterruptedException err) {
                             err.printStackTrace();
