@@ -147,7 +147,7 @@
   -fx-pref-width: 580px;
   -fx-padding: 50px 0px;
   -fx-spacing: 54px;
-  -fx-background-color: rgb(87, 87, 87);
+  -fx-background-color: rgb(211, 211, 211);
 }
 
 .containerContent > .containerProfile {
@@ -156,7 +156,7 @@
 
 .containerContent > .containerProfile > Label {
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(211, 211, 211);
+  -fx-text-fill: rgb(70, 70, 70);
   -fx-font-size: 26px;
 }
 
@@ -260,7 +260,7 @@
 
 .containerFooterContent {
   -fx-padding: 10px 0px;
-  -fx-spacing: 40px;
+  -fx-spacing: 20px;
 }
 
 .containerFooterContent > Label {
@@ -268,7 +268,7 @@
   -fx-pref-height: 140px;
   -fx-font-weight: bold;
   -fx-text-fill: rgb(61, 61, 61);
-  -fx-font-size: 15px;
+  -fx-font-size: 16px;
   -fx-background-color: rgb(219, 188, 10);
   -fx-padding: 0px 20px;
   -fx-background-radius: 10px;
@@ -280,13 +280,21 @@
 .containerFooterContent > .returnBookStatusLoading {
   -fx-background-color: rgb(49, 49, 49);
   -fx-text-fill: rgb(255, 255, 255);
-  -fx-font-size: 15px;
 }
 
 .containerFooterContent > .returnBookStatusFailed {
   -fx-background-color: rgb(185, 10, 10);
   -fx-text-fill: rgb(255, 255, 255);
-  -fx-font-size: 15px;
+}
+
+.containerFooterContent > .returnBookStatusSuccess {
+  -fx-background-color: rgb(41, 182, 6);
+  -fx-text-fill: rgb(255, 255, 255);
+}
+
+.containerFooterContent > .returnBookStatusReturn {
+  -fx-background-color: rgb(219, 188, 10);
+  -fx-text-fill: rgb(255, 255, 255);
 }
 
 .containerFooterContent > .containerDataSelection {
@@ -300,24 +308,55 @@
   -fx-text-fill: rgb(61, 61, 61);
   -fx-font-size: 14px;
   -fx-background-color: rgb(212, 183, 13);
-  -fx-padding: 0px 20px;
+  -fx-padding: 6px 10px;
   -fx-background-radius: 10px;
   -fx-alignment: CENTER;
-}
-
-.containerFooterContent > .containerDataSelection > .dataTitleSelection {
-  -fx-font-size: 13px;
+  -fx-text-alignment: CENTER;
+  -fx-wrap-text: true;
 }
 
 .containerFooterContent > .containerDataSelection > .dataSelectionLoading {
   -fx-background-color: rgb(36, 36, 36);
   -fx-text-fill: rgb(255, 255, 255);
-  -fx-font-size: 14px;
 }
 
 .containerFooterContent > .containerDataSelection > .dataSelectionFailed {
   -fx-background-color: rgb(206, 10, 10);
+  -fx-text-fill: rgb(231, 231, 231);
+}
+
+.containerFooterContent > .containerDataSelection > .dataNameSelectionSelected {
+  -fx-background-color: rgb(32, 151, 2);
   -fx-text-fill: rgb(255, 255, 255);
-  -fx-font-size: 14px;
+}
+
+.containerFooterContent > .containerDataSelection > .dataSelectionReturn {
+  -fx-background-color: rgb(230, 195, 1);
+  -fx-text-fill: rgb(231, 231, 231);
+}
+
+.containerFooterContent > .containerDataSelection > .dataTitleSelectionSelected {
+  -fx-background-color: rgb(2, 79, 151);
+  -fx-text-fill: rgb(255, 255, 255);
+}
+
+.containerFooterContent > Button {
+  -fx-padding: 15px 12px;
+  -fx-background-color: rgb(50, 194, 14);
+  -fx-font-weight: bold;
+  -fx-text-fill: rgb(228, 228, 228);
+  -fx-font-size: 15px;
+  -fx-border-color: gold;
+  -fx-border-width: 3px;
+  -fx-border-radius: 12px;
+  -fx-background-radius: 10px;
+  -fx-text-alignment: CENTER;
+}
+
+.containerFooterContent > Button:hover {
+  -fx-cursor: hand;
+  -fx-background-color: rgb(51, 255, 0);
+  -fx-text-fill: rgb(255, 255, 255) !important;
+  -fx-border-color: rgb(255, 251, 0);
 }
 /* RETURN BOOK SCENE END */

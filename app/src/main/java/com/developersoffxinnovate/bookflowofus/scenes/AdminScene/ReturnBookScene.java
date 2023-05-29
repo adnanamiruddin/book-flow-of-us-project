@@ -48,7 +48,7 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
 
         TableView<DataPeminjamanBuku> tableDataPeminjamanBuku = new TableView<>();
         tableDataPeminjamanBuku.getStyleClass().add("tableDataPeminjamanBuku");
-        TableColumn<DataPeminjamanBuku, Integer> column1 = new TableColumn<>("No.");
+        TableColumn<DataPeminjamanBuku, Integer> column1 = new TableColumn<>("ID");
         column1.getStyleClass().add("columnReturnNo");
         TableColumn<DataPeminjamanBuku, String> column2 = new TableColumn<>("NIM Peminjam");
         column2.getStyleClass().add("columnReturnPeminjam");
@@ -145,20 +145,28 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
             book[0] = BooksController.getBookById(selectedData.getIdBuku());
             dataPeminjaman[0] = AdminController.getDataPeminjamanBukuById(selectedData.getId());
             idPeminjaman[0] = selectedData.getId();
+            dataNameSelection.getStyleClass().clear();
+            dataTitleSelection.getStyleClass().clear();
             dataNameSelection.setText(mahasiswa[0].getNama());
+            dataNameSelection.getStyleClass().add("dataNameSelectionSelected");
             dataTitleSelection.setText(book[0].getJudul());
+            dataTitleSelection.getStyleClass().add("dataTitleSelectionSelected");
         });
 
         confirmButton.setOnAction(e -> {
             if (idPeminjaman[0] != -1) {
                 if (dataPeminjaman[0].getStatus().equals("Kembali")) {
-                    dataNameSelection.setText("null");
+                    dataNameSelection.getStyleClass().clear();
+                    dataTitleSelection.getStyleClass().clear();
+                    returnBookStatus.getStyleClass().clear();
                     dataNameSelection.getStyleClass().add("dataSelectionFailed");
-                    dataTitleSelection.setText("null");
                     dataTitleSelection.getStyleClass().add("dataSelectionFailed");
                     returnBookStatus.setText("Book Has Been Returned");
                     returnBookStatus.getStyleClass().add("returnBookStatusFailed");
                 } else {
+                    dataNameSelection.getStyleClass().clear();
+                    dataTitleSelection.getStyleClass().clear();
+                    returnBookStatus.getStyleClass().clear();
                     confirmButton.setDisable(true);
                     dataNameSelection.setText("Loading...");
                     dataNameSelection.getStyleClass().add("dataSelectionLoading");
@@ -184,10 +192,16 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
                                 thread1.join();
                                 Thread.sleep(500);
                                 Platform.runLater(() -> {
-                                    dataNameSelection.setText(mahasiswa[0].getNama());
-                                    dataTitleSelection.setText(book[0].getJudul());
-                                    returnBookStatus.setText("Successful Confirm!");
+                                    dataNameSelection.getStyleClass().clear();
+                                    dataTitleSelection.getStyleClass().clear();
+                                    returnBookStatus.getStyleClass().clear();
                                     listPeminjamanBuku.setAll(AdminController.getAllDataPeminjamanBuku());
+                                    dataNameSelection.setText(mahasiswa[0].getNama());
+                                    dataNameSelection.getStyleClass().add("dataNameSelectionSelected");
+                                    dataTitleSelection.setText(book[0].getJudul());
+                                    dataTitleSelection.getStyleClass().add("dataTitleSelectionSelected");
+                                    returnBookStatus.setText("Successful Confirm!");
+                                    returnBookStatus.getStyleClass().add("returnBookStatusSuccess");
                                 });
                             } catch (InterruptedException err) {
                                 err.printStackTrace();
@@ -198,10 +212,16 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
                                 thread2.join();
                                 Thread.sleep(3000);
                                 Platform.runLater(() -> {
+                                    dataNameSelection.getStyleClass().clear();
+                                    dataTitleSelection.getStyleClass().clear();
+                                    returnBookStatus.getStyleClass().clear();
                                     tableDataPeminjamanBuku.setDisable(false);
                                     dataNameSelection.setText("Thank You");
+                                    dataNameSelection.getStyleClass().add("dataSelectionReturn");
                                     dataTitleSelection.setText("For Confirming");
+                                    dataTitleSelection.getStyleClass().add("dataSelectionReturn");
                                     returnBookStatus.setText("Redirecting to Home...");
+                                    returnBookStatus.getStyleClass().add("returnBookStatusReturn");
                                 });
                             } catch (InterruptedException err) {
                                 err.printStackTrace();
@@ -254,33 +274,5 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
             LoginScene loginScene = new LoginScene(stage);
             loginScene.show();
         });
-
-        // for (DataPeminjamanBuku peminjamanBuku : dataPeminjamanBuku) {
-        // Button peminjamanBukuButton = new Button(String.format("%d %s %s",
-        // peminjamanBuku.getId(), peminjamanBuku.getTanggalPinjam(),
-        // peminjamanBuku.getTanggalKembali()));
-        // containerDataPeminjamanBuku.getChildren().add(peminjamanBukuButton);
-
-        // peminjamanBukuButton.setOnAction(e -> {
-        // idPeminjaman[0] = peminjamanBuku.getId();
-        // pilihan.setText(String.format("%d", peminjamanBuku.getId()));
-        // mahasiswa[0] =
-        // MahasiswaController.getMahasiswaById(peminjamanBuku.getIdMahasiswa());
-        // book[0] = BooksController.getBukuById(peminjamanBuku.getIdBuku());
-        // //
-        // System.out.println(BooksController.getBukuById(peminjamanBuku.getIdBuku()).getId());
-        // });
-        // }
-
-        // Button confirmButton = new Button("Konfirmasi Kembali?");
-        // confirmButton.setOnAction(e -> {
-        // if (BorrowBookController.kembalikanBuku(idPeminjaman[0],
-        // mahasiswa[0].getId(), book[0].getId())) {
-        // statusKembalikanBuku.setText("Berhasil Kembalikan Buku");
-        // } else {
-        // statusKembalikanBuku.setText("Gagal Mengajukan Kembali Buku AAOKWAOKWOWK");
-        // }
-        // });
     }
-
 }

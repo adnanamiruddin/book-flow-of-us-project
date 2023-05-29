@@ -98,7 +98,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
 
         Label bookSelection = new Label("(My Selection)");
         bookSelection.getStyleClass().add("bookSelection");
-        Label borrowBookStatus = new Label("Status: Belum Pinjam Buku");
+        Label borrowBookStatus = new Label("Status:\nBelum Pinjam Buku");
         Button confirmButton = new Button("Konfirmasi\nPinjaman");
         HBox containerFooterContent = new HBox(bookSelection, borrowBookStatus, confirmButton);
         containerFooterContent.getStyleClass().add("containerFooterContent");
@@ -126,6 +126,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
             Book selectedBook = tableBorrowBook.getSelectionModel().getSelectedItem();
             judulBuku[0] = selectedBook.getJudul();
             idBuku[0] = selectedBook.getId();
+            bookSelection.getStyleClass().clear();
             bookSelection.setText(selectedBook.getJudul());
             bookSelection.getStyleClass().add("bookSelectionSelected");
         });
@@ -158,12 +159,13 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                                     thread1.join();
                                     Thread.sleep(500);
                                     Platform.runLater(() -> {
-                                        bookSelection.setText(judulBuku[0]);
                                         bookSelection.getStyleClass().clear();
+                                        borrowBookStatus.getStyleClass().clear();
+                                        books.setAll(BooksController.getAllBuku());
+                                        bookSelection.setText(judulBuku[0]);
                                         bookSelection.getStyleClass().add("bookSelectionSelected");
                                         borrowBookStatus.setText("Success Borrow Book!");
                                         borrowBookStatus.getStyleClass().add("borrowBookStatusSuccess");
-                                        books.setAll(BooksController.getAllBuku());
                                     });
                                 } catch (InterruptedException err) {
                                     err.printStackTrace();
@@ -174,6 +176,8 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                                     thread2.join();
                                     Thread.sleep(3000);
                                     Platform.runLater(() -> {
+                                        bookSelection.getStyleClass().clear();
+                                        borrowBookStatus.getStyleClass().clear();
                                         tableBorrowBook.setDisable(false);
                                         bookSelection.setText("Happy Reading :D");
                                         bookSelection.getStyleClass().add("bookSelectionReturn");
@@ -213,13 +217,13 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                         bookSelection.getStyleClass().add("bookSelectionFailed");
                     }
                 } else {
-                    borrowBookStatus.setText("Exceeding The Loan Limit");
+                    borrowBookStatus.setText("Exceeding The\nLoan Limit");
                     borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                     bookSelection.setText(judulBuku[0]);
                     bookSelection.getStyleClass().add("bookSelectionFailed");
                 }
             } else {
-                borrowBookStatus.setText("Please Choose One Book :)");
+                borrowBookStatus.setText("Please Choose\nOne Book :)");
                 borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                 bookSelection.setText("null");
                 bookSelection.getStyleClass().add("bookSelectionFailed");
