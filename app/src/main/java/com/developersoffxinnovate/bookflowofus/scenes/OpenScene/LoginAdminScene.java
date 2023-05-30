@@ -1,8 +1,8 @@
-package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
+package com.developersoffxinnovate.bookflowofus.scenes.OpenScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
-import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
+import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.HomePageAdminScene;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

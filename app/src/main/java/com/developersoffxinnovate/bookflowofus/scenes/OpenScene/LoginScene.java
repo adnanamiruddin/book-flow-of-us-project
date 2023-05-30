@@ -2,7 +2,6 @@ package com.developersoffxinnovate.bookflowofus.scenes.OpenScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
-import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.LoginAdminScene;
 import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.HomePageScene;
 
 import javafx.geometry.Insets;
