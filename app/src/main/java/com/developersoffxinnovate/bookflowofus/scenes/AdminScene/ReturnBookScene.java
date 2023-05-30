@@ -35,6 +35,9 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
     }
 
     @Override
+    public void show() {}
+
+    @Override
     public void show(String user) {
         /* ===> INSTANCE AREA START <=== */
         List<DataPeminjamanBuku> dataPeminjamanBuku = AdminController.getAllDataPeminjamanBuku();

@@ -20,6 +20,9 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
     }
 
     @Override
+    public void show() {}
+
+    @Override
     public void show(String user) {
         /* NAVBAR SECTION START */
         Button toHomePageAdminScene = new Button("Home");
@@ -81,5 +84,4 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
             loginScene.show();
         });
     }
-    
 }

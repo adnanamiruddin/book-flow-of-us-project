@@ -2,7 +2,6 @@ package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
-import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceScene;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.geometry.Insets;
@@ -17,7 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class LoginAdminScene extends AbstractScene implements InterfaceScene {
+public class LoginAdminScene extends AbstractScene {
 
     public LoginAdminScene(Stage stage) {
         super(stage);

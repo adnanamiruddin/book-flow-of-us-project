@@ -15,10 +15,9 @@
 }
 /* GLOBAL STYLE END */
 
-
 /* LOGIN SCENE START */
 .containerInputs {
-  -fx-padding: 10px 120px 20px;
+  -fx-padding: 10px 120px 18px;
   -fx-spacing: 10px;
 }
 
@@ -28,7 +27,7 @@
   -fx-font-size: 24px;
 }
 
-.containerInputs > TextField, 
+.containerInputs > TextField,
 .containerInputs > PasswordField {
   -fx-background-color: #555555;
   -fx-padding: 10px 20px;
@@ -43,13 +42,9 @@
 }
 
 .containerInputs > .loginStatus {
-  -fx-font-size: 14px;
+  -fx-font-size: 16px;
   -fx-text-fill: lightgreen;
   -fx-padding: 5px 0px 0px;
-}
-
-.containerButtons {
-  -fx-padding: 0px 35px;
 }
 
 .containerButtons > Button {
@@ -103,8 +98,18 @@
 }
 /* LOGIN SCENE END */
 
-
 /* REGISTER SCENE START */
+.headerRegister {
+  -fx-padding: 10px 0px 3px;
+  -fx-spacing: 10px;
+}
+
+.headerRegister > Label {
+  -fx-text-fill: white;
+  -fx-font-size: 52px;
+  -fx-font-weight: bold;
+}
+
 .backgroundRegister {
   -fx-background-color: rgb(73, 30, 0);
 }
@@ -126,7 +131,7 @@
   -fx-font-size: 12px;
 }
 
-.containerInputsRegister > TextField, 
+.containerInputsRegister > TextField,
 .containerInputsRegister > PasswordField {
   -fx-background-color: #8d8d8d;
   -fx-padding: 8px 20px;
@@ -146,7 +151,7 @@
 .containerFooter > Label {
   -fx-font-weight: bold;
   -fx-text-fill: rgb(235, 199, 0);
-  -fx-font-size: 14px;
+  -fx-font-size: 16px;
 }
 
 .containerFooter > Button {
@@ -180,7 +185,6 @@
 }
 /* REGISTER SCENE END */
 
-
 /* .scroll-pane {
   -fx-background-color: transparent;
   -fx-padding: 0;
@@ -194,4 +198,3 @@
 .scroll-pane .scroll-bar:vertical .thumb {
   -fx-background-color: rgb(255, 153, 0);
 } */
-

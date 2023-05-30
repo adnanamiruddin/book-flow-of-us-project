@@ -23,6 +23,9 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
     }
 
     @Override
+    public void show() {}
+
+    @Override
     public void show(String user) {
         /* ===> INSTANCE AREA START <=== */
         Admin admin = AdminController.getAdminByUser(user);
@@ -99,5 +102,4 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
             loginScene.show();
         });
     }
-    
 }

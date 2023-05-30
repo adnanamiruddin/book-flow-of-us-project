@@ -2,7 +2,6 @@ package com.developersoffxinnovate.bookflowofus.scenes.OpenScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
-import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceScene;
 import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.LoginAdminScene;
 import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.HomePageScene;
 
@@ -19,7 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class LoginScene extends AbstractScene implements InterfaceScene {
+public class LoginScene extends AbstractScene {
 
     public LoginScene(Stage stage) {
         super(stage);

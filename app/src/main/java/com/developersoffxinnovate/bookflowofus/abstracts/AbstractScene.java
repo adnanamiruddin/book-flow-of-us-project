@@ -8,4 +8,6 @@ public abstract class AbstractScene {
     public AbstractScene(Stage stage) {
         this.stage = stage;
     }
+
+    public abstract void show();
 }

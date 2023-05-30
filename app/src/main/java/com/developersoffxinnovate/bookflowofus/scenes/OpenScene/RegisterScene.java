@@ -2,8 +2,8 @@ package com.developersoffxinnovate.bookflowofus.scenes.OpenScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
-import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceScene;
 
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class RegisterScene extends AbstractScene implements InterfaceScene {
+public class RegisterScene extends AbstractScene {
 
     public RegisterScene(Stage stage) {
         super(stage);
@@ -23,7 +23,7 @@ public class RegisterScene extends AbstractScene implements InterfaceScene {
     public void show() {
         Label headerText = new Label("Register Area");
         VBox containerHeader = new VBox(headerText);
-        containerHeader.getStyleClass().add("header");
+        containerHeader.getStyleClass().add("headerRegister");
         containerHeader.setAlignment(Pos.CENTER);
         
         Label headerInput = new Label("Silahkan isi data diri!");
@@ -60,7 +60,7 @@ public class RegisterScene extends AbstractScene implements InterfaceScene {
         Label registerStatus = new Label("Status : Belum Register");
         Button registerButton = new Button("Register");
         registerButton.getStyleClass().add("registerSubmitButton");
-        Button backToLoginSceneButton = new Button("Back To Home");
+        Button backToLoginSceneButton = new Button("Back To Login Page");
         VBox containerFooter = new VBox(registerStatus, registerButton, backToLoginSceneButton);
         containerFooter.getStyleClass().add("containerFooter");
         containerFooter.setAlignment(Pos.CENTER);
@@ -83,11 +83,63 @@ public class RegisterScene extends AbstractScene implements InterfaceScene {
             String alamat = input4.getText();
             String noTelp = input5.getText();
             String password = input6.getText();
-            if (MahasiswaController.validateRegister(nama, nim, prodi, alamat, noTelp, password)) {
-                registerStatus.setText("Berhasil Register");
-            } else {
-                registerStatus.setText("Maaf, gagal register");
-            }
+
+            registerButton.setDisable(true);
+            backToLoginSceneButton.setDisable(true);
+            registerStatus.setText("Loading...");
+            Thread thread1 = new Thread(() -> {
+                try {
+                    Thread.sleep(2000);
+                    Platform.runLater(() -> {
+                        registerStatus.setText("Checking all data input...");
+                    });
+                } catch (InterruptedException err) {
+                    err.printStackTrace();
+                }
+            });
+            Thread thread2 = new Thread(() -> {
+                try {
+                    thread1.join();
+                    Thread.sleep(3000);
+                    Platform.runLater(() -> {
+                        if (MahasiswaController.validateRegister(nama, nim, prodi, alamat, noTelp, password)) {
+                            registerStatus.setText("Register Success");
+                        } else {
+                            registerStatus.setText("Failed to register. There is something wrong ");
+                        }
+                    });
+                } catch (InterruptedException err) {
+                    err.printStackTrace();
+                }
+            });
+            Thread thread3 = new Thread(() -> {
+                try {
+                    thread2.join();
+                    Thread.sleep(3000);
+                    Platform.runLater(() -> {
+                        registerStatus.setText("Redirecting to Login Page...");
+                        backToLoginSceneButton.setDisable(false);
+                    });
+                } catch (InterruptedException err) {
+                    err.printStackTrace();
+                }
+            });
+            Thread thread4 = new Thread(() -> {
+                try {
+                    thread3.join();
+                    Thread.sleep(2000);
+                    Platform.runLater(() -> {
+                        LoginScene loginScene = new LoginScene(stage);
+                        loginScene.show();
+                    });
+                } catch (InterruptedException err) {
+                    err.printStackTrace();
+                }
+            });
+            thread1.start();
+            thread2.start();
+            thread3.start();
+            thread4.start();
         });
 
         backToLoginSceneButton.setOnAction(e -> {
