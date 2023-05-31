@@ -103,7 +103,7 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         containerNavbar.getStyleClass().add("containerNavbar");
         /* NAVBAR SECTION END */
 
-        Label headerText = new Label("Book Flow of Admin");
+        Label headerText = new Label("Book Flow of Us");
         Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/admin.png"));
         ImageView containerImageBook = new ImageView(imageBook);
         containerImageBook.setFitHeight(110);
