@@ -21,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -93,9 +95,13 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         /* NAVBAR SECTION END */
 
         Label headerText = new Label("Book Flow of Us");
-        VBox containerHeader = new VBox(headerText);
+        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
+        ImageView containerImageBook = new ImageView(imageBook);
+        containerImageBook.setFitHeight(110);
+        containerImageBook.setFitWidth(110);
+        HBox containerHeader = new HBox(containerImageBook, headerText);
         containerHeader.getStyleClass().add("header");
-        containerHeader.setAlignment(Pos.CENTER);
+        containerHeader.setAlignment(Pos.CENTER_LEFT);
 
         Label headerContent = new Label("Skuy Borrow Book");
 
