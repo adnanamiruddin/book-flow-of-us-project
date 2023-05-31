@@ -98,7 +98,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
         ImageView containerImageBook = new ImageView(imageBook);
         containerImageBook.setFitHeight(110);
-        containerImageBook.setFitWidth(110);
+        containerImageBook.setFitWidth(120);
         HBox containerHeader = new HBox(containerImageBook, headerText);
         containerHeader.getStyleClass().add("header");
         containerHeader.setAlignment(Pos.CENTER_LEFT);

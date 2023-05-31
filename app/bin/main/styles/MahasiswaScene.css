@@ -5,7 +5,7 @@
 
 .header {
   -fx-padding: 15px 38px;
-  -fx-spacing: 125px;
+  -fx-spacing: 110px;
 }
 
 .header > Label {
