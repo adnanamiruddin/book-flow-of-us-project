@@ -33,13 +33,9 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
 
         /* NAVBAR SECTION START */
         Button toHomePageScene = new Button("Home");
-        toHomePageScene.getStyleClass().add("toHomePageScene");
         Button toBookListScene = new Button("Book List");
-        toBookListScene.getStyleClass().add("toBookListScene");
         Button toBorrowBookScene = new Button("Borrow Book");
-        toBorrowBookScene.getStyleClass().add("toBorrowBookScene");
         Button toRateBookScene = new Button("History");
-        toRateBookScene.getStyleClass().add("toContactAdminScene");
         VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
 
@@ -54,9 +50,13 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         /* NAVBAR SECTION END */
 
         Label headerText = new Label("Book Flow of Us");
-        VBox containerHeader = new VBox(headerText);
+        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
+        ImageView containerImageBook = new ImageView(imageBook);
+        containerImageBook.setFitHeight(110);
+        containerImageBook.setFitWidth(110);
+        HBox containerHeader = new HBox(containerImageBook, headerText);
         containerHeader.getStyleClass().add("header");
-        containerHeader.setAlignment(Pos.CENTER);
+        containerHeader.setAlignment(Pos.CENTER_LEFT);
 
         Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
         ImageView containerBookHomePage = new ImageView(bookHomePage);

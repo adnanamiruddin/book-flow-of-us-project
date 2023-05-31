@@ -39,6 +39,7 @@ public class Navbar {
         toHomePageScene.setOnAction(e -> {
             HomePageScene homePageScene = new HomePageScene(stage);
             homePageScene.show(nim);
+            toHomePageScene.getStyleClass().add("activeNav");
         });
 
         toBookListScene.setOnAction(e -> {

@@ -30,7 +30,6 @@ public class LoginScene extends AbstractScene {
         ImageView containerImageBook = new ImageView(imageBook);
         containerImageBook.setFitHeight(170);
         containerImageBook.setFitWidth(300);
-        
         VBox containerHeader = new VBox(headerText, containerImageBook);
         containerHeader.getStyleClass().add("header");
         containerHeader.setAlignment(Pos.CENTER);

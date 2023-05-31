@@ -1,7 +1,5 @@
 package com.developersoffxinnovate.bookflowofus;
 
-import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.BorrowBookScene;
-import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.HomePageScene;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.application.Application;
