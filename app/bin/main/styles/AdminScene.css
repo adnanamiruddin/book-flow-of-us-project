@@ -100,7 +100,7 @@
 .containerNavbar {
   -fx-background-color: rgb(71, 0, 71);
   -fx-pref-height: 600px;
-  -fx-spacing: 360px;
+  -fx-spacing: 325px;
 }
 
 .containerNavbar > .containerNavbarMenu {
