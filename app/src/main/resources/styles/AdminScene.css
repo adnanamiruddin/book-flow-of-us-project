@@ -15,13 +15,13 @@
 }
 
 .headerContent {
-  -fx-padding: 15px 0px;
-  -fx-spacing: 5px;
+  -fx-padding: 15px 38px;
+  -fx-spacing: 125px;
 }
 
 .headerContent > Label {
   -fx-text-fill: white;
-  -fx-font-size: 52px;
+  -fx-font-size: 45px;
   -fx-font-weight: bold;
 }
 /* GLOBAL STYLE END */

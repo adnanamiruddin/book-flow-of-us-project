@@ -49,10 +49,14 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         containerNavbar.getStyleClass().add("containerNavbar");
         /* NAVBAR SECTION END */
 
-        Label headerText = new Label("Book Flow of Us");
-        VBox containerHeader = new VBox(headerText);
+        Label headerText = new Label("Book Flow of Admin");
+        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/admin.png"));
+        ImageView containerImageBook = new ImageView(imageBook);
+        containerImageBook.setFitHeight(110);
+        containerImageBook.setFitWidth(100);
+        HBox containerHeader = new HBox(containerImageBook, headerText);
         containerHeader.getStyleClass().add("headerContent");
-        containerHeader.setAlignment(Pos.CENTER);
+        containerHeader.setAlignment(Pos.CENTER_LEFT);
 
         Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
         ImageView containerBookHomePage = new ImageView(bookHomePage);
