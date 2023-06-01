@@ -102,4 +102,25 @@ public class AdminController extends DatabaseConfig {
         }
         return dataPeminjamanBuku;
     }
+
+    public static boolean validateAddBook(String judul, String pengarang, String penerbit, int tahunTerbit, int stok) {
+        connection();
+        query = "INSERT INTO buku(judul, pengarang, penerbit, tahun_terbit, stok) VALUES (?, ?, ?, ?, ?)";
+        if (judul.isEmpty() || pengarang.isEmpty()) {
+            return false;
+        }
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, judul);
+            preparedStatement.setString(2, pengarang);
+            preparedStatement.setString(3, penerbit);
+            preparedStatement.setInt(4, tahunTerbit);
+            preparedStatement.setInt(5, stok);
+            preparedStatement.executeUpdate();
+            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
