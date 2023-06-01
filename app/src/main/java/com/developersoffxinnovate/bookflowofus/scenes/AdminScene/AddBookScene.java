@@ -3,6 +3,7 @@ package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
+import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -133,7 +134,7 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
                         Platform.runLater(() -> {
                             if (AdminController.validateAddBook(judul, pengarang, penerbit, tahunTerbit, stok)) {
                                 addBookStatus.getStyleClass().clear();
-                                addBookStatus.setText("Insert a new bookto Database...");
+                                addBookStatus.setText("Insert a new book\nto Database...");
                                 addBookStatus.getStyleClass().add("addBookStatusSuccess");
                             } else {
                                 addBookStatus.getStyleClass().clear();
@@ -199,6 +200,11 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
         toReturnBookScene.setOnAction(e -> {
             ReturnBookScene returnBook = new ReturnBookScene(stage);
             returnBook.show(user);
+        });
+
+        logOutButton.setOnAction(e -> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
         });
     }
     
