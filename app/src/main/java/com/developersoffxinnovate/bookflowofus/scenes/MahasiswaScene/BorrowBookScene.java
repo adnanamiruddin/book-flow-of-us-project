@@ -212,28 +212,28 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                             thread3.start();
                             thread4.start();
                         } else {
-                            borrowBookStatus.setText("Gagal Pinjam Buku AOWKAOKWK");
-                            borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                             bookSelection.setText(judulBuku[0]);
                             bookSelection.getStyleClass().add("bookSelectionFailed");
+                            borrowBookStatus.setText("Gagal Pinjam Buku AOWKAOKWK");
+                            borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                         }
                     } else {
-                        borrowBookStatus.setText("Out of Stock");
-                        borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                         bookSelection.setText(judulBuku[0]);
                         bookSelection.getStyleClass().add("bookSelectionFailed");
+                        borrowBookStatus.setText("Out of Stock");
+                        borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                     }
                 } else {
-                    borrowBookStatus.setText("Exceeding The\nLoan Limit");
-                    borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                     bookSelection.setText(judulBuku[0]);
                     bookSelection.getStyleClass().add("bookSelectionFailed");
+                    borrowBookStatus.setText("Exceeding The\nLoan Limit");
+                    borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                 }
             } else {
+                bookSelection.setText("???");
+                bookSelection.getStyleClass().add("bookSelectionFailed");
                 borrowBookStatus.setText("Please Choose\nOne Book :)");
                 borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
-                bookSelection.setText("null");
-                bookSelection.getStyleClass().add("bookSelectionFailed");
             }
         });
 

@@ -45,11 +45,12 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         List<DataPeminjamanBuku> dataPeminjamanBuku = AdminController.getAllDataPeminjamanBuku();
 
         ObservableList<DataPeminjamanBuku> listPeminjamanBuku = FXCollections.observableArrayList();
-        for (DataPeminjamanBuku peminjamanBuku : dataPeminjamanBuku) {
-            listPeminjamanBuku.add(new DataPeminjamanBuku(peminjamanBuku.getId(), peminjamanBuku.getIdMahasiswa(),
-                    peminjamanBuku.getIdBuku(), peminjamanBuku.getTanggalPinjam(), peminjamanBuku.getTanggalKembali(),
-                    peminjamanBuku.getStatus()));
-        }
+        listPeminjamanBuku.addAll(dataPeminjamanBuku);
+        // for (DataPeminjamanBuku peminjamanBuku : dataPeminjamanBuku) {
+        //     listPeminjamanBuku.add(new DataPeminjamanBuku(peminjamanBuku.getId(), peminjamanBuku.getIdMahasiswa(),
+        //             peminjamanBuku.getIdBuku(), peminjamanBuku.getTanggalPinjam(), peminjamanBuku.getTanggalKembali(),
+        //             peminjamanBuku.getStatus()));
+        // }
 
         TableView<DataPeminjamanBuku> tableDataPeminjamanBuku = new TableView<>();
         tableDataPeminjamanBuku.getStyleClass().add("tableDataPeminjamanBuku");
