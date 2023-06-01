@@ -4,6 +4,7 @@ import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -74,7 +75,13 @@ public class ContactAdminScene extends AbstractScene {
         containerContact.getStyleClass().add("containerContact");
         containerContact.setAlignment(Pos.CENTER);
 
-        VBox main = new VBox(containerHeader, containerContact);
+        Button backToLoginSceneButton = new Button("Back To Login Mahasiswa");
+        backToLoginSceneButton.getStyleClass().add("backToLoginSceneButton");
+        VBox containerButtons = new VBox(backToLoginSceneButton);
+        containerButtons.getStyleClass().add("containerButtons");
+        containerButtons.setAlignment(Pos.CENTER);
+
+        VBox main = new VBox(containerHeader, containerContact, containerButtons);
         main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 750, 700);

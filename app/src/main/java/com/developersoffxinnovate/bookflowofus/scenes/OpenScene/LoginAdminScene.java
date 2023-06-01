@@ -45,22 +45,22 @@ public class LoginAdminScene extends AbstractScene {
         loginStatus.getStyleClass().add("loginStatus");
 
         VBox containerInputs = new VBox(inputUsername, input1, inputPassword, input2, loginStatus);
-        containerInputs.getStyleClass().add("containerInputs");
+        containerInputs.getStyleClass().add("containerInputsAdmin");
         containerInputs.setAlignment(Pos.CENTER);
 
         Button loginButton = new Button("Login Admin");
         Button backToLoginSceneButton = new Button("Back To Login Mahasiswa");
         backToLoginSceneButton.getStyleClass().add("backToLoginSceneButton");
         VBox containerButtons = new VBox(loginButton, backToLoginSceneButton);
-        containerButtons.getStyleClass().add("containerButtons");
+        containerButtons.getStyleClass().add("containerButtonsAdmin");
         containerButtons.setAlignment(Pos.CENTER);
         containerButtons.setSpacing(10);
 
         VBox main = new VBox(containerHeader, containerInputs, containerButtons);
-        main.getStyleClass().add("backgroundApp");
+        main.getStyleClass().add("backgroundAppAdmin");
 
         Scene scene = new Scene(main, 750, 700);
-        scene.getStylesheets().add(getClass().getResource("/styles/AdminScene.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/OpenScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
