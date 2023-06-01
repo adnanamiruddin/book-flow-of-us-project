@@ -28,12 +28,10 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
     public void show(String user) {
         /* NAVBAR SECTION START */
         Button toHomePageAdminScene = new Button("Home");
-        toHomePageAdminScene.getStyleClass().add("toHomePageAdminScene");
         Button toBookListAdminScene = new Button("Book List");
-        toBookListAdminScene.getStyleClass().add("toBookListAdminScene");
-        Button toReturnBookAdminScene = new Button("Return Book");
-        toReturnBookAdminScene.getStyleClass().add("toReturnBookAdminScene");
-        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toReturnBookAdminScene);
+        Button toAddBookScene = new Button("Add Book");
+        Button toReturnBookScene = new Button("Return Book");
+        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene, toReturnBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
 
         Button logOutButton = new Button("Log Out");
@@ -80,7 +78,12 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
             bookListAdminScene.show(user);
         });
 
-        toReturnBookAdminScene.setOnAction(e -> {
+        toAddBookScene.setOnAction(e -> {
+            AddBookScene addBookScene = new AddBookScene(stage);
+            addBookScene.show(user);
+        });
+
+        toReturnBookScene.setOnAction(e -> {
             ReturnBookScene returnBook = new ReturnBookScene(stage);
             returnBook.show(user);
         });

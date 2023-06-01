@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -23,15 +24,13 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
     public void show() {}
 
     @Override
-    public void show(String userName) {
+    public void show(String user) {
         /* NAVBAR SECTION START */
         Button toHomePageAdminScene = new Button("Home");
-        toHomePageAdminScene.getStyleClass().add("toHomePageAdminScene");
         Button toBookListAdminScene = new Button("Book List");
-        toBookListAdminScene.getStyleClass().add("toBookListAdminScene");
-        Button toReturnBookAdminScene = new Button("Return Book");
-        toReturnBookAdminScene.getStyleClass().add("toReturnBookAdminScene");
-        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toReturnBookAdminScene);
+        Button toAddBookScene = new Button("Add Book");
+        Button toReturnBookScene = new Button("Return Book");
+        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene, toReturnBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
 
         Button logOutButton = new Button("Log Out");
@@ -51,9 +50,42 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
         containerHeader.getStyleClass().add("headerContent");
         containerHeader.setAlignment(Pos.CENTER_LEFT);
 
-        Label headerContent = new Label("Book Loan Data");
+        Label headerContent = new Label("Add New Book");
+        Label inputJudul = new Label("Judul : ");
+        TextField input1 = new TextField();
+        input1.setPromptText("Judul...");
 
-        HBox containerMain = new HBox(containerNavbar);
+        Label inputPengarang = new Label("Pengarang :");
+        TextField input2 = new TextField();
+        input2.setPromptText("Pengarang...");
+
+        Label inputPenerbit = new Label("Penerbit : ");
+        TextField input3 = new TextField();
+        input3.setPromptText("Penerbit...");
+
+        Label inputTahunTerbit = new Label("Tahun Terbit : ");
+        TextField input4 = new TextField();
+        input4.setPromptText("Tahun Terbit...");
+
+        Label inputStok = new Label("Stok : ");
+        TextField input5 = new TextField();
+        input4.setPromptText("Stok...");
+
+        VBox containerInputs = new VBox(headerContent, inputJudul, input1, inputPengarang, input2, inputPenerbit, input3, inputTahunTerbit, input4, inputStok, input5);
+        containerInputs.getStyleClass().add("containerInputsAddBook");
+        containerInputs.setAlignment(Pos.CENTER_LEFT);
+
+        Label addBookStatus = new Label("Status : Belum Menambahkan Buku");
+        Button addBookButton = new Button("Add");
+        addBookButton.getStyleClass().add("addBookSubmitButton");
+        VBox containerFooter = new VBox(addBookStatus, addBookButton);
+        containerFooter.getStyleClass().add("containerFooter");
+        containerFooter.setAlignment(Pos.CENTER);
+        containerFooter.setSpacing(8);
+
+        VBox containerContent = new VBox(containerInputs, containerFooter);
+
+        HBox containerMain = new HBox(containerNavbar, containerContent);
 
         VBox main = new VBox(containerHeader, containerMain);
         main.getStyleClass().add("backgroundApp");
@@ -63,6 +95,9 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
+
+        /* ===> LOGIC AREA <=== */
+
     }
     
 }

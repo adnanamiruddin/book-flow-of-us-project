@@ -25,7 +25,7 @@ public class RegisterScene extends AbstractScene {
         VBox containerHeader = new VBox(headerText);
         containerHeader.getStyleClass().add("headerRegister");
         containerHeader.setAlignment(Pos.CENTER);
-        
+
         Label headerInput = new Label("Silahkan isi data diri!");
         headerInput.getStyleClass().add("headerInput");
 

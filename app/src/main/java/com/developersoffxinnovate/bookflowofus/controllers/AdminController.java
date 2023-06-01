@@ -117,7 +117,7 @@ public class AdminController extends DatabaseConfig {
             preparedStatement.setInt(4, tahunTerbit);
             preparedStatement.setInt(5, stok);
             preparedStatement.executeUpdate();
-            return false;
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
