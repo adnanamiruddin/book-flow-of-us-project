@@ -22,6 +22,10 @@ public class ContactAdminScene extends AbstractScene {
     public void show() {
         Label headerText = new Label("Book Flow of Contact");
 
+        VBox containerHeader = new VBox(headerText);
+        containerHeader.getStyleClass().add("header");
+        containerHeader.setAlignment(Pos.CENTER);
+
         Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
         ImageView containerImageBook = new ImageView(imageBook);
         containerImageBook.setFitHeight(110);
@@ -32,11 +36,8 @@ public class ContactAdminScene extends AbstractScene {
         containerImageAdmin.setFitWidth(90);
         HBox containerImage = new HBox(containerImageAdmin, containerImageBook);
         containerImage.setAlignment(Pos.CENTER);
-        containerImage.setSpacing(100);
-
-        VBox containerHeader = new VBox(headerText, containerImage);
-        containerHeader.getStyleClass().add("header");
-        containerHeader.setAlignment(Pos.CENTER);
+        containerImage.setSpacing(70);
+        containerImage.getStyleClass().add("containerImage");
 
         Label headerTextContact = new Label("Contact Admin");
 
@@ -71,17 +72,17 @@ public class ContactAdminScene extends AbstractScene {
         cardContactIG.setStyle("-fx-background-color: purple;");
         cardContactIG.setAlignment(Pos.CENTER_LEFT);
 
-        VBox containerContact = new VBox(headerTextContact, cardContactGmail, cardContactWA, cardContactIG);
-        containerContact.getStyleClass().add("containerContact");
-        containerContact.setAlignment(Pos.CENTER);
-
         Button backToLoginSceneButton = new Button("Back To Login Mahasiswa");
         backToLoginSceneButton.getStyleClass().add("backToLoginSceneButton");
         VBox containerButtons = new VBox(backToLoginSceneButton);
-        containerButtons.getStyleClass().add("containerButtons");
+        containerButtons.getStyleClass().add("containerButtonsAdmin");
         containerButtons.setAlignment(Pos.CENTER);
 
-        VBox main = new VBox(containerHeader, containerContact, containerButtons);
+        VBox containerContact = new VBox(containerImage, headerTextContact, cardContactGmail, cardContactWA, cardContactIG, containerButtons);
+        containerContact.getStyleClass().add("containerContact");
+        containerContact.setAlignment(Pos.CENTER);
+
+        VBox main = new VBox(containerHeader, containerContact);
         main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 750, 700);
@@ -89,6 +90,12 @@ public class ContactAdminScene extends AbstractScene {
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
+
+        /* ===> LOGIC AREA <=== */
+        backToLoginSceneButton.setOnAction(e -> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
+        });
     }
     
 }
