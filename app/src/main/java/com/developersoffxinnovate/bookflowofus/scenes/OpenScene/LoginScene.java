@@ -41,10 +41,15 @@ public class LoginScene extends AbstractScene {
         inputPassword.setPadding(new Insets(10, 0, 0, 0));
         PasswordField input2 = new PasswordField();
         input2.setPromptText("Password...");
-        Label loginStatus = new Label("Status: Belum Login");
-        loginStatus.getStyleClass().add("loginStatus");
 
-        VBox containerInputs = new VBox(inputNim, input1, inputPassword, input2, loginStatus);
+        Label loginStatus = new Label("Status: Belum Login");
+        Label contactAdmin = new Label("Contact Admin");
+        contactAdmin.getStyleClass().add("contactAdmin");
+        HBox containerFooterInputs = new HBox(loginStatus, contactAdmin);
+        containerFooterInputs.getStyleClass().add("containerFooterInputs");
+        containerFooterInputs.setAlignment(Pos.CENTER);
+
+        VBox containerInputs = new VBox(inputNim, input1, inputPassword, input2, containerFooterInputs);
         containerInputs.getStyleClass().add("containerInputs");
         containerInputs.setAlignment(Pos.CENTER);
 
@@ -73,6 +78,10 @@ public class LoginScene extends AbstractScene {
         main.requestFocus();
 
         /* ===> LOGIC AREA <=== */
+        contactAdmin.setOnMouseClicked(e -> {
+            
+        });
+
         loginButton.setOnAction(e -> {
             try {
                 String nim = input1.getText();

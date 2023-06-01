@@ -41,11 +41,27 @@
   -fx-background-radius: 10px;
 }
 
-.containerInputs > .loginStatus {
-  -fx-font-size: 16px;
-  -fx-text-fill: lightgreen;
+.containerInputs > .containerFooterInputs {
+  -fx-font-weight: bold;
+  -fx-text-fill: rgb(228, 228, 228);
+  -fx-font-size: 15px;
   -fx-padding: 5px 0px 0px;
+  -fx-spacing: 160px;
 }
+
+.containerInputs > .containerFooterInputs > Label {
+  -fx-text-fill: lightgreen;
+}
+
+.containerInputs > .containerFooterInputs > .contactAdmin {
+  -fx-text-fill: rgb(233, 143, 8);
+}
+
+.containerInputs > .containerFooterInputs > .contactAdmin:hover {
+  -fx-cursor: hand;
+  -fx-text-fill: rgb(192, 122, 17);
+}
+
 
 .containerButtons > Button {
   -fx-pref-width: 410px;
