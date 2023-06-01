@@ -253,9 +253,9 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
                     }
                 }
             } else {
-                dataNameSelection.setText("null");
+                dataNameSelection.setText("???");
                 dataNameSelection.getStyleClass().add("dataSelectionFailed");
-                dataTitleSelection.setText("null");
+                dataTitleSelection.setText("???");
                 dataTitleSelection.getStyleClass().add("dataSelectionFailed");
                 returnBookStatus.setText("Please Choose One Data :)");
                 returnBookStatus.getStyleClass().add("returnBookStatusFailed");
