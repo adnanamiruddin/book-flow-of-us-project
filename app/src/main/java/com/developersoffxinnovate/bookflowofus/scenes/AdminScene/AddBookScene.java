@@ -111,12 +111,16 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
                 int stok = Integer.parseInt(input5.getText());
 
                 addBookButton.setDisable(true);
+                addBookStatus.getStyleClass().clear();
                 addBookStatus.setText("Loading...");
+                addBookStatus.getStyleClass().add("addBookStatusLoading");
                 Thread thread1 = new Thread(() -> {
                     try {
                         Thread.sleep(1500);
                         Platform.runLater(() -> {
+                            addBookStatus.getStyleClass().clear();
                             addBookStatus.setText("Checking all data input...");
+                            addBookStatus.getStyleClass().add("addBookStatusChecking");
                         });
                     } catch (InterruptedException err) {
                         err.printStackTrace();
@@ -128,9 +132,13 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
                         Thread.sleep(2500);
                         Platform.runLater(() -> {
                             if (AdminController.validateAddBook(judul, pengarang, penerbit, tahunTerbit, stok)) {
-                                addBookStatus.setText("Insert a new book to Database...");
+                                addBookStatus.getStyleClass().clear();
+                                addBookStatus.setText("Insert a new bookto Database...");
+                                addBookStatus.getStyleClass().add("addBookStatusSuccess");
                             } else {
+                                addBookStatus.getStyleClass().clear();
                                 addBookStatus.setText("Failed to add new book. There is something wrong");
+                                addBookStatus.getStyleClass().add("addBookStatusFailed");
                             }
                         });
                     } catch (InterruptedException err) {
@@ -142,7 +150,9 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
                         thread2.join();
                         Thread.sleep(3500);
                         Platform.runLater(() -> {
+                            addBookStatus.getStyleClass().clear();
                             addBookStatus.setText("Redirecting to Home Page...");
+                            addBookStatus.getStyleClass().add("addBookStatusReturn");
                         });
                     } catch (InterruptedException err) {
                         err.printStackTrace();
@@ -151,7 +161,7 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
                 Thread thread4 = new Thread(() -> {
                     try {
                         thread3.join();
-                        Thread.sleep(2000);
+                        Thread.sleep(3000);
                         Platform.runLater(() -> {
                             HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
                             homePageAdminScene.show(user);
@@ -165,7 +175,9 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
                 thread3.start();
                 thread4.start();
             } else {
+                addBookStatus.getStyleClass().clear();
                 addBookStatus.setText("Failed to add new book. Please fill in all input");
+                addBookStatus.getStyleClass().add("addBookStatusFailed");
             }
         });
 

@@ -294,7 +294,7 @@
 /* ADD BOOK SCENE START */
 .containerAddBook {
   -fx-pref-width: 580px;
-  -fx-padding: 15px 50px;
+  -fx-padding: 15px 55px;
   -fx-background-color: rgb(211, 211, 211);
 }
 
@@ -303,10 +303,6 @@
   -fx-font-size: 42px;
   -fx-font-weight: bold;
 }
-
-/* .containerInputsAddBook {
-  -fx-spacing: 5px;
-} */
 
 .containerInputsAddBook > Label {
   -fx-text-fill: rgb(61, 61, 61);
@@ -332,17 +328,42 @@
 }
 
 .containerFooterAddBook > Label {
-  -fx-pref-width: 200px;
+  -fx-pref-width: 220px;
   -fx-pref-height: 60px;
   -fx-font-weight: bold;
   -fx-text-fill: rgb(61, 61, 61);
-  -fx-font-size: 14px;
+  -fx-font-size: 15px;
   -fx-background-color: rgb(212, 183, 13);
   -fx-padding: 6px 10px;
   -fx-background-radius: 10px;
   -fx-alignment: CENTER;
   -fx-text-alignment: CENTER;
   -fx-wrap-text: true;
+}
+
+.containerFooterAddBook > .addBookStatusLoading {
+  -fx-background-color: rgb(36, 36, 36);
+  -fx-text-fill: rgb(255, 255, 255);
+}
+
+.containerFooterAddBook > .addBookStatusChecking {
+  -fx-background-color: rgb(1, 26, 95);
+  -fx-text-fill: rgb(255, 255, 255);
+}
+
+.containerFooterAddBook > .addBookStatusFailed {
+  -fx-background-color: rgb(206, 10, 10);
+  -fx-text-fill: rgb(231, 231, 231);
+}
+
+.containerFooterAddBook > .addBookStatusSuccess {
+  -fx-background-color: rgb(32, 151, 2);
+  -fx-text-fill: rgb(255, 255, 255);
+}
+
+.containerFooterAddBook > .addBookStatusReturn {
+  -fx-background-color: rgb(189, 160, 0);
+  -fx-text-fill: rgb(231, 231, 231);
 }
 
 .containerFooterAddBook > Button {
