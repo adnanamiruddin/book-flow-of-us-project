@@ -21,7 +21,7 @@ public class RegisterScene extends AbstractScene {
 
     @Override
     public void show() {
-        Label headerText = new Label("Register Area");
+        Label headerText = new Label("Book Flow of Register");
         VBox containerHeader = new VBox(headerText);
         containerHeader.getStyleClass().add("headerRegister");
         containerHeader.setAlignment(Pos.CENTER);

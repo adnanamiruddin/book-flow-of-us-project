@@ -44,7 +44,7 @@
 .containerInputs > .containerFooterInputs {
   -fx-font-weight: bold;
   -fx-text-fill: rgb(228, 228, 228);
-  -fx-font-size: 15px;
+  -fx-font-size: 16px;
   -fx-padding: 5px 0px 0px;
   -fx-spacing: 160px;
 }
@@ -113,6 +113,36 @@
   -fx-text-fill: rgb(255, 255, 255) !important;
 }
 /* LOGIN SCENE END */
+
+/* CONTACT ADMIN START */
+.containerContact {
+  -fx-background-color: rgb(228, 228, 228);
+  -fx-padding: 15px 130px 0px;
+  -fx-spacing: 15px;
+}
+
+.containerContact > Label {
+  -fx-text-fill: rgb(37, 37, 37);
+  -fx-font-size: 46px;
+  -fx-font-weight: bold;
+}
+
+.containerContact > .cardContact {
+  -fx-spacing: 30px;
+  -fx-padding: 15px 20px;
+  -fx-background-radius: 15px;
+}
+
+.containerContact > .cardContact > Label {
+  -fx-text-fill: rgb(133, 133, 133);
+  -fx-font-size: 24px;
+  -fx-font-weight: bold;
+}
+
+.containerContact > .cardContact > .contactGmail {
+  -fx-font-size: 22px;
+}
+/* CONTACT ADMIN END */
 
 /* REGISTER SCENE START */
 .headerRegister {

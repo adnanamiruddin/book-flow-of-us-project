@@ -79,7 +79,8 @@ public class LoginScene extends AbstractScene {
 
         /* ===> LOGIC AREA <=== */
         contactAdmin.setOnMouseClicked(e -> {
-            
+            ContactAdminScene contactAdminScene = new ContactAdminScene(stage);
+            contactAdminScene.show();
         });
 
         loginButton.setOnAction(e -> {
