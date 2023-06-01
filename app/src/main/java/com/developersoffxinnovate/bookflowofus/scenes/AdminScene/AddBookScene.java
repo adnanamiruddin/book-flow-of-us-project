@@ -1,8 +1,10 @@
 package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
+import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -51,13 +53,14 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
         containerHeader.setAlignment(Pos.CENTER_LEFT);
 
         Label headerContent = new Label("Add New Book");
+
         Label inputJudul = new Label("Judul : ");
         TextField input1 = new TextField();
-        input1.setPromptText("Judul...");
+        input1.setPromptText("Judul... *");
 
         Label inputPengarang = new Label("Pengarang :");
         TextField input2 = new TextField();
-        input2.setPromptText("Pengarang...");
+        input2.setPromptText("Pengarang... *");
 
         Label inputPenerbit = new Label("Penerbit : ");
         TextField input3 = new TextField();
@@ -65,25 +68,27 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
 
         Label inputTahunTerbit = new Label("Tahun Terbit : ");
         TextField input4 = new TextField();
-        input4.setPromptText("Tahun Terbit...");
+        input4.setPromptText("Tahun Terbit... *");
 
         Label inputStok = new Label("Stok : ");
         TextField input5 = new TextField();
-        input4.setPromptText("Stok...");
+        input5.setPromptText("Stok... *");
 
-        VBox containerInputs = new VBox(headerContent, inputJudul, input1, inputPengarang, input2, inputPenerbit, input3, inputTahunTerbit, input4, inputStok, input5);
+        VBox containerInputs = new VBox(inputJudul, input1, inputPengarang, input2, inputPenerbit, input3, inputTahunTerbit, input4, inputStok, input5);
         containerInputs.getStyleClass().add("containerInputsAddBook");
         containerInputs.setAlignment(Pos.CENTER_LEFT);
 
         Label addBookStatus = new Label("Status : Belum Menambahkan Buku");
-        Button addBookButton = new Button("Add");
+        Button addBookButton = new Button("Add Book");
         addBookButton.getStyleClass().add("addBookSubmitButton");
-        VBox containerFooter = new VBox(addBookStatus, addBookButton);
-        containerFooter.getStyleClass().add("containerFooter");
+        HBox containerFooter = new HBox(addBookStatus, addBookButton);
+        containerFooter.getStyleClass().add("containerFooterAddBook");
         containerFooter.setAlignment(Pos.CENTER);
         containerFooter.setSpacing(8);
 
-        VBox containerContent = new VBox(containerInputs, containerFooter);
+        VBox containerContent = new VBox(headerContent, containerInputs, containerFooter);
+        containerContent.getStyleClass().add("containerAddBook");
+        containerContent.setAlignment(Pos.TOP_CENTER);
 
         HBox containerMain = new HBox(containerNavbar, containerContent);
 
@@ -97,7 +102,92 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
         main.requestFocus();
 
         /* ===> LOGIC AREA <=== */
+        addBookButton.setOnAction(e -> {
+            if (!input4.getText().isEmpty() && !input5.getText().isEmpty()) {
+                String judul = input1.getText();
+                String pengarang = input2.getText();
+                String penerbit = input3.getText();
+                int tahunTerbit = Integer.parseInt(input4.getText());
+                int stok = Integer.parseInt(input5.getText());
 
+                addBookButton.setDisable(true);
+                addBookStatus.setText("Loading...");
+                Thread thread1 = new Thread(() -> {
+                    try {
+                        Thread.sleep(1500);
+                        Platform.runLater(() -> {
+                            addBookStatus.setText("Checking all data input...");
+                        });
+                    } catch (InterruptedException err) {
+                        err.printStackTrace();
+                    }
+                });
+                Thread thread2 = new Thread(() -> {
+                    try {
+                        thread1.join();
+                        Thread.sleep(2500);
+                        Platform.runLater(() -> {
+                            if (AdminController.validateAddBook(judul, pengarang, penerbit, tahunTerbit, stok)) {
+                                addBookStatus.setText("Insert a new book to Database...");
+                            } else {
+                                addBookStatus.setText("Failed to add new book. There is something wrong");
+                            }
+                        });
+                    } catch (InterruptedException err) {
+                        err.printStackTrace();
+                    }
+                });
+                Thread thread3 = new Thread(() -> {
+                    try {
+                        thread2.join();
+                        Thread.sleep(3500);
+                        Platform.runLater(() -> {
+                            addBookStatus.setText("Redirecting to Home Page...");
+                        });
+                    } catch (InterruptedException err) {
+                        err.printStackTrace();
+                    }
+                });
+                Thread thread4 = new Thread(() -> {
+                    try {
+                        thread3.join();
+                        Thread.sleep(2000);
+                        Platform.runLater(() -> {
+                            HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
+                            homePageAdminScene.show(user);
+                        });
+                    } catch (InterruptedException err) {
+                        err.printStackTrace();
+                    }
+                });
+                thread1.start();
+                thread2.start();
+                thread3.start();
+                thread4.start();
+            } else {
+                addBookStatus.setText("Failed to add new book. Please fill in all input");
+            }
+        });
+
+        toHomePageAdminScene.setOnAction(e -> {
+            HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
+            homePageAdminScene.show(user);
+        });
+
+        toBookListAdminScene.setOnAction(e -> {
+            BookListAdminScene bookListAdminScene = new BookListAdminScene(stage);
+            bookListAdminScene.show(user);
+        });
+
+        toAddBookScene.setOnAction(e -> {
+            AddBookScene addBookScene = new AddBookScene(stage);
+            addBookScene.show(user);
+        });
+
+        toReturnBookScene.setOnAction(e -> {
+            ReturnBookScene returnBook = new ReturnBookScene(stage);
+            returnBook.show(user);
+        });
     }
     
 }

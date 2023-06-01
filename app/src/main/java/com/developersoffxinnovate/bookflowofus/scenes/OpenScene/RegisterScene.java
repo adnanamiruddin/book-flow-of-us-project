@@ -105,7 +105,7 @@ public class RegisterScene extends AbstractScene {
                         if (MahasiswaController.validateRegister(nama, nim, prodi, alamat, noTelp, password)) {
                             registerStatus.setText("Register Success");
                         } else {
-                            registerStatus.setText("Failed to register. There is something wrong ");
+                            registerStatus.setText("Failed to register. There is something wrong");
                         }
                     });
                 } catch (InterruptedException err) {
