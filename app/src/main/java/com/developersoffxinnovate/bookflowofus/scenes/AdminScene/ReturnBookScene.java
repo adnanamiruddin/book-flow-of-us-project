@@ -121,7 +121,7 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         VBox containerDataSelection = new VBox(dataNameSelection, dataTitleSelection);
         containerDataSelection.getStyleClass().add("containerDataSelection");
 
-        Label returnBookStatus = new Label("Status:\n\nBelum Mengonfirmasi");
+        Label returnBookStatus = new Label("Status:\nBelum Mengonfirmasi");
         Button confirmButton = new Button("Konfirmasi\nPengembalian");
         HBox containerFooterContent = new HBox(containerDataSelection, returnBookStatus, confirmButton);
         containerFooterContent.getStyleClass().add("containerFooterContent");

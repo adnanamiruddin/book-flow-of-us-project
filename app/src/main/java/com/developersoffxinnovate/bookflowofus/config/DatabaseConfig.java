@@ -17,7 +17,7 @@ public class DatabaseConfig {
     protected static ResultSet resultSet;
     protected static String query;
 
-    public static void connection() {
+    protected static void connection() {
         try {
             connection = DriverManager.getConnection(DB_URL);
             // System.out.println("Connection Status: Success");

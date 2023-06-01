@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import com.developersoffxinnovate.bookflowofus.config.DatabaseConfig;
 
 public class BorrowBookController extends DatabaseConfig {
+
     public static boolean borrowBook(int idMahasiswa, int idBuku) {
         LocalDate tanggalPinjam = LocalDate.now();
         LocalDate tanggalKembali = tanggalPinjam.plusDays(7);

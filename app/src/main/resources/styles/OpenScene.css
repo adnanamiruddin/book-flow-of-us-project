@@ -267,7 +267,7 @@
 }
 
 .containerInputsAdmin > .loginStatus {
-  -fx-font-size: 14px;
+  -fx-font-size: 16px;
   -fx-text-fill: lightgreen;
   -fx-padding: 5px 0px 0px;
 }

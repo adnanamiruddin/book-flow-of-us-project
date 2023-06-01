@@ -4,6 +4,7 @@ import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 import com.developersoffxinnovate.bookflowofus.scenes.helpers.BookList;
+import com.developersoffxinnovate.bookflowofus.scenes.helpers.Navbar;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -28,15 +29,12 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
     public void show(String nim) {
         /* NAVBAR SECTION START */
         Button toHomePageScene = new Button("Home");
-        toHomePageScene.getStyleClass().add("toHomePageScene");
         Button toBookListScene = new Button("Book List");
-        toBookListScene.getStyleClass().add("toBookListScene");
         Button toBorrowBookScene = new Button("Borrow Book");
-        toBorrowBookScene.getStyleClass().add("toBorrowBookScene");
         Button toRateBookScene = new Button("History");
-        toRateBookScene.getStyleClass().add("toContactAdminScene");
         VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
+        toBookListScene.setId("activeNav");
 
         Button logOutButton = new Button("Log Out");
         Button toContactAdminScene = new Button("Contact Admin");
@@ -46,6 +44,7 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
 
         VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
         containerNavbar.getStyleClass().add("containerNavbar");
+        toBookListScene.getStyleClass().add("activeNav");
         /* NAVBAR SECTION END */
 
         Label headerText = new Label("Book Flow of Us");

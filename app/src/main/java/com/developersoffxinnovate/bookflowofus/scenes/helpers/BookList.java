@@ -12,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class BookList {
+
     public static TableView<Book> getBookList() {
         /* ===> INSTANCE AREA START <=== */
         List<Book> booksData = BooksController.getAllBuku();

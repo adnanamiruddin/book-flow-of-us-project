@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Navbar {
-    public static VBox getNavbar(Stage stage, String nim) {
+    public static VBox getNavbar(Stage stage, String nim, Button activeButton) {
         Button toHomePageScene = new Button("Home");
         toHomePageScene.getStyleClass().add("toHomePageScene");
         Button toBookListScene = new Button("Book List");
@@ -21,6 +21,7 @@ public class Navbar {
         toRateBookScene.getStyleClass().add("toContactAdminScene");
         VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
+        activeButton.setId("activeNav");
 
         Button logOutButton = new Button("Log Out");
         Button toContactAdminScene = new Button("Contact Admin");
@@ -39,12 +40,12 @@ public class Navbar {
         toHomePageScene.setOnAction(e -> {
             HomePageScene homePageScene = new HomePageScene(stage);
             homePageScene.show(nim);
-            toHomePageScene.getStyleClass().add("activeNav");
         });
 
         toBookListScene.setOnAction(e -> {
             BooksListScene booksListScene = new BooksListScene(stage);
             booksListScene.show(nim);
+            toBookListScene.getStyleClass().add("activeNav");
         });
 
         toBorrowBookScene.setOnAction(e -> {

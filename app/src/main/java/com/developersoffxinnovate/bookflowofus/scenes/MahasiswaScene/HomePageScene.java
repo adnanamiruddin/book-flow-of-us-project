@@ -38,6 +38,7 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         Button toRateBookScene = new Button("History");
         VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
+        toHomePageScene.setId("activeNav");
 
         Button logOutButton = new Button("Log Out");
         Button toContactAdminScene = new Button("Contact Admin");

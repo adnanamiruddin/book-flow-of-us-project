@@ -34,7 +34,8 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
     }
 
     @Override
-    public void show() {}
+    public void show() {
+    }
 
     @Override
     public void show(String nim) {
@@ -43,10 +44,10 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         List<Book> booksData = BooksController.getAllBuku();
 
         ObservableList<Book> books = FXCollections.observableArrayList();
-        for (Book book : booksData) {
-            books.add(new Book(book.getId(), book.getJudul(), book.getPengarang(), book.getPenerbit(),
-                    book.getTahunTerbit(), book.getStok()));
-        }
+        books.addAll(booksData);
+        // for (Book book : booksData) {
+        //     books.add(book);
+        // }
 
         TableView<Book> tableBorrowBook = new TableView<>();
         tableBorrowBook.getStyleClass().add("tableBorrowBook");
@@ -74,15 +75,12 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
 
         /* NAVBAR SECTION START */
         Button toHomePageScene = new Button("Home");
-        toHomePageScene.getStyleClass().add("toHomePageScene");
         Button toBookListScene = new Button("Book List");
-        toBookListScene.getStyleClass().add("toBookListScene");
         Button toBorrowBookScene = new Button("Borrow Book");
-        toBorrowBookScene.getStyleClass().add("toBorrowBookScene");
         Button toRateBookScene = new Button("History");
-        toRateBookScene.getStyleClass().add("toContactAdminScene");
         VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
+        toBorrowBookScene.setId("activeNav");
 
         Button logOutButton = new Button("Log Out");
         Button toContactAdminScene = new Button("Contact Admin");

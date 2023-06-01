@@ -64,7 +64,7 @@
   -fx-border-color: rgb(114, 5, 56);
 }
 
-.containerNavbar > .containerNavbarFooter > .activeNav {
+#activeNav {
   -fx-background-color: #176ec5;
 }
 
@@ -163,6 +163,7 @@
 }
 .columnJudul {
   -fx-pref-width: 192px;
+  -fx-wrap-text: true;
 }
 .columnPengarang {
   -fx-pref-width: 140px;
@@ -255,11 +256,11 @@
 }
 
 .containerFooterContent > Button {
-  -fx-padding: 12px 10px;
+  -fx-padding: 7px 10px;
   -fx-background-color: rgb(50, 194, 14);
   -fx-font-weight: bold;
   -fx-text-fill: rgb(228, 228, 228);
-  -fx-font-size: 14px;
+  -fx-font-size: 13px;
   -fx-border-color: gold;
   -fx-border-width: 3px;
   -fx-border-radius: 12px;
