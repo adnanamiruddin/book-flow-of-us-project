@@ -3,14 +3,13 @@ package com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene;
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
-import com.developersoffxinnovate.bookflowofus.scenes.helpers.BookList;
+import com.developersoffxinnovate.bookflowofus.scenes.components.BookList;
+import com.developersoffxinnovate.bookflowofus.scenes.components.Header;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -47,15 +46,6 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         toBookListScene.getStyleClass().add("activeNav");
         /* NAVBAR SECTION END */
 
-        Label headerText = new Label("Book Flow of Us");
-        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
-        ImageView containerImageBook = new ImageView(imageBook);
-        containerImageBook.setFitHeight(110);
-        containerImageBook.setFitWidth(120);
-        HBox containerHeader = new HBox(containerImageBook, headerText);
-        containerHeader.getStyleClass().add("header");
-        containerHeader.setAlignment(Pos.CENTER_LEFT);
-
         Label headerContent = new Label("Find Your Favourite Book");
         VBox containerContent = new VBox(headerContent, BookList.getBookList());
         containerContent.getStyleClass().add("containerContentBook");
@@ -63,7 +53,8 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
 
         HBox containerMain = new HBox(containerNavbar, containerContent);
 
-        VBox main = new VBox(containerHeader, containerMain);
+        Header containerHeader = new Header();
+        VBox main = new VBox(containerHeader.getHeader(), containerMain);
         main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 750, 700);

@@ -5,6 +5,7 @@ import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
+import com.developersoffxinnovate.bookflowofus.scenes.components.Header;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -36,8 +37,8 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         Button toHomePageScene = new Button("Home");
         Button toBookListScene = new Button("Book List");
         Button toBorrowBookScene = new Button("Borrow Book");
-        Button toRateBookScene = new Button("History");
-        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
+        Button toHistoryBookScene = new Button("History");
+        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toHistoryBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
         toHomePageScene.setId("activeNav");
 
@@ -50,15 +51,6 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
         containerNavbar.getStyleClass().add("containerNavbar");
         /* NAVBAR SECTION END */
-
-        Label headerText = new Label("Book Flow of Us");
-        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
-        ImageView containerImageBook = new ImageView(imageBook);
-        containerImageBook.setFitHeight(110);
-        containerImageBook.setFitWidth(120);
-        HBox containerHeader = new HBox(containerImageBook, headerText);
-        containerHeader.getStyleClass().add("header");
-        containerHeader.setAlignment(Pos.CENTER_LEFT);
 
         Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
         ImageView containerBookHomePage = new ImageView(bookHomePage);
@@ -82,7 +74,8 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
 
         HBox containerMain = new HBox(containerNavbar, containerContent);
 
-        VBox main = new VBox(containerHeader, containerMain);
+        Header containerHeader = new Header();
+        VBox main = new VBox(containerHeader.getHeader(), containerMain);
         main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 750, 700);

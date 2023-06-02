@@ -1,4 +1,4 @@
-package com.developersoffxinnovate.bookflowofus.scenes.helpers;
+package com.developersoffxinnovate.bookflowofus.scenes.components;
 
 import java.util.List;
 

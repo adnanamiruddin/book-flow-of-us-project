@@ -3,7 +3,7 @@ package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
-import com.developersoffxinnovate.bookflowofus.scenes.helpers.BookList;
+import com.developersoffxinnovate.bookflowofus.scenes.components.BookList;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

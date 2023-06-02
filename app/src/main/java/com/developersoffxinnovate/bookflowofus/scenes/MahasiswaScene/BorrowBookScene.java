@@ -10,6 +10,7 @@ import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Book;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
+import com.developersoffxinnovate.bookflowofus.scenes.components.Header;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -91,16 +92,6 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
         containerNavbar.getStyleClass().add("containerNavbar");
         /* NAVBAR SECTION END */
-
-        Label headerText = new Label("Book Flow of Us");
-        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
-        ImageView containerImageBook = new ImageView(imageBook);
-        containerImageBook.setFitHeight(110);
-        containerImageBook.setFitWidth(120);
-        HBox containerHeader = new HBox(containerImageBook, headerText);
-        containerHeader.getStyleClass().add("header");
-        containerHeader.setAlignment(Pos.CENTER_LEFT);
-
         Label headerContent = new Label("Skuy Borrow Book");
 
         Label bookSelection = new Label("(My Selection)");
@@ -117,7 +108,8 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
 
         HBox containerMain = new HBox(containerNavbar, containerContent);
 
-        VBox main = new VBox(containerHeader, containerMain);
+        Header containerHeader = new Header();
+        VBox main = new VBox(containerHeader.getHeader(), containerMain);
         main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 750, 700);
