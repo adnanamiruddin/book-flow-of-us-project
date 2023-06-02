@@ -14,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class BookList {
 
     public static TableView<Book> getBookList() {
-        /* ===> INSTANCE AREA START <=== */
+        /* ===> INSTANCE AREA <=== */
         List<Book> booksData = BooksController.getAllBuku();
 
         ObservableList<Book> books = FXCollections.observableArrayList();

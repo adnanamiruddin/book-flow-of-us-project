@@ -123,20 +123,4 @@ public class AdminController extends DatabaseConfig {
         }
         return false;
     }
-
-    public static boolean validateDeleteBook(int idBuku) {
-        connection();
-        query = "DELETE FROM buku WHERE id=?";
-        try {
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, idBuku);
-            int affectedRowDelete = preparedStatement.executeUpdate();
-            if (affectedRowDelete > 0) {
-                return true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 }
