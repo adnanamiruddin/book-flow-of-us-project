@@ -40,9 +40,8 @@ public class AdminController extends DatabaseConfig {
                 while (adminResult.next()) {
                     int idAdmin = adminResult.getInt("id");
                     String userAdmin = adminResult.getString("user");
-                    String passwordAdmin = adminResult.getString("password");
 
-                    admin = new Admin(idAdmin, userAdmin, passwordAdmin);
+                    admin = new Admin(idAdmin, userAdmin);
                     return admin;
                 }
             }
