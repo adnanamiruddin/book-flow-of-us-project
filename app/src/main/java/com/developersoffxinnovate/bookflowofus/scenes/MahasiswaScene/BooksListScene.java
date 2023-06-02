@@ -30,8 +30,8 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         Button toHomePageScene = new Button("Home");
         Button toBookListScene = new Button("Book List");
         Button toBorrowBookScene = new Button("Borrow Book");
-        Button toRateBookScene = new Button("History");
-        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toRateBookScene);
+        Button toHistoryBorrowBookScene = new Button("History");
+        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toHistoryBorrowBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
         toBookListScene.setId("activeNav");
 
@@ -77,6 +77,11 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         toBorrowBookScene.setOnAction(e -> {
             BorrowBookScene borrowBookScene = new BorrowBookScene(stage);
             borrowBookScene.show(nim);
+        });
+
+        toHistoryBorrowBookScene.setOnAction(e -> {
+            HistoryBorrowBookScene historyBookScene = new HistoryBorrowBookScene(stage);
+            historyBookScene.show(nim);
         });
 
         logOutButton.setOnAction(e -> {

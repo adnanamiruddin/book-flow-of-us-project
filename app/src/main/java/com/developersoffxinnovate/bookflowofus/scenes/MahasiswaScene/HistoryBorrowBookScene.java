@@ -1,12 +1,11 @@
 package com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
-import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
-import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 import com.developersoffxinnovate.bookflowofus.scenes.components.Header;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,9 +16,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class HomePageScene extends AbstractScene implements InterfaceSceneProps {
+public class HistoryBorrowBookScene extends AbstractScene implements InterfaceSceneProps {
 
-    public HomePageScene(Stage stage) {
+    public HistoryBorrowBookScene(Stage stage) {
         super(stage);
     }
 
@@ -29,10 +28,6 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
 
     @Override
     public void show(String nim) {
-        /* ===> INSTANCE AREA START <=== */
-        Mahasiswa mahasiswa = MahasiswaController.getMahasiswaByNim(nim);
-        /* ===> INSTANCE AREA END <=== */
-
         /* NAVBAR SECTION START */
         Button toHomePageScene = new Button("Home");
         Button toBookListScene = new Button("Book List");
@@ -40,35 +35,27 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         Button toHistoryBorrowBookScene = new Button("History");
         VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toHistoryBorrowBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
-        toHomePageScene.setId("activeNav");
+        toHistoryBorrowBookScene.setId("activeNav");
 
         Button logOutButton = new Button("Log Out");
-        VBox containerNavbarFooter = new VBox(logOutButton);
+        Button toContactAdminScene = new Button("Contact Admin");
+        toContactAdminScene.getStyleClass().add("toContactAdminScene");
+        VBox containerNavbarFooter = new VBox(toContactAdminScene, logOutButton);
         containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
 
         VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
         containerNavbar.getStyleClass().add("containerNavbar");
         /* NAVBAR SECTION END */
 
-        Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
-        ImageView containerBookHomePage = new ImageView(bookHomePage);
-        containerBookHomePage.setFitHeight(200);
-        containerBookHomePage.setFitWidth(350);
+        Image comingSoon = new Image(getClass().getClassLoader().getResourceAsStream("img/comingSoon.jpg"));
+        ImageView containerComingSoon = new ImageView(comingSoon);
+        containerComingSoon.setFitHeight(350);
+        containerComingSoon.setFitWidth(500);
 
-        Label namaMahasiswa = new Label(String.format("Hi %s", mahasiswa.getNama()));
-        Label prodiMahasiswa = new Label(String.format("===>  %s  <===", mahasiswa.getProdi()));
-        // Singular dan plural dalam aturan Bahasa Inggris
-        Label bukuDipinjam = new Label(mahasiswa.getBukuDipinjam() > 1
-                ? String.format("You are borrowing %d books", mahasiswa.getBukuDipinjam())
-                : String.format("You are borrowing %d book", mahasiswa.getBukuDipinjam()));
-        bukuDipinjam.getStyleClass().add("bukuDipinjam");
-        VBox containerProfile = new VBox(namaMahasiswa, prodiMahasiswa, bukuDipinjam);
-        containerProfile.getStyleClass().add("containerProfile");
-        containerProfile.setAlignment(Pos.CENTER);
-
-        VBox containerContent = new VBox(containerBookHomePage, containerProfile);
+        VBox containerContent = new VBox(containerComingSoon);
         containerContent.getStyleClass().add("containerContent");
-        containerContent.setAlignment(Pos.TOP_CENTER);
+        containerContent.getStyleClass().add("backgroundHistory");
+        containerContent.setAlignment(Pos.CENTER);
 
         HBox containerMain = new HBox(containerNavbar, containerContent);
 
@@ -108,5 +95,5 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
             loginScene.show();
         });
     }
-
+    
 }
