@@ -6,7 +6,6 @@ public class Mahasiswa extends Model {
     private String prodi;
     private String alamat;
     private String noTelp;
-    private String password;
     private int bukuDipinjam;
 
     // Untuk getMahasiswaByNim(String nim)
@@ -18,14 +17,13 @@ public class Mahasiswa extends Model {
         this.bukuDipinjam = bukuDipinjam;
     }
 
-    public Mahasiswa(int id, String nama, String nim, String prodi, String alamat, String noTelp, String password, int bukuDipinjam) {
+    public Mahasiswa(int id, String nama, String nim, String prodi, String alamat, String noTelp, int bukuDipinjam) {
         super(id);
         this.nama = nama;
         this.nim = nim;
         this.prodi = prodi;
         this.alamat = alamat;
         this.noTelp = noTelp;
-        this.password = password;
         this.bukuDipinjam = bukuDipinjam;
     }
 
@@ -62,13 +60,6 @@ public class Mahasiswa extends Model {
     }
     public void setNoTelp(String noTelp) {
         this.noTelp = noTelp;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public int getBukuDipinjam() {
