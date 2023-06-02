@@ -5,6 +5,7 @@ import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Admin;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
+import com.developersoffxinnovate.bookflowofus.scenes.components.HeaderAdmin;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -48,15 +49,6 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         containerNavbar.getStyleClass().add("containerNavbar");
         /* NAVBAR SECTION END */
 
-        Label headerText = new Label("Book Flow of Admin");
-        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/admin.png"));
-        ImageView containerImageBook = new ImageView(imageBook);
-        containerImageBook.setFitHeight(110);
-        containerImageBook.setFitWidth(100);
-        HBox containerHeader = new HBox(containerImageBook, headerText);
-        containerHeader.getStyleClass().add("headerContent");
-        containerHeader.setAlignment(Pos.CENTER_LEFT);
-
         Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
         ImageView containerBookHomePage = new ImageView(bookHomePage);
         containerBookHomePage.setFitHeight(200);
@@ -75,7 +67,8 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
 
         HBox containerMain = new HBox(containerNavbar, containerContent);
 
-        VBox main = new VBox(containerHeader, containerMain);
+        HeaderAdmin containerHeader = new HeaderAdmin();
+        VBox main = new VBox(containerHeader.getHeader(), containerMain);
         main.getStyleClass().add("backgroundApp");
 
         Scene scene = new Scene(main, 750, 700);

@@ -92,6 +92,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
         containerNavbar.getStyleClass().add("containerNavbar");
         /* NAVBAR SECTION END */
+
         Label headerContent = new Label("Skuy Borrow Book");
 
         Label bookSelection = new Label("(My Selection)");
