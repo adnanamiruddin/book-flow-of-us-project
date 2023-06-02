@@ -36,9 +36,7 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         toBookListScene.setId("activeNav");
 
         Button logOutButton = new Button("Log Out");
-        Button toContactAdminScene = new Button("Contact Admin");
-        toContactAdminScene.getStyleClass().add("toContactAdminScene");
-        VBox containerNavbarFooter = new VBox(toContactAdminScene, logOutButton);
+        VBox containerNavbarFooter = new VBox(logOutButton);
         containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
 
         VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);

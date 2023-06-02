@@ -19,7 +19,7 @@
 .containerNavbar {
   -fx-background-color: #001f3f;
   -fx-pref-height: 600px;
-  -fx-spacing: 209px;
+  -fx-spacing: 260px;
 }
 
 .containerNavbar > .containerNavbarMenu {
@@ -66,18 +66,6 @@
 
 #activeNav {
   -fx-background-color: #176ec5;
-}
-
-.containerNavbar > .containerNavbarFooter > .toContactAdminScene {
-  -fx-background-color: #011c37;
-}
-
-.containerNavbar > .containerNavbarFooter > .toContactAdminScene:hover {
-  -fx-cursor: hand;
-  -fx-background-color: #0080ff;
-  -fx-text-fill: rgb(255, 255, 255) !important;
-  -fx-border-width: 1px;
-  -fx-border-color: rgb(0, 255, 229);
 }
 /* NAVBAR END */
 
