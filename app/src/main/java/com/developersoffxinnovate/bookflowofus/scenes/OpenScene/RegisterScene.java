@@ -26,7 +26,7 @@ public class RegisterScene extends AbstractScene {
         containerHeader.getStyleClass().add("headerRegister");
         containerHeader.setAlignment(Pos.CENTER);
 
-        Label headerInput = new Label("Silahkan isi data diri!");
+        Label headerInput = new Label("Silahkan isi data diri dengan JUJUR!");
         headerInput.getStyleClass().add("headerInput");
 
         Label inputNama = new Label("Nama : ");
