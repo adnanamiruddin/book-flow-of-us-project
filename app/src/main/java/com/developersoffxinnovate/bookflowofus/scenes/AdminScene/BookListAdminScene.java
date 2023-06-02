@@ -1,7 +1,9 @@
 package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
+import com.developersoffxinnovate.bookflowofus.controllers.BooksController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
+import com.developersoffxinnovate.bookflowofus.models.Book;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 import com.developersoffxinnovate.bookflowofus.scenes.helpers.BookList;
 
@@ -9,6 +11,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -26,6 +30,10 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
 
     @Override
     public void show(String user) {
+        /* ===> INSTANCE AREA START <=== */
+        TableView<Book> tableBook = BookList.getBookList();
+        /* ===> INSTANCE AREA END <=== */
+
         /* NAVBAR SECTION START */
         Button toHomePageAdminScene = new Button("Home");
         Button toBookListAdminScene = new Button("Book List");
@@ -52,7 +60,22 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
         containerHeader.setAlignment(Pos.CENTER_LEFT);
 
         Label headerContent = new Label("Library");
-        VBox containerContent = new VBox(headerContent, BookList.getBookList());
+
+        Label bookSelection = new Label("(Judul)");
+        bookSelection.getStyleClass().add("dataNameSelection");
+        TextField inputConfirmation = new TextField();
+        inputConfirmation.setPromptText("KONFIRMASI");
+        inputConfirmation.getStyleClass().add("inputConfirmation");
+        VBox containerBookSelection = new VBox(bookSelection, inputConfirmation);
+        containerBookSelection.getStyleClass().add("containerDataSelection");
+
+        Label deleteBookStatus = new Label("Status:\nBelum Mengonfirmasi");
+        Button confirmButton = new Button("Konfirmasi\nPengembalian");
+        HBox containerFooterContent = new HBox(containerBookSelection, deleteBookStatus, confirmButton);
+        containerFooterContent.getStyleClass().add("containerFooterContent");
+        containerFooterContent.setAlignment(Pos.CENTER);
+
+        VBox containerContent = new VBox(headerContent, tableBook);
         containerContent.getStyleClass().add("containerContentBook");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
@@ -68,6 +91,13 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
         main.requestFocus();
 
         /* ===> LOGIC AREA <=== */
+        Book[] book = { null };
+
+        tableBook.setOnMouseClicked(e -> {
+            Book selectedBook = tableBook.getSelectionModel().getSelectedItem();
+            book[0] = BooksController.getBookById(selectedBook.getId());
+        });
+
         toHomePageAdminScene.setOnAction(e -> {
             HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
             homePageAdminScene.show(user);
