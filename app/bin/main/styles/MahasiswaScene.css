@@ -37,7 +37,7 @@
 
 .containerNavbar > .containerNavbarMenu > Button:hover {
   -fx-cursor: hand;
-  -fx-background-color: #126fcd;
+  -fx-background-color: #0a7cee;
   -fx-text-fill: rgb(255, 255, 255) !important;
   -fx-border-color: rgb(156, 156, 156);
   -fx-border-width: 1px;

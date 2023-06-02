@@ -35,6 +35,7 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
         Button toReturnBookScene = new Button("Return Book");
         VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene, toReturnBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
+        toAddBookScene.setId("activeNav");
 
         Button logOutButton = new Button("Log Out");
         VBox containerNavbarFooter = new VBox(logOutButton);

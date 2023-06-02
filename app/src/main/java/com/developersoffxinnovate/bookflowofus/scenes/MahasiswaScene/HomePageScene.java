@@ -23,7 +23,8 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
     }
 
     @Override
-    public void show() {}
+    public void show() {
+    }
 
     @Override
     public void show(String nim) {

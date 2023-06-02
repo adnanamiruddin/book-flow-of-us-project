@@ -4,7 +4,6 @@ import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 import com.developersoffxinnovate.bookflowofus.scenes.helpers.BookList;
-import com.developersoffxinnovate.bookflowofus.scenes.helpers.Navbar;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,7 +22,8 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
     }
 
     @Override
-    public void show() {}
+    public void show() {
+    }
 
     @Override
     public void show(String nim) {
