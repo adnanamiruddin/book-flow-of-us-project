@@ -139,7 +139,7 @@
 }
 
 .containerContact > .cardContact > Label {
-  -fx-text-fill: rgb(133, 133, 133);
+  -fx-text-fill: rgb(231, 231, 231);
   -fx-font-size: 24px;
   -fx-font-weight: bold;
 }
