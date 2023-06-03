@@ -77,6 +77,7 @@ public class LoginAdminScene extends AbstractScene {
                 String password = input2.getText();
                 if (AdminController.validateLoginAdmin(user, password)) {
                     loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
+                    stage.close();
                     HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
                     homePageAdminScene.show(user);
                 } else {
