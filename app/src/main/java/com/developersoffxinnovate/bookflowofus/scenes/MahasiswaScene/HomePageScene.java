@@ -6,6 +6,7 @@ import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 import com.developersoffxinnovate.bookflowofus.scenes.components.Header;
+import com.developersoffxinnovate.bookflowofus.scenes.components.Navbar;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -33,23 +34,6 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         Mahasiswa mahasiswa = MahasiswaController.getMahasiswaByNim(nim);
         /* ===> INSTANCE AREA END <=== */
 
-        /* NAVBAR SECTION START */
-        Button toHomePageScene = new Button("Home");
-        Button toBookListScene = new Button("Book List");
-        Button toBorrowBookScene = new Button("Borrow Book");
-        Button toHistoryBorrowBookScene = new Button("History");
-        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toHistoryBorrowBookScene);
-        containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
-        toHomePageScene.setId("activeNav");
-
-        Button logOutButton = new Button("Log Out");
-        VBox containerNavbarFooter = new VBox(logOutButton);
-        containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
-
-        VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
-        containerNavbar.getStyleClass().add("containerNavbar");
-        /* NAVBAR SECTION END */
-
         Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
         ImageView containerBookHomePage = new ImageView(bookHomePage);
         containerBookHomePage.setFitHeight(200);
@@ -70,7 +54,8 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         containerContent.getStyleClass().add("containerContent");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
-        HBox containerMain = new HBox(containerNavbar, containerContent);
+        String activeNavItem = "Home Page";
+        HBox containerMain = new HBox(Navbar.getNavbar(stage, nim, activeNavItem), containerContent);
 
         Header containerHeader = new Header();
         VBox main = new VBox(containerHeader.getHeader(), containerMain);
@@ -81,32 +66,6 @@ public class HomePageScene extends AbstractScene implements InterfaceSceneProps 
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
-
-        /* ===> LOGIC AREA <=== */
-        toHomePageScene.setOnAction(e -> {
-            HomePageScene homePageScene = new HomePageScene(stage);
-            homePageScene.show(nim);
-        });
-
-        toBookListScene.setOnAction(e -> {
-            BooksListScene booksListScene = new BooksListScene(stage);
-            booksListScene.show(nim);
-        });
-
-        toBorrowBookScene.setOnAction(e -> {
-            BorrowBookScene borrowBookScene = new BorrowBookScene(stage);
-            borrowBookScene.show(nim);
-        });
-
-        toHistoryBorrowBookScene.setOnAction(e -> {
-            HistoryBorrowBookScene historyBookScene = new HistoryBorrowBookScene(stage);
-            historyBookScene.show(nim);
-        });
-
-        logOutButton.setOnAction(e -> {
-            LoginScene loginScene = new LoginScene(stage);
-            loginScene.show();
-        });
     }
 
 }

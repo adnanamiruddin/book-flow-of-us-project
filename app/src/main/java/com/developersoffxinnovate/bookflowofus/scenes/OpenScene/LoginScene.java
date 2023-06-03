@@ -27,7 +27,7 @@ public class LoginScene extends AbstractScene {
     @Override
     public void show() {
         Label headerText = new Label("Book Flow of Us");
-        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
+        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHome.jpg"));
         ImageView containerImageBook = new ImageView(imageBook);
         containerImageBook.setFitHeight(170);
         containerImageBook.setFitWidth(300);
