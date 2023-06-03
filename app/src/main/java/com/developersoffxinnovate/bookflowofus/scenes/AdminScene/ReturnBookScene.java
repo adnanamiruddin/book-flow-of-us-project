@@ -11,8 +11,8 @@ import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Book;
 import com.developersoffxinnovate.bookflowofus.models.DataPeminjamanBuku;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
-import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 import com.developersoffxinnovate.bookflowofus.scenes.components.HeaderAdmin;
+import com.developersoffxinnovate.bookflowofus.scenes.components.NavbarAdmin;
 
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -36,7 +36,8 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
     }
 
     @Override
-    public void show() {}
+    public void show() {
+    }
 
     @Override
     public void show(String user) {
@@ -46,9 +47,11 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         ObservableList<DataPeminjamanBuku> listPeminjamanBuku = FXCollections.observableArrayList();
         listPeminjamanBuku.addAll(dataPeminjamanBuku);
         // for (DataPeminjamanBuku peminjamanBuku : dataPeminjamanBuku) {
-        //     listPeminjamanBuku.add(new DataPeminjamanBuku(peminjamanBuku.getId(), peminjamanBuku.getIdMahasiswa(),
-        //             peminjamanBuku.getIdBuku(), peminjamanBuku.getTanggalPinjam(), peminjamanBuku.getTanggalKembali(),
-        //             peminjamanBuku.getStatus()));
+        // listPeminjamanBuku.add(new DataPeminjamanBuku(peminjamanBuku.getId(),
+        // peminjamanBuku.getIdMahasiswa(),
+        // peminjamanBuku.getIdBuku(), peminjamanBuku.getTanggalPinjam(),
+        // peminjamanBuku.getTanggalKembali(),
+        // peminjamanBuku.getStatus()));
         // }
 
         TableView<DataPeminjamanBuku> tableDataPeminjamanBuku = new TableView<>();
@@ -85,23 +88,6 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         tableDataPeminjamanBuku.setItems(listPeminjamanBuku);
         /* ===> INSTANCE AREA END <=== */
 
-        /* NAVBAR SECTION START */
-        Button toHomePageAdminScene = new Button("Home");
-        Button toBookListAdminScene = new Button("Book List");
-        Button toAddBookScene = new Button("Add Book");
-        Button toReturnBookScene = new Button("Return Book");
-        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene, toReturnBookScene);
-        containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
-        toReturnBookScene.setId("activeNav");
-
-        Button logOutButton = new Button("Log Out");
-        VBox containerNavbarFooter = new VBox(logOutButton);
-        containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
-
-        VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
-        containerNavbar.getStyleClass().add("containerNavbar");
-        /* NAVBAR SECTION END */
-
         Label headerContent = new Label("Book Loan Data");
 
         Label dataNameSelection = new Label("(Nama)");
@@ -121,7 +107,8 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         containerContent.getStyleClass().add("containerContentBook");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
-        HBox containerMain = new HBox(containerNavbar, containerContent);
+        String activeNavItem = "Return Book";
+        HBox containerMain = new HBox(NavbarAdmin.getNavbar(stage, user, activeNavItem), containerContent);
 
         HeaderAdmin containerHeader = new HeaderAdmin();
         VBox main = new VBox(containerHeader.getHeader(), containerMain);
@@ -253,31 +240,6 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
                 returnBookStatus.setText("Please Choose One Data :)");
                 returnBookStatus.getStyleClass().add("returnBookStatusFailed");
             }
-        });
-
-        toHomePageAdminScene.setOnAction(e -> {
-            HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
-            homePageAdminScene.show(user);
-        });
-
-        toBookListAdminScene.setOnAction(e -> {
-            BookListAdminScene bookListAdminScene = new BookListAdminScene(stage);
-            bookListAdminScene.show(user);
-        });
-
-        toAddBookScene.setOnAction(e -> {
-            AddBookScene addBookScene = new AddBookScene(stage);
-            addBookScene.show(user);
-        });
-
-        toReturnBookScene.setOnAction(e -> {
-            ReturnBookScene returnBook = new ReturnBookScene(stage);
-            returnBook.show(user);
-        });
-
-        logOutButton.setOnAction(e -> {
-            LoginScene loginScene = new LoginScene(stage);
-            loginScene.show();
         });
     }
 }

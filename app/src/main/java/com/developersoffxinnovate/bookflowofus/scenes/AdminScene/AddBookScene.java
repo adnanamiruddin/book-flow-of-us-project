@@ -3,7 +3,6 @@ package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
-import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 import com.developersoffxinnovate.bookflowofus.scenes.components.HeaderAdmin;
 import com.developersoffxinnovate.bookflowofus.scenes.components.NavbarAdmin;
 
@@ -24,12 +23,13 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
     }
 
     @Override
-    public void show() {}
+    public void show() {
+    }
 
     @Override
     public void show(String user) {
         /* NAVBAR SECTION START */
-        
+
         /* NAVBAR SECTION END */
 
         Label headerContent = new Label("Add New Book");
@@ -54,7 +54,8 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
         TextField input5 = new TextField();
         input5.setPromptText("Stok... *");
 
-        VBox containerInputs = new VBox(inputJudul, input1, inputPengarang, input2, inputPenerbit, input3, inputTahunTerbit, input4, inputStok, input5);
+        VBox containerInputs = new VBox(inputJudul, input1, inputPengarang, input2, inputPenerbit, input3,
+                inputTahunTerbit, input4, inputStok, input5);
         containerInputs.getStyleClass().add("containerInputsAddBook");
         containerInputs.setAlignment(Pos.CENTER_LEFT);
 
@@ -163,5 +164,5 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
             }
         });
     }
-    
+
 }

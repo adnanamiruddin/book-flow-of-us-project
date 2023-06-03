@@ -75,6 +75,7 @@ public class NavbarAdmin {
         });
 
         logOutButton.setOnAction(e -> {
+            stage.close();
             LoginScene loginScene = new LoginScene(stage);
             loginScene.show();
         });

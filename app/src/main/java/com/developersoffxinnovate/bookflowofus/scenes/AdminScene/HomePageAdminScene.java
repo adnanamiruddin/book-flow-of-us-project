@@ -4,12 +4,11 @@ import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Admin;
-import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 import com.developersoffxinnovate.bookflowofus.scenes.components.HeaderAdmin;
+import com.developersoffxinnovate.bookflowofus.scenes.components.NavbarAdmin;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,30 +23,14 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
     }
 
     @Override
-    public void show() {}
+    public void show() {
+    }
 
     @Override
     public void show(String user) {
         /* ===> INSTANCE AREA START <=== */
         Admin admin = AdminController.getAdminByUser(user);
         /* ===> INSTANCE AREA END <=== */
-
-        /* NAVBAR SECTION START */
-        Button toHomePageAdminScene = new Button("Home");
-        Button toBookListAdminScene = new Button("Book List");
-        Button toAddBookScene = new Button("Add Book");
-        Button toReturnBookScene = new Button("Return Book");
-        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene, toReturnBookScene);
-        containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
-        toHomePageAdminScene.setId("activeNav");
-
-        Button logOutButton = new Button("Log Out");
-        VBox containerNavbarFooter = new VBox(logOutButton);
-        containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
-
-        VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
-        containerNavbar.getStyleClass().add("containerNavbar");
-        /* NAVBAR SECTION END */
 
         Image bookHomePage = new Image(getClass().getClassLoader().getResourceAsStream("img/bookHomePage.jpg"));
         ImageView containerBookHomePage = new ImageView(bookHomePage);
@@ -65,7 +48,8 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         containerContent.getStyleClass().add("containerContent");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
-        HBox containerMain = new HBox(containerNavbar, containerContent);
+        String activeNavItem = "Home Page";
+        HBox containerMain = new HBox(NavbarAdmin.getNavbar(stage, user, activeNavItem), containerContent);
 
         HeaderAdmin containerHeader = new HeaderAdmin();
         VBox main = new VBox(containerHeader.getHeader(), containerMain);
@@ -76,31 +60,5 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
-
-        /* ===> LOGIC AREA <=== */
-        toHomePageAdminScene.setOnAction(e -> {
-            HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
-            homePageAdminScene.show(user);
-        });
-
-        toBookListAdminScene.setOnAction(e -> {
-            BookListAdminScene bookListAdminScene = new BookListAdminScene(stage);
-            bookListAdminScene.show(user);
-        });
-
-        toAddBookScene.setOnAction(e -> {
-            AddBookScene addBookScene = new AddBookScene(stage);
-            addBookScene.show(user);
-        });
-
-        toReturnBookScene.setOnAction(e -> {
-            ReturnBookScene returnBook = new ReturnBookScene(stage);
-            returnBook.show(user);
-        });
-
-        logOutButton.setOnAction(e -> {
-            LoginScene loginScene = new LoginScene(stage);
-            loginScene.show();
-        });
     }
 }
