@@ -9,8 +9,8 @@ import com.developersoffxinnovate.bookflowofus.controllers.MahasiswaController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.models.Book;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
-import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 import com.developersoffxinnovate.bookflowofus.scenes.components.Header;
+import com.developersoffxinnovate.bookflowofus.scenes.components.Navbar;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -72,23 +72,6 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         tableBorrowBook.setItems(books);
         /* ===> INSTANCE AREA END <=== */
 
-        /* NAVBAR SECTION START */
-        Button toHomePageScene = new Button("Home");
-        Button toBookListScene = new Button("Book List");
-        Button toBorrowBookScene = new Button("Borrow Book");
-        Button toHistoryBorrowBookScene = new Button("History");
-        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toHistoryBorrowBookScene);
-        containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
-        toBorrowBookScene.setId("activeNav");
-
-        Button logOutButton = new Button("Log Out");
-        VBox containerNavbarFooter = new VBox(logOutButton);
-        containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
-
-        VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
-        containerNavbar.getStyleClass().add("containerNavbar");
-        /* NAVBAR SECTION END */
-
         Label headerContent = new Label("Skuy Borrow Book");
 
         Label bookSelection = new Label("(My Selection)");
@@ -103,7 +86,8 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         containerContent.getStyleClass().add("containerContentBook");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
-        HBox containerMain = new HBox(containerNavbar, containerContent);
+        String activeNavItem = "Borrow Book";
+        HBox containerMain = new HBox(Navbar.getNavbar(stage, nim, activeNavItem), containerContent);
 
         Header containerHeader = new Header();
         VBox main = new VBox(containerHeader.getHeader(), containerMain);
@@ -224,31 +208,6 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                 borrowBookStatus.setText("Please Choose\nOne Book :)");
                 borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
             }
-        });
-
-        toHomePageScene.setOnAction(e -> {
-            HomePageScene homePageScene = new HomePageScene(stage);
-            homePageScene.show(nim);
-        });
-
-        toBookListScene.setOnAction(e -> {
-            BooksListScene booksListScene = new BooksListScene(stage);
-            booksListScene.show(nim);
-        });
-
-        toBorrowBookScene.setOnAction(e -> {
-            BorrowBookScene borrowBookScene = new BorrowBookScene(stage);
-            borrowBookScene.show(nim);
-        });
-
-        toHistoryBorrowBookScene.setOnAction(e -> {
-            HistoryBorrowBookScene historyBookScene = new HistoryBorrowBookScene(stage);
-            historyBookScene.show(nim);
-        });
-
-        logOutButton.setOnAction(e -> {
-            LoginScene loginScene = new LoginScene(stage);
-            loginScene.show();
         });
     }
 }
