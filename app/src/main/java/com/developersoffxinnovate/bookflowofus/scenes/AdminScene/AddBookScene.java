@@ -28,10 +28,6 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
 
     @Override
     public void show(String user) {
-        /* NAVBAR SECTION START */
-
-        /* NAVBAR SECTION END */
-
         Label headerContent = new Label("Add New Book");
 
         Label inputJudul = new Label("Judul : ");
