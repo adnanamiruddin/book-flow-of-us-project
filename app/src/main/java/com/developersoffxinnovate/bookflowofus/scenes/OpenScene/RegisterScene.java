@@ -10,6 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -67,9 +70,13 @@ public class RegisterScene extends AbstractScene {
         containerFooter.setSpacing(8);
 
         VBox main = new VBox(containerHeader, containerInputs, containerFooter);
-        main.getStyleClass().add("backgroundRegister");
+        main.getStyleClass().add("backgroundApp");
 
-        Scene scene = new Scene(main, 750, 700);
+        Image imageBg = new Image(getClass().getClassLoader().getResourceAsStream("img/register.jpg"));
+        ImageView containerImageBg = new ImageView(imageBg);
+        StackPane sp = new StackPane(containerImageBg, main);
+
+        Scene scene = new Scene(sp, 750, 700);
         scene.getStylesheets().add(getClass().getResource("/styles/OpenScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

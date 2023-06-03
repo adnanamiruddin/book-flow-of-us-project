@@ -83,7 +83,7 @@ public class ContactAdminScene extends AbstractScene {
         containerContact.setAlignment(Pos.CENTER);
 
         VBox main = new VBox(containerHeader, containerContact);
-        main.getStyleClass().add("backgroundApp");
+        main.getStyleClass().add("backgroundContact");
 
         Scene scene = new Scene(main, 750, 700);
         scene.getStylesheets().add(getClass().getResource("/styles/OpenScene.css").toExternalForm());

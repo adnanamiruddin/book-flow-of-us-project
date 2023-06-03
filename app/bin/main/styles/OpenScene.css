@@ -1,6 +1,6 @@
 /* GLOBAL STYLE START */
 .backgroundApp {
-  -fx-background-color: #001f3f;
+  -fx-background-color: trasnparent;
 }
 
 .header {
@@ -50,7 +50,7 @@
 }
 
 .containerInputs > .containerFooterInputs > Label {
-  -fx-text-fill: lightgreen;
+  -fx-text-fill: rgb(32, 114, 32);
 }
 
 .containerInputs > .containerFooterInputs > .contactAdmin {
@@ -114,6 +114,10 @@
 /* LOGIN SCENE END */
 
 /* CONTACT ADMIN START */
+.backgroundContact {
+  -fx-background-color: #001f3f;
+}
+
 .containerContact {
   -fx-background-color: rgb(228, 228, 228);
   -fx-padding: 15px 130px 10px;
@@ -156,7 +160,7 @@
 }
 
 .headerRegister > Label {
-  -fx-text-fill: white;
+  -fx-text-fill: rgb(32, 32, 32);
   -fx-font-size: 52px;
   -fx-font-weight: bold;
 }
@@ -178,7 +182,7 @@
 
 .containerInputsRegister > Label {
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(228, 228, 228);
+  -fx-text-fill: rgb(76, 76, 76);
   -fx-font-size: 12px;
 }
 
@@ -248,7 +252,7 @@
 
 .containerInputsAdmin > Label {
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(228, 228, 228);
+  -fx-text-fill: rgb(155, 155, 155);
   -fx-font-size: 24px;
 }
 
