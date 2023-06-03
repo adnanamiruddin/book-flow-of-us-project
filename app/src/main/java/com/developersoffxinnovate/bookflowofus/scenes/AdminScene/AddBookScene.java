@@ -5,6 +5,7 @@ import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.scenes.OpenScene.LoginScene;
 import com.developersoffxinnovate.bookflowofus.scenes.components.HeaderAdmin;
+import com.developersoffxinnovate.bookflowofus.scenes.components.NavbarAdmin;
 
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -28,20 +29,7 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
     @Override
     public void show(String user) {
         /* NAVBAR SECTION START */
-        Button toHomePageAdminScene = new Button("Home");
-        Button toBookListAdminScene = new Button("Book List");
-        Button toAddBookScene = new Button("Add Book");
-        Button toReturnBookScene = new Button("Return Book");
-        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene, toReturnBookScene);
-        containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
-        toAddBookScene.setId("activeNav");
-
-        Button logOutButton = new Button("Log Out");
-        VBox containerNavbarFooter = new VBox(logOutButton);
-        containerNavbarFooter.getStyleClass().add("containerNavbarFooter");
-
-        VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
-        containerNavbar.getStyleClass().add("containerNavbar");
+        
         /* NAVBAR SECTION END */
 
         Label headerContent = new Label("Add New Book");
@@ -82,7 +70,8 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
         containerContent.getStyleClass().add("containerAddBook");
         containerContent.setAlignment(Pos.TOP_CENTER);
 
-        HBox containerMain = new HBox(containerNavbar, containerContent);
+        String activeNavItem = "Add Book";
+        HBox containerMain = new HBox(NavbarAdmin.getNavbar(stage, user, activeNavItem), containerContent);
 
         HeaderAdmin containerHeader = new HeaderAdmin();
         VBox main = new VBox(containerHeader.getHeader(), containerMain);
@@ -172,31 +161,6 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
                 addBookStatus.setText("Failed to add new book. Please fill in all input");
                 addBookStatus.getStyleClass().add("addBookStatusFailed");
             }
-        });
-
-        toHomePageAdminScene.setOnAction(e -> {
-            HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
-            homePageAdminScene.show(user);
-        });
-
-        toBookListAdminScene.setOnAction(e -> {
-            BookListAdminScene bookListAdminScene = new BookListAdminScene(stage);
-            bookListAdminScene.show(user);
-        });
-
-        toAddBookScene.setOnAction(e -> {
-            AddBookScene addBookScene = new AddBookScene(stage);
-            addBookScene.show(user);
-        });
-
-        toReturnBookScene.setOnAction(e -> {
-            ReturnBookScene returnBook = new ReturnBookScene(stage);
-            returnBook.show(user);
-        });
-
-        logOutButton.setOnAction(e -> {
-            LoginScene loginScene = new LoginScene(stage);
-            loginScene.show();
         });
     }
     

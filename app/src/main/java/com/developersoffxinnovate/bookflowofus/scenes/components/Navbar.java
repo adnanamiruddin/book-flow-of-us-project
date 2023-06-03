@@ -13,10 +13,6 @@ import javafx.stage.Stage;
 public class Navbar {
     private static Button activeNav;
 
-    // public Navbar(Button activeNav) {
-    //     this.activeNav = activeNav;
-    // }
-
     public static void setActiveNav(Button activeNav) {
         Navbar.activeNav = activeNav;
     }
@@ -28,7 +24,6 @@ public class Navbar {
         Button toHistoryBorrowBookScene = new Button("History");
         VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toHistoryBorrowBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
-        // toHomePageScene.setId("activeNav");
 
         Button logOutButton = new Button("Log Out");
         VBox containerNavbarFooter = new VBox(logOutButton);
@@ -37,6 +32,7 @@ public class Navbar {
         VBox containerNavbar = new VBox(containerNavbarMenu, containerNavbarFooter);
         containerNavbar.getStyleClass().add("containerNavbar");
 
+        /* ===> LOGIC AREA <=== */
         switch (activeNavItem) {
             case "Home Page":
                 setActiveNav(toHomePageScene);
@@ -51,10 +47,9 @@ public class Navbar {
                 setActiveNav(toHistoryBorrowBookScene);
                 break;
             default:
-                // Default activeNav
-                setActiveNav(toHomePageScene);
+                setActiveNav(toHomePageScene); // Default activeNav
                 break;
-        }
+        };
 
         activeNav.setId("activeNav");
 
@@ -79,6 +74,7 @@ public class Navbar {
         });
 
         logOutButton.setOnAction(e -> {
+            stage.close();
             LoginScene loginScene = new LoginScene(stage);
             loginScene.show();
         });
