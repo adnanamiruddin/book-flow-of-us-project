@@ -65,7 +65,7 @@ public class Mahasiswa extends Model {
     public int getBukuDipinjam() {
         return bukuDipinjam;
     }
-    public void setBukuDipinjam() {
+    public void setBukuDipinjam(int bukuDipinjam) {
         this.bukuDipinjam = bukuDipinjam;
     }
 
