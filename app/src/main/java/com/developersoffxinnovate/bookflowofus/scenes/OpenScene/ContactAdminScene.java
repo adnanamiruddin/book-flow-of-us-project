@@ -93,6 +93,7 @@ public class ContactAdminScene extends AbstractScene {
 
         /* ===> LOGIC AREA <=== */
         backToLoginSceneButton.setOnAction(e -> {
+            stage.close();
             LoginScene loginScene = new LoginScene(stage);
             loginScene.show();
         });

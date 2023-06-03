@@ -89,6 +89,7 @@ public class LoginAdminScene extends AbstractScene {
         });
 
         backToLoginSceneButton.setOnAction(e -> {
+            stage.close();
             LoginScene loginScene = new LoginScene(stage);
             loginScene.show();
         });

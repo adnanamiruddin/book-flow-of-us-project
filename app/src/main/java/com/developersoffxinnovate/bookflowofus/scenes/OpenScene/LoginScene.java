@@ -84,6 +84,7 @@ public class LoginScene extends AbstractScene {
 
         /* ===> LOGIC AREA <=== */
         contactAdmin.setOnMouseClicked(e -> {
+            stage.close();
             ContactAdminScene contactAdminScene = new ContactAdminScene(stage);
             contactAdminScene.show();
         });
@@ -93,6 +94,7 @@ public class LoginScene extends AbstractScene {
                 String nim = input1.getText();
                 String password = input2.getText();
                 if (MahasiswaController.validateLogin(nim, password)) {
+                    stage.close();
                     loginStatus.setText("LU DAH LOGIN BANG, JAGO BANGET LU");
                     HomePageScene homePageScene = new HomePageScene(stage);
                     homePageScene.show(nim);
@@ -105,11 +107,13 @@ public class LoginScene extends AbstractScene {
         });
 
         registerButton.setOnAction(e -> {
+            stage.close();
             RegisterScene registerScene = new RegisterScene(stage);
             registerScene.show();
         });
 
         adminButton.setOnAction(e -> {
+            stage.close();
             LoginAdminScene loginAdminScene = new LoginAdminScene(stage);
             loginAdminScene.show();
         });

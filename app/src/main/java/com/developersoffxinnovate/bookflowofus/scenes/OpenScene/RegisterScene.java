@@ -136,6 +136,7 @@ public class RegisterScene extends AbstractScene {
                     thread3.join();
                     Thread.sleep(2000);
                     Platform.runLater(() -> {
+                        stage.close();
                         LoginScene loginScene = new LoginScene(stage);
                         loginScene.show();
                     });
@@ -150,6 +151,7 @@ public class RegisterScene extends AbstractScene {
         });
 
         backToLoginSceneButton.setOnAction(e -> {
+            stage.close();
             LoginScene loginScene = new LoginScene(stage);
             loginScene.show();
         });
