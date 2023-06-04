@@ -3,7 +3,7 @@ package com.developersoffxinnovate.bookflowofus.scenes.AdminScene;
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
-import com.developersoffxinnovate.bookflowofus.scenes.components.HeaderAdmin;
+import com.developersoffxinnovate.bookflowofus.scenes.components.Header;
 import com.developersoffxinnovate.bookflowofus.scenes.components.NavbarAdmin;
 
 import javafx.application.Platform;
@@ -69,8 +69,8 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
         String activeNavItem = "Add Book";
         HBox containerMain = new HBox(NavbarAdmin.getNavbar(stage, user, activeNavItem), containerContent);
 
-        HeaderAdmin containerHeader = new HeaderAdmin();
-        VBox main = new VBox(containerHeader.getHeader(), containerMain);
+        Header containerHeader = new Header();
+        VBox main = new VBox(containerHeader.getHeaderAdmin(), containerMain);
         main.getStyleClass().add("backgroundApp");
 
         super.getScene().setRoot(main);

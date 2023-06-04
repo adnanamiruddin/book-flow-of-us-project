@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 public class Header {
-    public HBox getHeader() {
+    public HBox getHeaderMahasiswa() {
         Label headerText = new Label("Book Flow of Us");
         Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
         ImageView containerImageBook = new ImageView(imageBook);
@@ -15,6 +15,19 @@ public class Header {
         containerImageBook.setFitWidth(120);
         HBox containerHeader = new HBox(containerImageBook, headerText);
         containerHeader.getStyleClass().add("header");
+        containerHeader.setAlignment(Pos.CENTER_LEFT);
+
+        return containerHeader;
+    }
+
+    public HBox getHeaderAdmin() {
+        Label headerText = new Label("Book Flow of Admin");
+        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/admin.png"));
+        ImageView containerImageBook = new ImageView(imageBook);
+        containerImageBook.setFitHeight(110);
+        containerImageBook.setFitWidth(90);
+        HBox containerHeader = new HBox(containerImageBook, headerText);
+        containerHeader.getStyleClass().add("headerContent");
         containerHeader.setAlignment(Pos.CENTER_LEFT);
 
         return containerHeader;

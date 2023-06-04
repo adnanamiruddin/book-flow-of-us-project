@@ -86,7 +86,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         HBox containerMain = new HBox(Navbar.getNavbar(stage, nim, activeNavItem), containerContent);
 
         Header containerHeader = new Header();
-        VBox main = new VBox(containerHeader.getHeader(), containerMain);
+        VBox main = new VBox(containerHeader.getHeaderMahasiswa(), containerMain);
         main.getStyleClass().add("backgroundApp");
 
         super.getScene().setRoot(main);
