@@ -85,7 +85,7 @@ public class ContactAdminScene extends AbstractScene {
         VBox main = new VBox(containerHeader, containerContact);
         main.getStyleClass().add("backgroundContact");
 
-        Scene scene = new Scene(main, 750, 700);
+        super.getScene().setRoot(main);
         scene.getStylesheets().add(getClass().getResource("/styles/OpenScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

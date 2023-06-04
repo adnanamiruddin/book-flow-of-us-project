@@ -76,7 +76,7 @@ public class RegisterScene extends AbstractScene {
         ImageView containerImageBg = new ImageView(imageBg);
         StackPane sp = new StackPane(containerImageBg, main);
 
-        Scene scene = new Scene(sp, 750, 700);
+        super.getScene().setRoot(sp);
         scene.getStylesheets().add(getClass().getResource("/styles/OpenScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

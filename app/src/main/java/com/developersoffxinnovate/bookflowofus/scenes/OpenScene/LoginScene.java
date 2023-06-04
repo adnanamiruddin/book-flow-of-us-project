@@ -6,7 +6,6 @@ import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.HomePageSce
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -76,8 +75,6 @@ public class LoginScene extends AbstractScene {
         ImageView containerImageBg = new ImageView(imageBg);
         StackPane sp = new StackPane(containerImageBg, main);;
 
-        // Scene scene = new Scene(sp, 750, 700);
-        // scene.setRoot(sp);
         super.getScene().setRoot(sp);
         scene.getStylesheets().add(getClass().getResource("/styles/OpenScene.css").toExternalForm());
         stage.setScene(scene);
