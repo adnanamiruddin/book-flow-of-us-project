@@ -30,7 +30,7 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         containerContent.setAlignment(Pos.TOP_CENTER);
 
         String activeNavItem = "Book List";
-        HBox containerMain = new HBox(Navbar.getNavbar(stage, nim, activeNavItem), containerContent);
+        HBox containerMain = new HBox(Navbar.getNavbarMahasiswa(stage, nim, activeNavItem), containerContent);
 
         Header containerHeader = new Header();
         VBox main = new VBox(containerHeader.getHeaderMahasiswa(), containerMain);

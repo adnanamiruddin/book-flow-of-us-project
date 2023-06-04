@@ -35,7 +35,7 @@ public class HistoryBorrowBookScene extends AbstractScene implements InterfaceSc
         containerContent.setAlignment(Pos.CENTER);
 
         String activeNavItem = "History";
-        HBox containerMain = new HBox(Navbar.getNavbar(stage, nim, activeNavItem), containerContent);
+        HBox containerMain = new HBox(Navbar.getNavbarMahasiswa(stage, nim, activeNavItem), containerContent);
 
         Header containerHeader = new Header();
         VBox main = new VBox(containerHeader.getHeaderMahasiswa(), containerMain);

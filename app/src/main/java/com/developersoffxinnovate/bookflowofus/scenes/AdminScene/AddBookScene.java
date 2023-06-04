@@ -4,7 +4,7 @@ import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.controllers.AdminController;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
 import com.developersoffxinnovate.bookflowofus.scenes.components.Header;
-import com.developersoffxinnovate.bookflowofus.scenes.components.NavbarAdmin;
+import com.developersoffxinnovate.bookflowofus.scenes.components.Navbar;
 
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -67,7 +67,7 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
         containerContent.setAlignment(Pos.TOP_CENTER);
 
         String activeNavItem = "Add Book";
-        HBox containerMain = new HBox(NavbarAdmin.getNavbar(stage, user, activeNavItem), containerContent);
+        HBox containerMain = new HBox(Navbar.getNavbarAdmin(stage, user, activeNavItem), containerContent);
 
         Header containerHeader = new Header();
         VBox main = new VBox(containerHeader.getHeaderAdmin(), containerMain);

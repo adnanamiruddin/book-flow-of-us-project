@@ -12,7 +12,7 @@ import com.developersoffxinnovate.bookflowofus.models.Book;
 import com.developersoffxinnovate.bookflowofus.models.DataPeminjamanBuku;
 import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 import com.developersoffxinnovate.bookflowofus.scenes.components.Header;
-import com.developersoffxinnovate.bookflowofus.scenes.components.NavbarAdmin;
+import com.developersoffxinnovate.bookflowofus.scenes.components.Navbar;
 
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -100,7 +100,7 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         containerContent.setAlignment(Pos.TOP_CENTER);
 
         String activeNavItem = "Return Book";
-        HBox containerMain = new HBox(NavbarAdmin.getNavbar(stage, user, activeNavItem), containerContent);
+        HBox containerMain = new HBox(Navbar.getNavbarAdmin(stage, user, activeNavItem), containerContent);
 
         Header containerHeader = new Header();
         VBox main = new VBox(containerHeader.getHeaderAdmin(), containerMain);
