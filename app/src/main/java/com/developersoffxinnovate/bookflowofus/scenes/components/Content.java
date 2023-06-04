@@ -11,11 +11,10 @@ public class Content {
         ImageView containerComingSoon = new ImageView(comingSoon);
         containerComingSoon.setFitHeight(350);
         containerComingSoon.setFitWidth(500);
-        
 
         VBox containerContent = new VBox(containerComingSoon);
         containerContent.getStyleClass().add("containerContent");
-        containerContent.setStyle("-fx-background-color: rgb(32, 32, 32);");
+        containerContent.setStyle("-fx-background-color: rgb(32, 32, 32); -fx-background-radius: 10px 0px;");
         containerContent.setAlignment(Pos.CENTER);
 
         return containerContent;

@@ -88,7 +88,7 @@ public class Navbar {
         Button toAddBookScene = new Button("Add Book");
         Button toReturnBookScene = new Button("Return Book");
         Button toDeleteBookScene = new Button("Delete Book");
-        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene, toReturnBookScene);
+        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene, toReturnBookScene, toDeleteBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
 
         Button logOutButton = new Button("Log Out");

@@ -34,7 +34,7 @@ public class DeleteBookScene extends AbstractScene implements InterfaceSceneProp
         main.getStyleClass().add("backgroundApp");
 
         super.getScene().setRoot(main);
-        scene.getStylesheets().add(getClass().getResource("/styles/MahasiswaScene.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/AdminScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
         main.requestFocus();
