@@ -2,12 +2,10 @@ package com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 import com.developersoffxinnovate.bookflowofus.interfaces.InterfaceSceneProps;
+import com.developersoffxinnovate.bookflowofus.scenes.components.Content;
 import com.developersoffxinnovate.bookflowofus.scenes.components.Header;
 import com.developersoffxinnovate.bookflowofus.scenes.components.Navbar;
 
-import javafx.geometry.Pos;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -24,18 +22,12 @@ public class HistoryBorrowBookScene extends AbstractScene implements InterfaceSc
 
     @Override
     public void show(String nim) {
-        Image comingSoon = new Image(getClass().getClassLoader().getResourceAsStream("img/comingSoon.jpg"));
-        ImageView containerComingSoon = new ImageView(comingSoon);
-        containerComingSoon.setFitHeight(350);
-        containerComingSoon.setFitWidth(500);
-
-        VBox containerContent = new VBox(containerComingSoon);
-        containerContent.getStyleClass().add("containerContent");
-        containerContent.getStyleClass().add("backgroundHistory");
-        containerContent.setAlignment(Pos.CENTER);
+        /* ===> INSTANCE AREA START <=== */
+        Content content = new Content();
+        /* ===> INSTANCE AREA END <=== */
 
         String activeNavItem = "History";
-        HBox containerMain = new HBox(Navbar.getNavbarMahasiswa(stage, nim, activeNavItem), containerContent);
+        HBox containerMain = new HBox(Navbar.getNavbarMahasiswa(stage, nim, activeNavItem), content.getContainerComingSoon());
 
         Header containerHeader = new Header();
         VBox main = new VBox(containerHeader.getHeaderMahasiswa(), containerMain);

@@ -59,7 +59,7 @@ public class LoginAdminScene extends AbstractScene {
         VBox main = new VBox(containerHeader, containerInputs, containerButtons);
         main.getStyleClass().add("backgroundApp");
 
-        Image imageBg = new Image(getClass().getClassLoader().getResourceAsStream("img/adminBg3.jpg"));
+        Image imageBg = new Image(getClass().getClassLoader().getResourceAsStream("img/flowerBg.jpg"));
         ImageView containerImageBg = new ImageView(imageBg);
         StackPane sp = new StackPane(containerImageBg, main);
 
