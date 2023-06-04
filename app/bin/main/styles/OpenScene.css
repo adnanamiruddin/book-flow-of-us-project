@@ -28,13 +28,13 @@
 
 .containerInputs > Label {
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(228, 228, 228);
+  -fx-text-fill: rgb(238, 238, 238);
   -fx-font-size: 24px;
 }
 
 .containerInputs > TextField,
 .containerInputs > PasswordField {
-  -fx-background-color: #555555;
+  -fx-background-color: #808080;
   -fx-padding: 10px 20px;
   -fx-text-fill: rgb(252, 252, 252);
   -fx-font-size: 18px;
