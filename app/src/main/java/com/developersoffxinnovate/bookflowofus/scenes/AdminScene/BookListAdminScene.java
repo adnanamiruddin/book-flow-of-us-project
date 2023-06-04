@@ -7,7 +7,6 @@ import com.developersoffxinnovate.bookflowofus.scenes.components.HeaderAdmin;
 import com.developersoffxinnovate.bookflowofus.scenes.components.NavbarAdmin;
 
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -37,7 +36,7 @@ public class BookListAdminScene extends AbstractScene implements InterfaceSceneP
         VBox main = new VBox(containerHeader.getHeader(), containerMain);
         main.getStyleClass().add("backgroundApp");
 
-        Scene scene = new Scene(main, 750, 700);
+        super.getScene().setRoot(main);
         scene.getStylesheets().add(getClass().getResource("/styles/AdminScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

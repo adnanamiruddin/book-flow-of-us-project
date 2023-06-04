@@ -12,7 +12,7 @@ public class HeaderAdmin {
         Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/admin.png"));
         ImageView containerImageBook = new ImageView(imageBook);
         containerImageBook.setFitHeight(110);
-        containerImageBook.setFitWidth(100);
+        containerImageBook.setFitWidth(90);
         HBox containerHeader = new HBox(containerImageBook, headerText);
         containerHeader.getStyleClass().add("headerContent");
         containerHeader.setAlignment(Pos.CENTER_LEFT);

@@ -16,7 +16,6 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -44,9 +43,6 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
 
         ObservableList<Book> books = FXCollections.observableArrayList();
         books.addAll(booksData);
-        // for (Book book : booksData) {
-        //     books.add(book);
-        // }
 
         TableView<Book> tableBorrowBook = new TableView<>();
         tableBorrowBook.getStyleClass().add("tableBorrowBook");
@@ -93,7 +89,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
         VBox main = new VBox(containerHeader.getHeader(), containerMain);
         main.getStyleClass().add("backgroundApp");
 
-        Scene scene = new Scene(main, 750, 700);
+        super.getScene().setRoot(main);
         scene.getStylesheets().add(getClass().getResource("/styles/MahasiswaScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

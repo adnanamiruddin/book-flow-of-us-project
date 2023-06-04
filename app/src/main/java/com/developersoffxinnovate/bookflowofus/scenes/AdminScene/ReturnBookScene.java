@@ -19,7 +19,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -46,13 +45,6 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
 
         ObservableList<DataPeminjamanBuku> listPeminjamanBuku = FXCollections.observableArrayList();
         listPeminjamanBuku.addAll(dataPeminjamanBuku);
-        // for (DataPeminjamanBuku peminjamanBuku : dataPeminjamanBuku) {
-        // listPeminjamanBuku.add(new DataPeminjamanBuku(peminjamanBuku.getId(),
-        // peminjamanBuku.getIdMahasiswa(),
-        // peminjamanBuku.getIdBuku(), peminjamanBuku.getTanggalPinjam(),
-        // peminjamanBuku.getTanggalKembali(),
-        // peminjamanBuku.getStatus()));
-        // }
 
         TableView<DataPeminjamanBuku> tableDataPeminjamanBuku = new TableView<>();
         tableDataPeminjamanBuku.getStyleClass().add("tableDataPeminjamanBuku");
@@ -114,7 +106,7 @@ public class ReturnBookScene extends AbstractScene implements InterfaceSceneProp
         VBox main = new VBox(containerHeader.getHeader(), containerMain);
         main.getStyleClass().add("backgroundApp");
 
-        Scene scene = new Scene(main, 750, 700);
+        super.getScene().setRoot(main);
         scene.getStylesheets().add(getClass().getResource("/styles/AdminScene.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
