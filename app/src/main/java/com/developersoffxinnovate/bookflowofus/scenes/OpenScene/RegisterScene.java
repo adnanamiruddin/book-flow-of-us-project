@@ -90,6 +90,12 @@ public class RegisterScene extends AbstractScene {
             String noTelp = input5.getText();
             String password = input6.getText();
 
+            input1.setDisable(true);
+            input2.setDisable(true);
+            input3.setDisable(true);
+            input4.setDisable(true);
+            input5.setDisable(true);
+            input6.setDisable(true);
             registerButton.setDisable(true);
             backToLoginSceneButton.setDisable(true);
             registerStatus.getStyleClass().add("loadingProccess");
@@ -98,7 +104,7 @@ public class RegisterScene extends AbstractScene {
                 try {
                     Thread.sleep(2000);
                     Platform.runLater(() -> {
-                        registerStatus.setText("Checking all data input...");
+                        registerStatus.setText("Checking all input data...");
                     });
                 } catch (InterruptedException err) {
                     err.printStackTrace();

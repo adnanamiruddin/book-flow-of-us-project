@@ -22,10 +22,10 @@ public class Header {
 
     public HBox getHeaderAdmin() {
         Label headerText = new Label("Book Flow of Admin");
-        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/admin.png"));
+        Image imageBook = new Image(getClass().getClassLoader().getResourceAsStream("img/adminOwl.png"));
         ImageView containerImageBook = new ImageView(imageBook);
         containerImageBook.setFitHeight(110);
-        containerImageBook.setFitWidth(90);
+        containerImageBook.setFitWidth(100);
         HBox containerHeader = new HBox(containerImageBook, headerText);
         containerHeader.getStyleClass().add("headerContent");
         containerHeader.setAlignment(Pos.CENTER_LEFT);

@@ -88,6 +88,11 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
                 int tahunTerbit = Integer.parseInt(input4.getText());
                 int stok = Integer.parseInt(input5.getText());
 
+                input1.setDisable(true);
+                input2.setDisable(true);
+                input3.setDisable(true);
+                input4.setDisable(true);
+                input5.setDisable(true);
                 addBookButton.setDisable(true);
                 addBookStatus.getStyleClass().clear();
                 addBookStatus.setText("Loading...");
@@ -97,7 +102,7 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
                         Thread.sleep(1500);
                         Platform.runLater(() -> {
                             addBookStatus.getStyleClass().clear();
-                            addBookStatus.setText("Checking all data input...");
+                            addBookStatus.setText("Checking all input data...");
                             addBookStatus.getStyleClass().add("addBookStatusChecking");
                         });
                     } catch (InterruptedException err) {
@@ -111,7 +116,7 @@ public class AddBookScene extends AbstractScene implements InterfaceSceneProps {
                         Platform.runLater(() -> {
                             if (AdminController.validateAddBook(judul, pengarang, penerbit, tahunTerbit, stok)) {
                                 addBookStatus.getStyleClass().clear();
-                                addBookStatus.setText("Insert a new book\nto Database...");
+                                addBookStatus.setText("Inserting a new book\nto Database...");
                                 addBookStatus.getStyleClass().add("addBookStatusSuccess");
                             } else {
                                 addBookStatus.getStyleClass().clear();
