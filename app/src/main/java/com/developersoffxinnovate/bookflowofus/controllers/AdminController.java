@@ -1,7 +1,5 @@
 package com.developersoffxinnovate.bookflowofus.controllers;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,27 +11,6 @@ import com.developersoffxinnovate.bookflowofus.models.DataPeminjamanBuku;
 
 public class AdminController extends DatabaseConfig {
 
-    public static String hashPassword(String password) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(password.getBytes());
-            StringBuilder hexString = new StringBuilder();
-
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public static void createTableAdmin() {
         connection();
         query = "CREATE TABLE IF NOT EXISTS admin (" +
@@ -42,17 +19,12 @@ public class AdminController extends DatabaseConfig {
                 "password TEXT NOT NULL," +
                 "PRIMARY KEY(id AUTOINCREMENT)" +
                 ")";
-
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
-
             // Insert default 2 Admin
-            // String insertDefaultAdmin = "INSERT OR IGNORE INTO admin (id, user, password) " +
-            //         "VALUES (1, 'Adnan', 'thisisadnan123'), (2, 'Book Admin', 'unhaspbosem2')";
             String insertDefaultAdmin = "INSERT OR IGNORE INTO admin (id, user, password) " +
                     "VALUES (1, 'Adnan', ?), (2, 'Book Admin', ?)";
-
             preparedStatement = connection.prepareStatement(insertDefaultAdmin);
             preparedStatement.setString(1, hashPassword("thisisadnan123"));
             preparedStatement.setString(2, hashPassword("unhaspbosem2"));

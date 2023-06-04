@@ -92,6 +92,7 @@ public class RegisterScene extends AbstractScene {
 
             registerButton.setDisable(true);
             backToLoginSceneButton.setDisable(true);
+            registerStatus.getStyleClass().add("loadingProccess");
             registerStatus.setText("Loading...");
             Thread thread1 = new Thread(() -> {
                 try {
@@ -111,7 +112,10 @@ public class RegisterScene extends AbstractScene {
                         if (MahasiswaController.validateRegister(nama, nim, prodi, alamat, noTelp, password)) {
                             registerStatus.setText("Register Success");
                         } else {
+                            registerStatus.getStyleClass().clear();
+                            registerStatus.getStyleClass().add("failedRequest");
                             registerStatus.setText("Failed to register. There is something wrong");
+                            registerButton.getStyleClass().add("failedRequest");
                         }
                     });
                 } catch (InterruptedException err) {
@@ -123,8 +127,8 @@ public class RegisterScene extends AbstractScene {
                     thread2.join();
                     Thread.sleep(3000);
                     Platform.runLater(() -> {
+                        registerStatus.getStyleClass().clear();
                         registerStatus.setText("Redirecting to Login Page...");
-                        backToLoginSceneButton.setDisable(false);
                     });
                 } catch (InterruptedException err) {
                     err.printStackTrace();

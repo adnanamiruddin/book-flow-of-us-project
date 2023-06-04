@@ -28,7 +28,7 @@ public class LoginAdminScene extends AbstractScene {
         Image imageAdmin = new Image(getClass().getClassLoader().getResourceAsStream("img/admin.png"));
         ImageView containerImageAdmin = new ImageView(imageAdmin);
         containerImageAdmin.setFitHeight(170);
-        containerImageAdmin.setFitWidth(150);
+        containerImageAdmin.setFitWidth(140);
 
         VBox containerHeader = new VBox(headerText, containerImageAdmin);
         containerHeader.getStyleClass().add("header");
@@ -80,6 +80,7 @@ public class LoginAdminScene extends AbstractScene {
                     HomePageAdminScene homePageAdminScene = new HomePageAdminScene(stage);
                     homePageAdminScene.show(user);
                 } else {
+                    loginStatus.getStyleClass().add("failedRequest");
                     loginStatus.setText("Maaf, gagal login");
                 }
             } catch (Exception err) {

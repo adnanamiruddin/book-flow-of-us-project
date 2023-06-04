@@ -30,14 +30,15 @@ public class MahasiswaController extends DatabaseConfig {
     }
 
     public static boolean validateLogin(String nim, String password) {
+        String hashedPassword = hashPassword(password);
         createTableMahasiswa();
         query = "SELECT nim, password FROM mahasiswa WHERE nim=? AND password=?";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, nim);
-            preparedStatement.setString(2, password);
+            preparedStatement.setString(2, hashedPassword);
             try (ResultSet loginUser = preparedStatement.executeQuery()) {
-                return loginUser.next(); // bernilai true
+                return loginUser.next(); // Bernilai true
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,6 +47,7 @@ public class MahasiswaController extends DatabaseConfig {
     }
 
     public static boolean validateRegister(String nama, String nim, String prodi, String alamat, String noTelp, String password) {
+        String hashedPassword = hashPassword(password);
         createTableMahasiswa();
         query = "INSERT INTO mahasiswa (nama, nim, prodi, alamat, no_telp, password) VALUES (?, ?, ?, ?, ?, ?)";
         if (nama.isEmpty() || nim.isEmpty() || prodi.isEmpty() || alamat.isEmpty() || noTelp.isEmpty() || password.isEmpty()) {
@@ -58,7 +60,7 @@ public class MahasiswaController extends DatabaseConfig {
             preparedStatement.setString(3, prodi);
             preparedStatement.setString(4, alamat);
             preparedStatement.setString(5, noTelp);
-            preparedStatement.setString(6, password);
+            preparedStatement.setString(6, hashedPassword);
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {

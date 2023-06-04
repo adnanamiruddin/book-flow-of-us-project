@@ -98,6 +98,7 @@ public class LoginScene extends AbstractScene {
                     HomePageScene homePageScene = new HomePageScene(stage);
                     homePageScene.show(nim);
                 } else {
+                    loginStatus.getStyleClass().add("failedRequest");
                     loginStatus.setText("Maaf, gagal login");
                 }
             } catch (Exception err) {
