@@ -2,6 +2,9 @@ package com.developersoffxinnovate.bookflowofus.scenes.OpenScene;
 
 import com.developersoffxinnovate.bookflowofus.abstracts.AbstractScene;
 
+import java.awt.Desktop;
+import java.net.URI;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -90,7 +93,57 @@ public class ContactAdminScene extends AbstractScene {
         stage.show();
         main.requestFocus();
 
+        /* ===> CSS AREA START <=== */
+        cardContactGmail.setOnMouseEntered(e -> {
+            cardContactGmail.setStyle("-fx-background-color: rgb(197, 11, 11); -fx-cursor: hand;");
+        });
+        cardContactGmail.setOnMouseExited(e -> {
+            cardContactGmail.setStyle("-fx-background-color: darkred;");
+        });
+
+        cardContactWA.setOnMouseEntered(e -> {
+            cardContactWA.setStyle("-fx-background-color: rgb(13, 145, 13); -fx-cursor: hand;");
+        });
+        cardContactWA.setOnMouseExited(e -> {
+            cardContactWA.setStyle("-fx-background-color: darkgreen;");
+        });
+
+        cardContactIG.setOnMouseEntered(e -> {
+            cardContactIG.setStyle("-fx-background-color: rgb(179, 7, 179); -fx-cursor: hand;");
+        });
+        cardContactIG.setOnMouseExited(e -> {
+            cardContactIG.setStyle("-fx-background-color: purple;");
+        });
+        /* ===> CSS AREA END <=== */
+
         /* ===> LOGIC AREA <=== */
+        cardContactGmail.setOnMouseClicked(e -> {
+            try {
+                String url = "mailto:adnan.amiruddin34@gmail.com";
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (Exception err) {
+                err.printStackTrace();
+            }
+        });
+
+        cardContactWA.setOnMouseClicked(e -> {
+            try {
+                String url = "https://api.whatsapp.com/send/?phone=%2B6281245255702&text&type=phone_number&app_absent=0";
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (Exception err) {
+                err.printStackTrace();
+            }
+        });
+
+        cardContactIG.setOnMouseClicked(e -> {
+            try {
+                String url = "https://www.instagram.com/muh.adnan_putra/";
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (Exception err) {
+                err.printStackTrace();
+            }
+        });
+
         backToLoginSceneButton.setOnAction(e -> {
             stage.close();
             LoginScene loginScene = new LoginScene(stage);

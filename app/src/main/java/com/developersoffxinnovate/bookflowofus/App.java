@@ -11,7 +11,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         stage.setResizable(false);
-        stage.setTitle("Book Flow of Us App");
+        stage.setTitle("Book Flow of Us");
         Image image = new Image(getClass().getClassLoader().getResourceAsStream("img/bookIcon.png"));
         stage.getIcons().add(image);
 

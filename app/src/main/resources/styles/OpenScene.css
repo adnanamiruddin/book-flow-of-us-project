@@ -9,7 +9,7 @@
 }
 
 .header > Label {
-  -fx-text-fill: white;
+  -fx-text-fill: rgb(255, 255, 255);
   -fx-font-size: 52px;
   -fx-font-weight: bold;
 }
