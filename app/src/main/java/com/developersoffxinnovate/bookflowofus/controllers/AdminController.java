@@ -22,6 +22,14 @@ public class AdminController extends DatabaseConfig {
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
+
+            // Insert default Admin
+            String insertQuery = "INSERT OR IGNORE INTO admin (id, user, password) VALUES (?, ?, ?)";
+            preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setInt(1, 1);
+            preparedStatement.setString(2, "Adnan");
+            preparedStatement.setString(3, "pas123");
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
