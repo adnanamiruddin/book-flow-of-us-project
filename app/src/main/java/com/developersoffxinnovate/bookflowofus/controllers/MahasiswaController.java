@@ -8,15 +8,22 @@ import com.developersoffxinnovate.bookflowofus.models.Mahasiswa;
 
 public class MahasiswaController extends DatabaseConfig {
 
-    public static void getDataMahasiswa() {
+    public static void createTableMahasiswa() {
         connection();
-        query = "SELECT * FROM mahasiswa";
+        query = "CREATE TABLE IF NOT EXISTS mahasiswa (" +
+                "id INTEGER NOT NULL UNIQUE," +
+                "nama TEXT NOT NULL," +
+                "nim TEXT NOT NULL UNIQUE," +
+                "prodi TEXT NOT NULL," +
+                "alamat TEXT NOT NULL," +
+                "no_telp TEXT NOT NULL UNIQUE," +
+                "password TEXT NOT NULL," +
+                "buku_dipinjam INTEGER DEFAULT 0," +
+                "PRIMARY KEY(id AUTOINCREMENT)" +
+                ")";
         try {
             preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString("nama"));
-            }
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -11,8 +11,25 @@ import com.developersoffxinnovate.bookflowofus.models.DataPeminjamanBuku;
 
 public class AdminController extends DatabaseConfig {
 
-    public static boolean validateLoginAdmin(String user, String password) {
+    public static void createTableAdmin() {
         connection();
+        query = "CREATE TABLE IF NOT EXISTS admin (" +
+                "id INTEGER NOT NULL UNIQUE," +
+                "user TEXT NOT NULL UNIQUE," +
+                "password TEXT NOT NULL," +
+                "PRIMARY KEY(id AUTOINCREMENT)" +
+                ")";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.executeUpdate();
+            System.out.println("Table 'admin' created successfully.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean validateLoginAdmin(String user, String password) {
+        createTableAdmin();
         query = "SELECT user, password FROM admin WHERE user=? AND password=?";
         try {
             preparedStatement = connection.prepareStatement(query);
