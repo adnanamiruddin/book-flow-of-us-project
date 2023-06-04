@@ -1,5 +1,7 @@
 package com.developersoffxinnovate.bookflowofus.controllers;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,6 +13,27 @@ import com.developersoffxinnovate.bookflowofus.models.DataPeminjamanBuku;
 
 public class AdminController extends DatabaseConfig {
 
+    public static String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes());
+            StringBuilder hexString = new StringBuilder();
+
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static void createTableAdmin() {
         connection();
         query = "CREATE TABLE IF NOT EXISTS admin (" +
@@ -19,16 +42,20 @@ public class AdminController extends DatabaseConfig {
                 "password TEXT NOT NULL," +
                 "PRIMARY KEY(id AUTOINCREMENT)" +
                 ")";
+
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
 
-            // Insert default Admin
-            String insertQuery = "INSERT OR IGNORE INTO admin (id, user, password) VALUES (?, ?, ?)";
-            preparedStatement = connection.prepareStatement(insertQuery);
-            preparedStatement.setInt(1, 1);
-            preparedStatement.setString(2, "Adnan");
-            preparedStatement.setString(3, "pas123");
+            // Insert default 2 Admin
+            // String insertDefaultAdmin = "INSERT OR IGNORE INTO admin (id, user, password) " +
+            //         "VALUES (1, 'Adnan', 'thisisadnan123'), (2, 'Book Admin', 'unhaspbosem2')";
+            String insertDefaultAdmin = "INSERT OR IGNORE INTO admin (id, user, password) " +
+                    "VALUES (1, 'Adnan', ?), (2, 'Book Admin', ?)";
+
+            preparedStatement = connection.prepareStatement(insertDefaultAdmin);
+            preparedStatement.setString(1, hashPassword("thisisadnan123"));
+            preparedStatement.setString(2, hashPassword("unhaspbosem2"));
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -36,12 +63,13 @@ public class AdminController extends DatabaseConfig {
     }
 
     public static boolean validateLoginAdmin(String user, String password) {
+        String hashedPassword = hashPassword(password);
         createTableAdmin();
         query = "SELECT user, password FROM admin WHERE user=? AND password=?";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user);
-            preparedStatement.setString(2, password);
+            preparedStatement.setString(2, hashedPassword);
 
             try (ResultSet loginAdmin = preparedStatement.executeQuery()) {
                 return loginAdmin.next();

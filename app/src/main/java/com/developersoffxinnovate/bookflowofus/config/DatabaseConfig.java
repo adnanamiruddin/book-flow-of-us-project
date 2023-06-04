@@ -8,8 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseConfig {
-    private static final String DB_URL = "jdbc:sqlite:db/db_borrowbook.db";
-    // Nanti kasih nama db_projectfx.db !
+    private static final String DB_URL = "jdbc:sqlite:db/db_bookflowofus.db";
 
     protected static Connection connection;
     protected static Statement statement;

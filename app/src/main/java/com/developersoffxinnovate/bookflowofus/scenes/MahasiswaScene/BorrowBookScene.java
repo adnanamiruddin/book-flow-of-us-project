@@ -195,7 +195,7 @@ public class BorrowBookScene extends AbstractScene implements InterfaceSceneProp
                 } else {
                     bookSelection.setText(judulBuku[0]);
                     bookSelection.getStyleClass().add("bookSelectionFailed");
-                    borrowBookStatus.setText("Exceeding The\nLoan Limit");
+                    borrowBookStatus.setText("The Loan Limit\nis Only 2");
                     borrowBookStatus.getStyleClass().add("borrowBookStatusFailed");
                 }
             } else {
