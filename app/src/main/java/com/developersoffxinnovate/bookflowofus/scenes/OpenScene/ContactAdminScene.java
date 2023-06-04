@@ -80,7 +80,8 @@ public class ContactAdminScene extends AbstractScene {
         containerButtons.getStyleClass().add("containerButtonsAdmin");
         containerButtons.setAlignment(Pos.CENTER);
 
-        VBox containerContact = new VBox(containerImage, headerTextContact, cardContactGmail, cardContactWA, cardContactIG, containerButtons);
+        VBox containerContact = new VBox(containerImage, headerTextContact, cardContactGmail, cardContactWA,
+                cardContactIG, containerButtons);
         containerContact.getStyleClass().add("containerContact");
         containerContact.setAlignment(Pos.CENTER);
 
@@ -150,5 +151,5 @@ public class ContactAdminScene extends AbstractScene {
             loginScene.show();
         });
     }
-    
+
 }

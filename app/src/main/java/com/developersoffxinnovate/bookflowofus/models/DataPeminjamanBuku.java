@@ -50,5 +50,4 @@ public class DataPeminjamanBuku extends Model {
     public void setStatus(String status) {
         this.status = status;
     }
-
 }

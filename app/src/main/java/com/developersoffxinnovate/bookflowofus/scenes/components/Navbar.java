@@ -27,7 +27,8 @@ public class Navbar {
         Button toBookListScene = new Button("Book List");
         Button toBorrowBookScene = new Button("Borrow Book");
         Button toHistoryBorrowBookScene = new Button("History");
-        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene, toHistoryBorrowBookScene);
+        VBox containerNavbarMenu = new VBox(toHomePageScene, toBookListScene, toBorrowBookScene,
+                toHistoryBorrowBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
 
         Button logOutButton = new Button("Log Out");
@@ -54,7 +55,8 @@ public class Navbar {
             default:
                 setActiveNav(toHomePageScene); // Default activeNav
                 break;
-        };
+        }
+        ;
         activeNav.setId("activeNav");
 
         toHomePageScene.setOnAction(e -> {
@@ -88,7 +90,8 @@ public class Navbar {
         Button toAddBookScene = new Button("Add Book");
         Button toReturnBookScene = new Button("Return Book");
         Button toDeleteBookScene = new Button("Delete Book");
-        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene, toReturnBookScene, toDeleteBookScene);
+        VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene,
+                toReturnBookScene, toDeleteBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
 
         Button logOutButton = new Button("Log Out");
@@ -118,7 +121,8 @@ public class Navbar {
             default:
                 setActiveNav(toHomePageAdminScene); // Default activeNav
                 break;
-        };
+        }
+        ;
         activeNav.setId("activeNav");
 
         toHomePageAdminScene.setOnAction(e -> {
@@ -149,4 +153,5 @@ public class Navbar {
 
         return containerNavbar;
     }
+
 }

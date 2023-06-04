@@ -94,5 +94,5 @@ public class LoginAdminScene extends AbstractScene {
             loginScene.show();
         });
     }
-    
+
 }

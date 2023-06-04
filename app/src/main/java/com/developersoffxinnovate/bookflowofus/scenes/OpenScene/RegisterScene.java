@@ -55,7 +55,8 @@ public class RegisterScene extends AbstractScene {
         PasswordField input6 = new PasswordField();
         input6.setPromptText("Password");
 
-        VBox containerInputs = new VBox(headerInput, inputNama, input1, inputNim, input2, inputProdi, input3, inputAlamat, input4, inputNoTelp, input5, inputPassword, input6);
+        VBox containerInputs = new VBox(headerInput, inputNama, input1, inputNim, input2, inputProdi, input3,
+                inputAlamat, input4, inputNoTelp, input5, inputPassword, input6);
         containerInputs.getStyleClass().add("containerInputsRegister");
         containerInputs.setAlignment(Pos.CENTER_LEFT);
 
@@ -165,5 +166,5 @@ public class RegisterScene extends AbstractScene {
             loginScene.show();
         });
     }
-    
+
 }

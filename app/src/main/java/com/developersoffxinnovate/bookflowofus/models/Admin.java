@@ -14,5 +14,4 @@ public class Admin extends Model {
     public void setUser(String user) {
         this.user = user;
     }
-    
 }

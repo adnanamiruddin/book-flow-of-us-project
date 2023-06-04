@@ -73,7 +73,8 @@ public class LoginScene extends AbstractScene {
 
         Image imageBg = new Image(getClass().getClassLoader().getResourceAsStream("img/book.jpg"));
         ImageView containerImageBg = new ImageView(imageBg);
-        StackPane sp = new StackPane(containerImageBg, main);;
+        StackPane sp = new StackPane(containerImageBg, main);
+        ;
 
         super.getScene().setRoot(sp);
         scene.getStylesheets().add(getClass().getResource("/styles/OpenScene.css").toExternalForm());
@@ -118,5 +119,5 @@ public class LoginScene extends AbstractScene {
             loginAdminScene.show();
         });
     }
-    
+
 }

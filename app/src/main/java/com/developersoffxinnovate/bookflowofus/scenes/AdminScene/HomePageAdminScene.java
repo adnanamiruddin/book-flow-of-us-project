@@ -60,4 +60,5 @@ public class HomePageAdminScene extends AbstractScene implements InterfaceSceneP
         stage.show();
         main.requestFocus();
     }
+
 }

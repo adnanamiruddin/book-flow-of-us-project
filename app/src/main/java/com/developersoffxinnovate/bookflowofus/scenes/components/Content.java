@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 public class Content {
+
     public VBox getContainerComingSoon() {
         Image comingSoon = new Image(getClass().getClassLoader().getResourceAsStream("img/comingSoon.jpg"));
         ImageView containerComingSoon = new ImageView(comingSoon);
@@ -19,4 +20,5 @@ public class Content {
 
         return containerContent;
     }
+
 }

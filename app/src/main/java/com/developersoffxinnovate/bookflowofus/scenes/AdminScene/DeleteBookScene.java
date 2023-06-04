@@ -27,7 +27,8 @@ public class DeleteBookScene extends AbstractScene implements InterfaceSceneProp
         /* ===> INSTANCE AREA END <=== */
 
         String activeNavItem = "Delete Book";
-        HBox containerMain = new HBox(Navbar.getNavbarAdmin(stage, user, activeNavItem), content.getContainerComingSoon());
+        HBox containerMain = new HBox(Navbar.getNavbarAdmin(stage, user, activeNavItem),
+                content.getContainerComingSoon());
 
         Header containerHeader = new Header();
         VBox main = new VBox(containerHeader.getHeaderAdmin(), containerMain);
@@ -39,4 +40,5 @@ public class DeleteBookScene extends AbstractScene implements InterfaceSceneProp
         stage.show();
         main.requestFocus();
     }
+
 }

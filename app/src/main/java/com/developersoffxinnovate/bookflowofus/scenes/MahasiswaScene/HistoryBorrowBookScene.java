@@ -27,7 +27,8 @@ public class HistoryBorrowBookScene extends AbstractScene implements InterfaceSc
         /* ===> INSTANCE AREA END <=== */
 
         String activeNavItem = "History";
-        HBox containerMain = new HBox(Navbar.getNavbarMahasiswa(stage, nim, activeNavItem), content.getContainerComingSoon());
+        HBox containerMain = new HBox(Navbar.getNavbarMahasiswa(stage, nim, activeNavItem),
+                content.getContainerComingSoon());
 
         Header containerHeader = new Header();
         VBox main = new VBox(containerHeader.getHeaderMahasiswa(), containerMain);
@@ -39,5 +40,5 @@ public class HistoryBorrowBookScene extends AbstractScene implements InterfaceSc
         stage.show();
         main.requestFocus();
     }
-    
+
 }

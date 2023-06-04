@@ -42,4 +42,5 @@ public class BooksListScene extends AbstractScene implements InterfaceSceneProps
         stage.show();
         main.requestFocus();
     }
+
 }
