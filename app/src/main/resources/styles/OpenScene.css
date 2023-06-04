@@ -52,7 +52,7 @@
 .containerInputs > .containerFooterInputs > Label {
   -fx-text-fill: rgb(79, 194, 79);
   -fx-background-color: rgb(63, 63, 63);
-  -fx-background-radius: 3px;
+  -fx-background-radius: 5px;
   -fx-padding: 2px 5px;
 }
 
@@ -210,8 +210,8 @@
   -fx-font-weight: bold;
   -fx-text-fill: rgb(235, 199, 0);
   -fx-font-size: 16px;
-  -fx-background-color: rgb(63, 63, 63);
-  -fx-background-radius: 3px;
+  -fx-background-color: rgb(108, 108, 108);
+  -fx-background-radius: 5px;
   -fx-padding: 2px 5px;
 }
 
