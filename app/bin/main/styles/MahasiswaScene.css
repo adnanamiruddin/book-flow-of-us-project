@@ -39,12 +39,6 @@
   -fx-cursor: hand;
   -fx-background-color: #0a7cee;
   -fx-text-fill: rgb(255, 255, 255) !important;
-  -fx-border-color: rgb(156, 156, 156);
-  -fx-border-width: 1px;
-}
-
-.containerNavbar > .containerNavbarFooter {
-  -fx-spacing: 2px;
 }
 
 .containerNavbar > .containerNavbarFooter > Button {
@@ -60,8 +54,7 @@
   -fx-cursor: hand;
   -fx-background-color: rgb(255, 0, 0);
   -fx-text-fill: rgb(255, 255, 255) !important;
-  -fx-border-width: 1px;
-  -fx-border-color: rgb(114, 5, 56);
+  -fx-border-color: rgb(209, 171, 0);
 }
 
 #activeNav {
