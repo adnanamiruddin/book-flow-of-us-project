@@ -11,6 +11,7 @@ public class Content {
         ImageView containerComingSoon = new ImageView(comingSoon);
         containerComingSoon.setFitHeight(350);
         containerComingSoon.setFitWidth(500);
+        
 
         VBox containerContent = new VBox(containerComingSoon);
         containerContent.getStyleClass().add("containerContent");

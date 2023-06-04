@@ -2,6 +2,7 @@ package com.developersoffxinnovate.bookflowofus.scenes.components;
 
 import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.AddBookScene;
 import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.BookListAdminScene;
+import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.DeleteBookScene;
 import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.HomePageAdminScene;
 import com.developersoffxinnovate.bookflowofus.scenes.AdminScene.ReturnBookScene;
 import com.developersoffxinnovate.bookflowofus.scenes.MahasiswaScene.BooksListScene;
@@ -86,6 +87,7 @@ public class Navbar {
         Button toBookListAdminScene = new Button("Book List");
         Button toAddBookScene = new Button("Add Book");
         Button toReturnBookScene = new Button("Return Book");
+        Button toDeleteBookScene = new Button("Delete Book");
         VBox containerNavbarMenu = new VBox(toHomePageAdminScene, toBookListAdminScene, toAddBookScene, toReturnBookScene);
         containerNavbarMenu.getStyleClass().add("containerNavbarMenu");
 
@@ -110,6 +112,9 @@ public class Navbar {
             case "Return Book":
                 setActiveNav(toReturnBookScene);
                 break;
+            case "Delete Book":
+                setActiveNav(toDeleteBookScene);
+                break;
             default:
                 setActiveNav(toHomePageAdminScene); // Default activeNav
                 break;
@@ -129,8 +134,12 @@ public class Navbar {
             addBookScene.show(user);
         });
         toReturnBookScene.setOnAction(e -> {
-            ReturnBookScene returnBook = new ReturnBookScene(stage);
-            returnBook.show(user);
+            ReturnBookScene returnBookScene = new ReturnBookScene(stage);
+            returnBookScene.show(user);
+        });
+        toDeleteBookScene.setOnAction(e -> {
+            DeleteBookScene deleteBookScene = new DeleteBookScene(stage);
+            deleteBookScene.show(user);
         });
         logOutButton.setOnAction(e -> {
             stage.close();
