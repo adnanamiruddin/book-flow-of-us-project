@@ -22,7 +22,6 @@ public class AdminController extends DatabaseConfig {
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
-            System.out.println("Table 'admin' created successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -47,7 +46,7 @@ public class AdminController extends DatabaseConfig {
 
     public static Admin getAdminByUser(String user) {
         Admin admin = null;
-        connection();
+        createTableAdmin();
         query = "SELECT * FROM admin WHERE user=?";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -70,7 +69,7 @@ public class AdminController extends DatabaseConfig {
 
     public static List<DataPeminjamanBuku> getAllDataPeminjamanBuku() {
         List<DataPeminjamanBuku> dataPeminjamanBuku = new ArrayList<>();
-        connection();
+        createTableAdmin();
         query = "SELECT * FROM peminjaman_buku";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -95,7 +94,7 @@ public class AdminController extends DatabaseConfig {
 
     public static DataPeminjamanBuku getDataPeminjamanBukuById(int id) {
         DataPeminjamanBuku dataPeminjamanBuku = null;
-        connection();
+        createTableAdmin();
         query = "SELECT * FROM peminjaman_buku WHERE id=?";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -120,7 +119,7 @@ public class AdminController extends DatabaseConfig {
     }
 
     public static boolean validateAddBook(String judul, String pengarang, String penerbit, int tahunTerbit, int stok) {
-        connection();
+        createTableAdmin();
         query = "INSERT INTO buku(judul, pengarang, penerbit, tahun_terbit, stok) VALUES (?, ?, ?, ?, ?)";
         if (judul.isEmpty() || pengarang.isEmpty()) {
             return false;

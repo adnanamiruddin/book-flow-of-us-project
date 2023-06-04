@@ -7,11 +7,32 @@ import com.developersoffxinnovate.bookflowofus.config.DatabaseConfig;
 
 public class BorrowBookController extends DatabaseConfig {
 
+    public static void createTablePeminjamanBuku() {
+        connection();
+        query = "CREATE TABLE IF NOT EXISTS peminjaman_buku (" +
+                "id INTEGER NOT NULL UNIQUE," +
+                "id_mahasiswa INTEGER NOT NULL," +
+                "id_buku INTEGER NOT NULL," +
+                "tanggal_pinjam TEXT NOT NULL," +
+                "tanggal_kembali TEXT," +
+                "status TEXT NOT NULL," +
+                "FOREIGN KEY(id_buku) REFERENCES buku(id)," +
+                "FOREIGN KEY(id_mahasiswa) REFERENCES mahasiswa(id)," +
+                "PRIMARY KEY(id AUTOINCREMENT)" +
+                ")";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static boolean borrowBook(int idMahasiswa, int idBuku) {
         LocalDate tanggalPinjam = LocalDate.now();
         LocalDate tanggalKembali = tanggalPinjam.plusDays(7);
 
-        connection();
+        createTablePeminjamanBuku();
         query = "INSERT INTO peminjaman_buku (id_mahasiswa, id_buku, tanggal_pinjam, tanggal_kembali, status) VALUES (?, ?, ?, ?, ?)";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -36,7 +57,7 @@ public class BorrowBookController extends DatabaseConfig {
     public static boolean returnBook(int idPeminjaman, int idMahasiswa, int idBuku) {
         LocalDate tanggalKembali = LocalDate.now();
 
-        connection();
+        createTablePeminjamanBuku();
         query = "UPDATE peminjaman_buku SET tanggal_kembali=?, status=? WHERE id=?";
         try {
             preparedStatement = connection.prepareStatement(query);

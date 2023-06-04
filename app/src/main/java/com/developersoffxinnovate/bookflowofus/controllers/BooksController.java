@@ -10,23 +10,29 @@ import com.developersoffxinnovate.bookflowofus.models.Book;
 
 public class BooksController extends DatabaseConfig {
 
-    public static void getDataBuku() {
+    public static void createTableBuku() {
         connection();
-        query = "SELECT * FROM buku";
+        query = "CREATE TABLE IF NOT EXISTS buku (" +
+                "id INTEGER NOT NULL UNIQUE," +
+                "judul TEXT NOT NULL," +
+                "pengarang TEXT," +
+                "penerbit TEXT NOT NULL," +
+                "tahun_terbit INTEGER," +
+                "stok INTEGER NOT NULL," +
+                "PRIMARY KEY(id AUTOINCREMENT)" +
+                ")";
         try {
             preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString("judul") + "  " + resultSet.getString("pengarang"));
-            }
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+    
 
     public static List<Book> getAllBuku() {
         List<Book> books = new ArrayList<>();
-        connection();
+        createTableBuku();
         query = "SELECT * FROM buku";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -51,7 +57,7 @@ public class BooksController extends DatabaseConfig {
 
     public static Book getBookById(int id) {
         Book book = null;
-        connection();
+        createTableBuku();
         query = "SELECT * FROM buku WHERE id=?";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -77,7 +83,7 @@ public class BooksController extends DatabaseConfig {
     }
 
     public static void updateJumlahBukuDipinjam(int idBuku, int howMany) {
-        connection();
+        createTableBuku();
         query = "UPDATE buku SET stok=stok+? WHERE id=?";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -91,7 +97,7 @@ public class BooksController extends DatabaseConfig {
     }
 
     public static boolean validateStok(int idBuku) {
-        connection();
+        createTableBuku();
         query = "SELECT stok FROM buku WHERE id=?";
         try {
             preparedStatement = connection.prepareStatement(query);

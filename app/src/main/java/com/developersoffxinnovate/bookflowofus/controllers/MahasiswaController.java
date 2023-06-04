@@ -30,7 +30,7 @@ public class MahasiswaController extends DatabaseConfig {
     }
 
     public static boolean validateLogin(String nim, String password) {
-        connection();
+        createTableMahasiswa();
         query = "SELECT nim, password FROM mahasiswa WHERE nim=? AND password=?";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -46,7 +46,7 @@ public class MahasiswaController extends DatabaseConfig {
     }
 
     public static boolean validateRegister(String nama, String nim, String prodi, String alamat, String noTelp, String password) {
-        connection();
+        createTableMahasiswa();
         query = "INSERT INTO mahasiswa (nama, nim, prodi, alamat, no_telp, password) VALUES (?, ?, ?, ?, ?, ?)";
         if (nama.isEmpty() || nim.isEmpty() || prodi.isEmpty() || alamat.isEmpty() || noTelp.isEmpty() || password.isEmpty()) {
             return false;
@@ -69,7 +69,7 @@ public class MahasiswaController extends DatabaseConfig {
 
     public static Mahasiswa getMahasiswaById(int id) {
         Mahasiswa mahasiswa = null;
-        connection();
+        createTableMahasiswa();
         query = "SELECT id, nama, nim, prodi, buku_dipinjam FROM mahasiswa WHERE id=?";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -95,7 +95,7 @@ public class MahasiswaController extends DatabaseConfig {
 
     public static Mahasiswa getMahasiswaByNim(String nim) {
         Mahasiswa mahasiswa = null;
-        connection();
+        createTableMahasiswa();
         query = "SELECT id, nama, nim, prodi, buku_dipinjam FROM mahasiswa WHERE nim=?";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -120,7 +120,7 @@ public class MahasiswaController extends DatabaseConfig {
     }
 
     public static void updateJumlahBukuDipinjamMahasiswa(int idMahasiswa, int howMany) {
-        connection();
+        createTableMahasiswa();
         query = "UPDATE mahasiswa SET buku_dipinjam=buku_dipinjam+? WHERE id=?";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -134,7 +134,7 @@ public class MahasiswaController extends DatabaseConfig {
     }
 
     public static boolean validatePinjamBuku(int idMahasiswa) {
-        connection();
+        createTableMahasiswa();
         query = "SELECT buku_dipinjam FROM mahasiswa WHERE id=?";
         try {
             preparedStatement = connection.prepareStatement(query);
