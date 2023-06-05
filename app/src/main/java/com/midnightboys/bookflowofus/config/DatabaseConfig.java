@@ -10,7 +10,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseConfig {
-    private static final String DB_URL = "jdbc:sqlite:db/db_bookflowofus.db";
+    // MODE DEVELOPMENT
+    // private static final String DB_URL = "jdbc:sqlite:src/main/resources/db/db_bookflowofus.db";
+    // MODE PRODUCTION
+    private static final String DB_URL = "jdbc:sqlite::resource:db/db_bookflowofus.db";
 
     protected static Connection connection;
     protected static Statement statement;
