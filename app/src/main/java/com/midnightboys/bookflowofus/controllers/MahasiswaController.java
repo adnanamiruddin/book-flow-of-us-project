@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.midnightboys.bookflowofus.config.DatabaseConfig;
+import com.midnightboys.bookflowofus.helper.DbHelper;
 import com.midnightboys.bookflowofus.models.Mahasiswa;
 
 public class MahasiswaController extends DatabaseConfig {
@@ -30,7 +31,7 @@ public class MahasiswaController extends DatabaseConfig {
     }
 
     public static boolean validateLogin(String nim, String password) {
-        String hashedPassword = hashPassword(password);
+        String hashedPassword = DbHelper.hashPassword(password);
         createTableMahasiswa();
         query = "SELECT nim, password FROM mahasiswa WHERE nim=? AND password=?";
         try {
@@ -47,7 +48,7 @@ public class MahasiswaController extends DatabaseConfig {
     }
 
     public static boolean validateRegister(String nama, String nim, String prodi, String alamat, String noTelp, String password) {
-        String hashedPassword = hashPassword(password);
+        String hashedPassword = DbHelper.hashPassword(password);
         createTableMahasiswa();
         query = "INSERT INTO mahasiswa (nama, nim, prodi, alamat, no_telp, password) VALUES (?, ?, ?, ?, ?, ?)";
         if (nama.isEmpty() || nim.isEmpty() || prodi.isEmpty() || alamat.isEmpty() || noTelp.isEmpty() || password.isEmpty()) {

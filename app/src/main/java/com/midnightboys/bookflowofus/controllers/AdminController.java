@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.midnightboys.bookflowofus.config.DatabaseConfig;
+import com.midnightboys.bookflowofus.helper.DbHelper;
 import com.midnightboys.bookflowofus.models.Admin;
 import com.midnightboys.bookflowofus.models.DataPeminjamanBuku;
 
@@ -26,8 +27,8 @@ public class AdminController extends DatabaseConfig {
             String insertDefaultAdmin = "INSERT OR IGNORE INTO admin (id, user, password) " +
                     "VALUES (1, 'Adnan', ?), (2, 'Book Admin', ?)";
             preparedStatement = connection.prepareStatement(insertDefaultAdmin);
-            preparedStatement.setString(1, hashPassword("thisisadnan123"));
-            preparedStatement.setString(2, hashPassword("unhasppbosem2"));
+            preparedStatement.setString(1, DbHelper.hashPassword("thisisadnan123"));
+            preparedStatement.setString(2, DbHelper.hashPassword("unhasppbosem2"));
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -35,7 +36,7 @@ public class AdminController extends DatabaseConfig {
     }
 
     public static boolean validateLoginAdmin(String user, String password) {
-        String hashedPassword = hashPassword(password);
+        String hashedPassword = DbHelper.hashPassword(password);
         createTableAdmin();
         query = "SELECT user, password FROM admin WHERE user=? AND password=?";
         try {
