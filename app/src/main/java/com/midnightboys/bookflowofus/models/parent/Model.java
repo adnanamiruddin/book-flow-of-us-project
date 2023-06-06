@@ -1,4 +1,4 @@
-package com.midnightboys.bookflowofus.models;
+package com.midnightboys.bookflowofus.models.parent;
 
 public class Model {
     protected int id;

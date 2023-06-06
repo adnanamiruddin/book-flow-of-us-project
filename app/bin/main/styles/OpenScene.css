@@ -15,7 +15,7 @@
 }
 
 .failedRequest {
-  -fx-text-fill: rgb(51, 39, 39) !important;
+  -fx-text-fill: rgb(235, 235, 235) !important;
   -fx-background-color: rgb(255, 0, 0) !important;
 }
 /* GLOBAL STYLE END */
@@ -28,7 +28,7 @@
 
 .containerInputs > Label {
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(238, 238, 238);
+  -fx-text-fill: rgb(255, 255, 255);
   -fx-font-size: 24px;
 }
 
@@ -55,14 +55,14 @@
 }
 
 .containerInputs > .containerFooterInputs > Label {
-  -fx-text-fill: rgb(56, 214, 56);
+  -fx-text-fill: rgb(226, 142, 17);
   -fx-background-color: rgb(82, 82, 82);
   -fx-background-radius: 5px;
   -fx-padding: 5px 10px;
 }
 
 .containerInputs > .containerFooterInputs > .contactAdmin {
-  -fx-text-fill: rgb(233, 143, 8);
+  -fx-text-fill: rgb(255, 153, 0);
 }
 
 .containerInputs > .containerFooterInputs > .contactAdmin:hover {
@@ -168,7 +168,7 @@
 
 .headerRegister > Label {
   -fx-text-fill: rgb(53, 53, 53);
-  -fx-font-size: 52px;
+  -fx-font-size: 48px;
   -fx-font-weight: bold;
 }
 
@@ -178,7 +178,7 @@
 
 .containerInputsRegister {
   -fx-padding: 2px 100px 5px;
-  -fx-spacing: 6px;
+  -fx-spacing: 5px;
 }
 
 .containerInputsRegister > .headerInput {
@@ -191,8 +191,8 @@
 
 .containerInputsRegister > Label {
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(76, 76, 76);
-  -fx-font-size: 12px;
+  -fx-text-fill: rgb(34, 34, 34);
+  -fx-font-size: 14px;
 }
 
 .containerInputsRegister > TextField,
@@ -269,7 +269,7 @@
 
 .containerInputsAdmin > Label {
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(155, 155, 155);
+  -fx-text-fill: rgb(255, 255, 255);
   -fx-font-size: 24px;
 }
 
@@ -289,7 +289,7 @@
 
 .containerInputsAdmin > .loginStatus {
   -fx-font-size: 16px;
-  -fx-text-fill: rgb(56, 214, 56);
+  -fx-text-fill: rgb(224, 141, 16);
   -fx-background-color: rgb(82, 82, 82);
   -fx-background-radius: 5px;
   -fx-padding: 5px 10px;

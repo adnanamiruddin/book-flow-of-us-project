@@ -1,5 +1,7 @@
 package com.midnightboys.bookflowofus.models;
 
+import com.midnightboys.bookflowofus.models.parent.Model;
+
 public class Mahasiswa extends Model {
     private String nama;
     private String nim;

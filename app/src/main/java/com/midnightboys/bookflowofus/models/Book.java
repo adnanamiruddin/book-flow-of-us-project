@@ -1,5 +1,7 @@
 package com.midnightboys.bookflowofus.models;
 
+import com.midnightboys.bookflowofus.models.parent.Model;
+
 public class Book extends Model {
     private String judul;
     private String pengarang;

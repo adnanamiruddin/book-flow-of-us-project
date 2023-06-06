@@ -1,5 +1,7 @@
 package com.midnightboys.bookflowofus.models;
 
+import com.midnightboys.bookflowofus.models.parent.Model;
+
 public class DataPeminjamanBuku extends Model {
     private int idMahasiswa;
     private int idBuku;
